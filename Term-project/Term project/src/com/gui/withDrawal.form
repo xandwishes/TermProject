@@ -28,27 +28,27 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="jLabel6" max="32767" attributes="0"/>
-                  <Component id="jLabel3" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
-                  <Component id="jLabel5" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jLabel2" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
+                  <Component id="accNameLB" max="32767" attributes="0"/>
+                  <Component id="accNoLB" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
+                  <Component id="idNoLB" alignment="1" max="32767" attributes="0"/>
+                  <Component id="enterValueLB" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="id" min="-2" pref="170" max="-2" attributes="0"/>
+                      <Component id="idTF" min="-2" pref="170" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                      <Component id="searchButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="amount" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="amountTF" min="-2" pref="170" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="bathLB" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="idno" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                          <Component id="name" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="idnoTF" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="accNameTF" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -59,13 +59,13 @@
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="62" max="-2" attributes="0"/>
+                      <Component id="withdrawLB" min="-2" pref="62" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jButton3" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="cancelButton" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="nextButton" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -76,33 +76,33 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="withdrawLB" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="id" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jButton4" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="accNoLB" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="idTF" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="searchButton" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel6" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="name" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="accNameLB" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="accNameTF" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="idno" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="idNoLB" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="idnoTF" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="amount" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="enterValueLB" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="amountTF" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="bathLB" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="13" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton2" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
+                  <Component id="nextButton" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
+                  <Component id="cancelButton" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -110,75 +110,75 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="withdrawLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Withdrawal"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="accNoLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Account No."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="accNameLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Account Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="idNoLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Identity number"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="idno">
+    <Component class="javax.swing.JTextField" name="idnoTF">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="name">
+    <Component class="javax.swing.JTextField" name="accNameTF">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="id">
+    <Component class="javax.swing.JTextField" name="idTF">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="enterValueLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Enter value"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="amount">
+    <Component class="javax.swing.JTextField" name="amountTF">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="bathLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Bath"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="nextButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Next"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="cancelButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="searchButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

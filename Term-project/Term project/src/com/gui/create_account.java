@@ -35,160 +35,170 @@ public class create_account extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        idno = new javax.swing.JTextField();
-        birthdate = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        deposit = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        name = new javax.swing.JTextField();
-        email = new javax.swing.JTextField();
+        createAcc = new javax.swing.JLabel();
+        namesur = new javax.swing.JLabel();
+        Deposit = new javax.swing.JLabel();
+        malebutton = new javax.swing.JRadioButton();
+        femalebutton = new javax.swing.JRadioButton();
+        Gender = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
+        idtf = new javax.swing.JTextField();
+        birthdateTF = new javax.swing.JTextField();
+        Address = new javax.swing.JLabel();
+        DoB = new javax.swing.JLabel();
+        deposittf = new javax.swing.JTextField();
+        Age = new javax.swing.JLabel();
+        emailL = new javax.swing.JLabel();
+        nametf = new javax.swing.JTextField();
+        emailtf = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        address = new javax.swing.JTextArea();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        revenue = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox();
-        jLabel12 = new javax.swing.JLabel();
-        phone = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        age = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        addresstf = new javax.swing.JTextArea();
+        DMYLB = new javax.swing.JLabel();
+        career = new javax.swing.JLabel();
+        revenuetf = new javax.swing.JTextField();
+        careercb = new javax.swing.JComboBox();
+        rpm = new javax.swing.JLabel();
+        phonetf = new javax.swing.JTextField();
+        phonenum = new javax.swing.JLabel();
+        agetf = new javax.swing.JTextField();
+        cancelButton = new javax.swing.JButton();
+        buttonNext = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Create account");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(320, 20, 220, 60);
+        createAcc.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        createAcc.setText("Create account");
+        getContentPane().add(createAcc);
+        createAcc.setBounds(320, 20, 220, 60);
 
-        jLabel2.setText("Name-Surname");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(40, 100, 110, 30);
+        namesur.setText("Name-Surname");
+        getContentPane().add(namesur);
+        namesur.setBounds(40, 100, 110, 30);
 
-        jLabel3.setText("Deposit");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(420, 100, 60, 30);
+        Deposit.setText("Deposit");
+        getContentPane().add(Deposit);
+        Deposit.setBounds(420, 100, 60, 30);
 
-        jRadioButton1.setText("Male");
-        getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(540, 150, 60, 30);
-
-        jRadioButton2.setText("Female");
-        getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(620, 150, 90, 30);
-
-        jLabel4.setText("Gender");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(420, 150, 50, 30);
-
-        jLabel5.setText("Identity card number");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(40, 150, 120, 30);
-        getContentPane().add(idno);
-        idno.setBounds(160, 150, 170, 30);
-        getContentPane().add(birthdate);
-        birthdate.setBounds(530, 200, 110, 30);
-
-        jLabel6.setText("Address :");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(40, 300, 60, 100);
-
-        jLabel7.setText("Date of birth");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(420, 200, 80, 30);
-        getContentPane().add(deposit);
-        deposit.setBounds(530, 100, 170, 30);
-
-        jLabel8.setText("Age");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(420, 250, 100, 30);
-
-        jLabel9.setText("E-mail");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(40, 250, 40, 30);
-
-        name.addActionListener(new java.awt.event.ActionListener() {
+        malebutton.setText("Male");
+        malebutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameActionPerformed(evt);
+                malebuttonActionPerformed(evt);
             }
         });
-        getContentPane().add(name);
-        name.setBounds(160, 100, 170, 30);
-        getContentPane().add(email);
-        email.setBounds(160, 250, 170, 30);
+        getContentPane().add(malebutton);
+        malebutton.setBounds(540, 150, 60, 30);
 
-        address.setColumns(20);
-        address.setRows(5);
-        jScrollPane2.setViewportView(address);
+        femalebutton.setText("Female");
+        femalebutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                femalebuttonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(femalebutton);
+        femalebutton.setBounds(620, 150, 90, 30);
+
+        Gender.setText("Gender");
+        getContentPane().add(Gender);
+        Gender.setBounds(420, 150, 50, 30);
+
+        id.setText("Identity card number");
+        getContentPane().add(id);
+        id.setBounds(40, 150, 120, 30);
+        getContentPane().add(idtf);
+        idtf.setBounds(160, 150, 170, 30);
+        getContentPane().add(birthdateTF);
+        birthdateTF.setBounds(530, 200, 110, 30);
+
+        Address.setText("Address :");
+        getContentPane().add(Address);
+        Address.setBounds(40, 300, 60, 100);
+
+        DoB.setText("Date of birth");
+        getContentPane().add(DoB);
+        DoB.setBounds(420, 200, 80, 30);
+        getContentPane().add(deposittf);
+        deposittf.setBounds(530, 100, 170, 30);
+
+        Age.setText("Age");
+        getContentPane().add(Age);
+        Age.setBounds(420, 250, 100, 30);
+
+        emailL.setText("E-mail");
+        getContentPane().add(emailL);
+        emailL.setBounds(40, 250, 40, 30);
+
+        nametf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nametfActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nametf);
+        nametf.setBounds(160, 100, 170, 30);
+        getContentPane().add(emailtf);
+        emailtf.setBounds(160, 250, 170, 30);
+
+        addresstf.setColumns(20);
+        addresstf.setRows(5);
+        jScrollPane2.setViewportView(addresstf);
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(160, 300, 166, 96);
 
-        jLabel10.setText("D / M / Y");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(650, 200, 60, 30);
+        DMYLB.setText("D / M / Y");
+        getContentPane().add(DMYLB);
+        DMYLB.setBounds(650, 200, 60, 30);
 
-        jLabel11.setText("Career");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(420, 300, 40, 30);
-        getContentPane().add(revenue);
-        revenue.setBounds(530, 350, 170, 30);
+        career.setText("Career");
+        getContentPane().add(career);
+        career.setBounds(420, 300, 40, 30);
+        getContentPane().add(revenuetf);
+        revenuetf.setBounds(530, 350, 170, 30);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Please select", "Student", "Business", "Owner", "Commerce", "etc." }));
-        getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(530, 300, 110, 30);
+        careercb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Please select", "Student", "Business", "Owner", "Commerce", "etc." }));
+        getContentPane().add(careercb);
+        careercb.setBounds(530, 300, 110, 30);
 
-        jLabel12.setText("Revenue per month");
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(420, 350, 110, 30);
-        getContentPane().add(phone);
-        phone.setBounds(160, 200, 170, 30);
+        rpm.setText("Revenue per month");
+        getContentPane().add(rpm);
+        rpm.setBounds(420, 350, 110, 30);
+        getContentPane().add(phonetf);
+        phonetf.setBounds(160, 200, 170, 30);
 
-        jLabel13.setText("Phone number");
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(40, 200, 90, 30);
-        getContentPane().add(age);
-        age.setBounds(530, 250, 170, 30);
+        phonenum.setText("Phone number");
+        getContentPane().add(phonenum);
+        phonenum.setBounds(40, 200, 90, 30);
+        getContentPane().add(agetf);
+        agetf.setBounds(530, 250, 170, 30);
 
-        jButton3.setText("Cancel");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                cancelButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(270, 410, 100, 60);
+        getContentPane().add(cancelButton);
+        cancelButton.setBounds(270, 410, 100, 60);
 
-        jButton2.setText("Next");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonNext.setText("Next");
+        buttonNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonNextActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(380, 410, 100, 60);
+        getContentPane().add(buttonNext);
+        buttonNext.setBounds(380, 410, 100, 60);
 
         setSize(new java.awt.Dimension(769, 567));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
         int n = JOptionPane.showConfirmDialog(null,
             "Are you sure?",
-            "Cancal",
+            "Cancel",
             JOptionPane.YES_NO_OPTION);
         System.out.print(n); // Use n for response
         if(n==1){
@@ -198,9 +208,9 @@ public class create_account extends javax.swing.JFrame {
             profile.setVisible(true);
             setVisible(false);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buttonNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNextActionPerformed
         // TODO add your handling code here:
         int n = JOptionPane.showConfirmDialog(null,
             "Sucess! your account was created",
@@ -211,25 +221,33 @@ public class create_account extends javax.swing.JFrame {
             setVisible(true);  
         }else{
             String gender = "";
-            if(jRadioButton1.isSelected()){
+            if(malebutton.isSelected()){
                 gender = "M";
-            }else if(jRadioButton2.isSelected()){
+            }else if(femalebutton.isSelected()){
                 gender = "F";
             }
-            BankAccount.openAccount(name.getText(), Double.parseDouble(deposit.getText()), gender, email.getText(),
-                                    phone.getText(), idno.getText(), revenue.getText(),jComboBox2.getSelectedItem().toString()
-                                    ,Integer.parseInt(age.getText()), birthdate.getText(), address.getText());
+            BankAccount.openAccount(nametf.getText(), Double.parseDouble(deposittf.getText()), gender, emailtf.getText(),
+                                    phonetf.getText(), idtf.getText(), revenuetf.getText(),careercb.getSelectedItem().toString()
+                                    ,Integer.parseInt(agetf.getText()), birthdateTF.getText(), addresstf.getText());
             
             displayApp profile = new displayApp();
             profile.setVisible(true);
             setVisible(false);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buttonNextActionPerformed
 
-    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
+    private void nametfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nametfActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_nameActionPerformed
+    }//GEN-LAST:event_nametfActionPerformed
+
+    private void malebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_malebuttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_malebuttonActionPerformed
+
+    private void femalebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femalebuttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_femalebuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,34 +288,34 @@ public class create_account extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea address;
-    private javax.swing.JTextField age;
-    private javax.swing.JTextField birthdate;
-    private javax.swing.JTextField deposit;
-    private javax.swing.JTextField email;
-    private javax.swing.JTextField idno;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JLabel Address;
+    private javax.swing.JLabel Age;
+    private javax.swing.JLabel DMYLB;
+    private javax.swing.JLabel Deposit;
+    private javax.swing.JLabel DoB;
+    private javax.swing.JLabel Gender;
+    private javax.swing.JTextArea addresstf;
+    private javax.swing.JTextField agetf;
+    private javax.swing.JTextField birthdateTF;
+    private javax.swing.JButton buttonNext;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JLabel career;
+    private javax.swing.JComboBox careercb;
+    private javax.swing.JLabel createAcc;
+    private javax.swing.JTextField deposittf;
+    private javax.swing.JLabel emailL;
+    private javax.swing.JTextField emailtf;
+    private javax.swing.JRadioButton femalebutton;
+    private javax.swing.JLabel id;
+    private javax.swing.JTextField idtf;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField name;
-    private javax.swing.JTextField phone;
-    private javax.swing.JTextField revenue;
+    private javax.swing.JRadioButton malebutton;
+    private javax.swing.JLabel namesur;
+    private javax.swing.JTextField nametf;
+    private javax.swing.JLabel phonenum;
+    private javax.swing.JTextField phonetf;
+    private javax.swing.JTextField revenuetf;
+    private javax.swing.JLabel rpm;
     // End of variables declaration//GEN-END:variables
 
     

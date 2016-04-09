@@ -38,23 +38,23 @@ public class transfer_account extends javax.swing.JFrame {
         name1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         id1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        idno = new javax.swing.JTextField();
-        name = new javax.swing.JTextField();
+        transferAccLB = new javax.swing.JLabel();
+        leftaccNoLB = new javax.swing.JLabel();
+        LaccNameLB = new javax.swing.JLabel();
+        idNoLB = new javax.swing.JLabel();
+        LidnoTF = new javax.swing.JTextField();
+        LnameTF = new javax.swing.JTextField();
         id = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
+        LsearchButton = new javax.swing.JButton();
         id2 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        amount = new javax.swing.JTextField();
-        name2 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        rightaccNoLB = new javax.swing.JLabel();
+        RaccNameLB = new javax.swing.JLabel();
+        amountLB = new javax.swing.JLabel();
+        amountTF = new javax.swing.JTextField();
+        RnameTF = new javax.swing.JTextField();
+        RsearchButton = new javax.swing.JButton();
 
         jButton5.setText("Search");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -75,55 +75,55 @@ public class transfer_account extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Transfer<account>");
+        transferAccLB.setText("Transfer<account>");
 
-        jLabel3.setText("Account No.");
+        leftaccNoLB.setText("Account No.");
 
-        jLabel6.setText("Account Name");
+        LaccNameLB.setText("Account Name");
 
-        jLabel5.setText("Identity number");
+        idNoLB.setText("Identity number");
 
-        idno.setEnabled(false);
+        LidnoTF.setEnabled(false);
 
-        name.setEnabled(false);
+        LnameTF.setEnabled(false);
 
-        jButton2.setText("Next");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        nextButton.setText("Next");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                nextButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Cancel");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                cancelButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Search");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        LsearchButton.setText("Search");
+        LsearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                LsearchButtonActionPerformed(evt);
             }
         });
 
         id2.setEnabled(false);
 
-        jLabel9.setText("Account No.");
+        rightaccNoLB.setText("Account No.");
 
-        jLabel10.setText("Account Name");
+        RaccNameLB.setText("Account Name");
 
-        jLabel11.setText("Amount");
+        amountLB.setText("Amount");
 
-        amount.setEnabled(false);
+        amountTF.setEnabled(false);
 
-        name2.setEnabled(false);
+        RnameTF.setEnabled(false);
 
-        jButton6.setText("Search");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        RsearchButton.setText("Search");
+        RsearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                RsearchButtonActionPerformed(evt);
             }
         });
 
@@ -134,86 +134,86 @@ public class transfer_account extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LaccNameLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(leftaccNoLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idNoLB, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idno, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LidnoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4))
-                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(LsearchButton))
+                    .addComponent(LnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(RaccNameLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rightaccNoLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(amountLB, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(amountTF, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(id2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6))
-                    .addComponent(name2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(RsearchButton))
+                    .addComponent(RnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(transferAccLB, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(284, 284, 284))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(239, 239, 239))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(transferAccLB, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(45, 45, 45)
-                                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(LnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(LsearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(16, 16, 16)
-                        .addComponent(idno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(LidnoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(45, 45, 45)
-                                .addComponent(name2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(RnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(id2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(RsearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(16, 16, 16)
-                        .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(amountTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rightaccNoLB, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(RaccNameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(amountLB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(leftaccNoLB, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LaccNameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(idNoLB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
 
@@ -221,7 +221,7 @@ public class transfer_account extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
         BankAccount a = BankAccount.search(Long.parseLong(id.getText()));
             int n = JOptionPane.showConfirmDialog(null,
@@ -233,28 +233,28 @@ public class transfer_account extends javax.swing.JFrame {
                 setVisible(true);
             }else{
                 if(a != null){
-                    if(Integer.parseInt(amount.getText()) > a.getBalance()){
-                        JOptionPane.showMessageDialog(this, "Error! "+ name.getText()+" account's overdrawn " );
+                    if(Integer.parseInt(amountTF.getText()) > a.getBalance()){
+                        JOptionPane.showMessageDialog(this, "Error! "+ LnameTF.getText()+" account's overdrawn " );
                         setVisible(true);
                     }else{
-                        BankAccount.deposit(Long.parseLong(id2.getText()), Integer.parseInt(amount.getText()));
-                        BankAccount.withdrawal(Long.parseLong(id.getText()), Integer.parseInt(amount.getText()));
+                        BankAccount.deposit(Long.parseLong(id2.getText()), Integer.parseInt(amountTF.getText()));
+                        BankAccount.withdrawal(Long.parseLong(id.getText()), Integer.parseInt(amountTF.getText()));
                         displayApp profile = new displayApp();
                         profile.setVisible(true);
                         setVisible(false);
                     }
                 }else{
-                    JOptionPane.showMessageDialog(this, "Please try agian");
+                    JOptionPane.showMessageDialog(this, "Please try again");
                 }
             }
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_nextButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
         int n = JOptionPane.showConfirmDialog(null,
             "Are you sure?",
-            "Cancal",
+            "Cancel",
             JOptionPane.YES_NO_OPTION);
             System.out.print(n); // Use n for response
             if(n==1){
@@ -264,43 +264,43 @@ public class transfer_account extends javax.swing.JFrame {
                 profile.setVisible(true);
                 setVisible(false);
             }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void LsearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LsearchButtonActionPerformed
         // TODO add your handling code here:
         String id1 = id.getText();
         if(id1==null || id1.equals("")) id1="0";
         BankAccount a = BankAccount.search(Long.parseLong(id1));
         if(a != null){
             id2.setEnabled(true);
-            name.setText(a.getAcc_name());
-            idno.setText(a.getId_no());
+            LnameTF.setText(a.getAcc_name());
+            LidnoTF.setText(a.getId_no());
         }else{
-            JOptionPane.showMessageDialog(this, "Please try agian");
+            JOptionPane.showMessageDialog(this, "Please try again");
             id2.setEnabled(false);
-            name.setText(null);
-            idno.setText(null);
+            LnameTF.setText(null);
+            LidnoTF.setText(null);
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_LsearchButtonActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void RsearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RsearchButtonActionPerformed
         // TODO add your handling code here:
         String id = id2.getText();
         if(id==null || id.equals("")) id="0";
         BankAccount a = BankAccount.search(Long.parseLong(id));
         if(a != null){
-            amount.setEnabled(true);
-            name2.setText(a.getAcc_name());
+            amountTF.setEnabled(true);
+            RnameTF.setText(a.getAcc_name());
         }else{
-            JOptionPane.showMessageDialog(this, "Please try agian");
-            amount.setEnabled(false);
-            name2.setText(null);
+            JOptionPane.showMessageDialog(this, "Please try again");
+            amountTF.setEnabled(false);
+            RnameTF.setText(null);
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_RsearchButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -341,29 +341,29 @@ public class transfer_account extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField amount;
+    private javax.swing.JLabel LaccNameLB;
+    private javax.swing.JTextField LidnoTF;
+    private javax.swing.JTextField LnameTF;
+    private javax.swing.JButton LsearchButton;
+    private javax.swing.JLabel RaccNameLB;
+    private javax.swing.JTextField RnameTF;
+    private javax.swing.JButton RsearchButton;
+    private javax.swing.JLabel amountLB;
+    private javax.swing.JTextField amountTF;
+    private javax.swing.JButton cancelButton;
     private javax.swing.JTextField id;
     private javax.swing.JTextField id1;
     private javax.swing.JTextField id2;
-    private javax.swing.JTextField idno;
+    private javax.swing.JLabel idNoLB;
     private javax.swing.JTextField idno1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField name;
+    private javax.swing.JLabel leftaccNoLB;
     private javax.swing.JTextField name1;
-    private javax.swing.JTextField name2;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JLabel rightaccNoLB;
+    private javax.swing.JLabel transferAccLB;
     // End of variables declaration//GEN-END:variables
 }

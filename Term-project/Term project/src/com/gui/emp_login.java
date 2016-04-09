@@ -32,25 +32,25 @@ public class emp_login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginButton = new javax.swing.JButton();
+        enterButton = new javax.swing.JButton();
         passwordLabel = new javax.swing.JLabel();
         usernameLabel = new javax.swing.JLabel();
-        user = new javax.swing.JTextField();
-        pass = new javax.swing.JPasswordField();
+        userTF = new javax.swing.JTextField();
+        passTF = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Log in");
         setResizable(false);
         getContentPane().setLayout(null);
 
-        loginButton.setText("Enter");
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
+        enterButton.setText("Enter");
+        enterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
+                enterButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(loginButton);
-        loginButton.setBounds(80, 170, 70, 30);
+        getContentPane().add(enterButton);
+        enterButton.setBounds(80, 170, 70, 30);
 
         passwordLabel.setText("Password");
         getContentPane().add(passwordLabel);
@@ -59,28 +59,28 @@ public class emp_login extends javax.swing.JFrame {
         usernameLabel.setText("Username");
         getContentPane().add(usernameLabel);
         usernameLabel.setBounds(40, 20, 80, 30);
-        getContentPane().add(user);
-        user.setBounds(40, 50, 160, 30);
-        getContentPane().add(pass);
-        pass.setBounds(40, 120, 160, 30);
+        getContentPane().add(userTF);
+        userTF.setBounds(40, 50, 160, 30);
+        getContentPane().add(passTF);
+        passTF.setBounds(40, 120, 160, 30);
 
         setSize(new java.awt.Dimension(244, 249));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+    private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
             // TODO add your handling code here:
-        BankOfficer a = BankOfficer.searchEmp(user.getText(), pass.getText());
+        BankOfficer a = BankOfficer.searchEmp(userTF.getText(), passTF.getText());
         if(a != null){
             JOptionPane.showMessageDialog(this,"'"+a.getEmp_name()+"' log in sucess!");
             displayApp profile = new displayApp();
             profile.setVisible(true);
             setVisible(false);
         }else{
-            JOptionPane.showMessageDialog(this, "Please try agian");
+            JOptionPane.showMessageDialog(this, "Please try again");
             setVisible(true);
         }
-    }//GEN-LAST:event_loginButtonActionPerformed
+    }//GEN-LAST:event_enterButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,10 +119,10 @@ public class emp_login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton loginButton;
-    private javax.swing.JPasswordField pass;
+    private javax.swing.JButton enterButton;
+    private javax.swing.JPasswordField passTF;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JTextField user;
+    private javax.swing.JTextField userTF;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }

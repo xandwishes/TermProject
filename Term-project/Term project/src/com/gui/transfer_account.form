@@ -64,35 +64,35 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="jLabel6" max="32767" attributes="0"/>
-                  <Component id="jLabel3" max="32767" attributes="0"/>
-                  <Component id="jLabel5" min="-2" pref="84" max="-2" attributes="0"/>
+                  <Component id="LaccNameLB" max="32767" attributes="0"/>
+                  <Component id="leftaccNoLB" max="32767" attributes="0"/>
+                  <Component id="idNoLB" min="-2" pref="84" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="idno" min="-2" pref="170" max="-2" attributes="0"/>
+                  <Component id="LidnoTF" min="-2" pref="170" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="id" min="-2" pref="170" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                      <Component id="LsearchButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="name" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                  <Component id="LnameTF" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="jLabel10" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jLabel9" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jLabel11" alignment="1" min="-2" pref="84" max="-2" attributes="0"/>
+                  <Component id="RaccNameLB" alignment="1" max="32767" attributes="0"/>
+                  <Component id="rightaccNoLB" alignment="1" max="32767" attributes="0"/>
+                  <Component id="amountLB" alignment="1" min="-2" pref="84" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="amount" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                  <Component id="amountTF" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="id2" min="-2" pref="170" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                      <Component id="RsearchButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="name2" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                  <Component id="RnameTF" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="17" max="32767" attributes="0"/>
           </Group>
@@ -100,13 +100,13 @@
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="105" max="-2" attributes="0"/>
+                      <Component id="transferAccLB" min="-2" pref="105" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="284" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jButton3" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="cancelButton" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="nextButton" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -117,56 +117,56 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="transferAccLB" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                              <Component id="name" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="LnameTF" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="id" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="jButton4" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="LsearchButton" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="idno" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="LidnoTF" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                              <Component id="name2" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="RnameTF" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="id2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="jButton6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="RsearchButton" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="amount" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="amountTF" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel9" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="rightaccNoLB" min="-2" pref="34" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel10" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="RaccNameLB" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel11" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="amountLB" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jLabel3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="leftaccNoLB" min="-2" pref="34" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel6" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="LaccNameLB" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="idNoLB" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="27" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton2" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
+                  <Component id="nextButton" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
+                  <Component id="cancelButton" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
@@ -174,60 +174,60 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="transferAccLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Transfer&lt;account&gt;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="leftaccNoLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Account No."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="LaccNameLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Account Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="idNoLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Identity number"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="idno">
+    <Component class="javax.swing.JTextField" name="LidnoTF">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="name">
+    <Component class="javax.swing.JTextField" name="LnameTF">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="id">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="nextButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Next"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="cancelButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="LsearchButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LsearchButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="id2">
@@ -235,37 +235,37 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="rightaccNoLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Account No."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
+    <Component class="javax.swing.JLabel" name="RaccNameLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Account Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel11">
+    <Component class="javax.swing.JLabel" name="amountLB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Amount"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="amount">
+    <Component class="javax.swing.JTextField" name="amountTF">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="name2">
+    <Component class="javax.swing.JTextField" name="RnameTF">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="RsearchButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RsearchButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -33,14 +33,14 @@ public class displayApp extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        logoutBTT = new javax.swing.JButton();
+        depositButton = new javax.swing.JButton();
+        withdrawBTT = new javax.swing.JButton();
+        transferBTT = new javax.swing.JButton();
+        createAccButton = new javax.swing.JButton();
+        statementPrintBTT = new javax.swing.JButton();
+        transferAccBTT = new javax.swing.JButton();
+        interestButton = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,77 +49,77 @@ public class displayApp extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jButton3.setText("Log out");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        logoutBTT.setText("Log out");
+        logoutBTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                logoutBTTActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(170, 200, 170, 100);
+        getContentPane().add(logoutBTT);
+        logoutBTT.setBounds(170, 200, 170, 100);
 
-        jButton4.setText("Deposit");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        depositButton.setText("Deposit");
+        depositButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                depositButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(170, 100, 170, 100);
+        getContentPane().add(depositButton);
+        depositButton.setBounds(170, 100, 170, 100);
 
-        jButton5.setText("Withdraw");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        withdrawBTT.setText("Withdraw");
+        withdrawBTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                withdrawBTTActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5);
-        jButton5.setBounds(0, 100, 170, 100);
+        getContentPane().add(withdrawBTT);
+        withdrawBTT.setBounds(0, 100, 170, 100);
 
-        jButton6.setText("Transfer");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        transferBTT.setText("Transfer");
+        transferBTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                transferBTTActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6);
-        jButton6.setBounds(170, 50, 170, 50);
+        getContentPane().add(transferBTT);
+        transferBTT.setBounds(170, 50, 170, 50);
 
-        jButton7.setText("Create account");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        createAccButton.setText("Create account");
+        createAccButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                createAccButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7);
-        jButton7.setBounds(0, 0, 170, 100);
+        getContentPane().add(createAccButton);
+        createAccButton.setBounds(0, 0, 170, 100);
 
-        jButton8.setText("Statemant Print");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        statementPrintBTT.setText("Statemant Print");
+        statementPrintBTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                statementPrintBTTActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8);
-        jButton8.setBounds(0, 200, 170, 50);
+        getContentPane().add(statementPrintBTT);
+        statementPrintBTT.setBounds(0, 200, 170, 50);
 
-        jButton9.setText("Transfer<account>");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        transferAccBTT.setText("Transfer<account>");
+        transferAccBTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                transferAccBTTActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9);
-        jButton9.setBounds(170, 0, 170, 50);
+        getContentPane().add(transferAccBTT);
+        transferAccBTT.setBounds(170, 0, 170, 50);
 
-        jButton12.setText("Interest");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        interestButton.setText("Interest");
+        interestButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                interestButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton12);
-        jButton12.setBounds(0, 250, 170, 50);
+        getContentPane().add(interestButton);
+        interestButton.setBounds(0, 250, 170, 50);
 
         jButton11.setText("Statemant Print");
         getContentPane().add(jButton11);
@@ -129,7 +129,7 @@ public class displayApp extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void logoutBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBTTActionPerformed
         // TODO add your handling code here:
         int n = JOptionPane.showConfirmDialog(null,
             "Are you sure?",
@@ -143,57 +143,57 @@ public class displayApp extends javax.swing.JFrame {
                 emp.setVisible(true);
                 setVisible(false);
             }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_logoutBTTActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void withdrawBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawBTTActionPerformed
         // TODO add your handling code here:
         withDrawal dp = new withDrawal();
         dp.setVisible(true);
         setVisible(false);
         
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_withdrawBTTActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void depositButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositButtonActionPerformed
         // TODO add your handling code here:
         deposit wd = new deposit();
         wd.setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_depositButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void transferBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferBTTActionPerformed
         // TODO add your handling code here:
         transfer_not acc = new transfer_not();
         acc.setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_transferBTTActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void createAccButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccButtonActionPerformed
         // TODO add your handling code here:
         create_account acc = new create_account();
         acc.setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_createAccButtonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void statementPrintBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statementPrintBTTActionPerformed
         // TODO add your handling code here:
         statement_printout print = new statement_printout();
         print.setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_statementPrintBTTActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void transferAccBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferAccBTTActionPerformed
         // TODO add your handling code here:
         transfer_account acc = new transfer_account();
         acc.setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_transferAccBTTActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void interestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_interestButtonActionPerformed
         // TODO add your handling code here:
         interest in = new interest();
         in.setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_interestButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,14 +235,14 @@ public class displayApp extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.JButton createAccButton;
+    private javax.swing.JButton depositButton;
+    private javax.swing.JButton interestButton;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton logoutBTT;
+    private javax.swing.JButton statementPrintBTT;
+    private javax.swing.JButton transferAccBTT;
+    private javax.swing.JButton transferBTT;
+    private javax.swing.JButton withdrawBTT;
     // End of variables declaration//GEN-END:variables
 }
