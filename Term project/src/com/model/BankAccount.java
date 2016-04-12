@@ -132,6 +132,10 @@ public class BankAccount {
     public void setBalance(double balance) {
         this.balance = balance;
     }
+    public static CSDbDelegate ConnectDB(){
+        CSDbDelegate db = new CSDbDelegate("cs14sitkmutt.me", "3306", "CSC105_G3", "CSC105_G3", "cstermproj");
+        return db;
+    }
 
     public static boolean openAccount(String name, double balance,
             String gender, String email,
@@ -139,8 +143,8 @@ public class BankAccount {
             String revenue_month, String career, int age,
             String birthdate, String address) {
 
-        CSDbDelegate db = new CSDbDelegate("cs14sitkmutt.me", "3306", "CSC105_G3", "CSC105_G3", "cstermproj");
-        System.out.println(db.connect());
+        
+        System.out.println(ConnectDB().connect());
 
         long id = System.currentTimeMillis();
 
@@ -154,33 +158,33 @@ public class BankAccount {
         String sql_transaction = "INSERT INTO BANK_TRANSACTION (code,staff_id,date,amount,acc_id,balance)"
                 + " VALUES ('" + code + "','1234','" + new java.sql.Date(System.currentTimeMillis()) + "'," + balance + "," + id + ","+balance+
         ")";
-        db.executeQuery(sql_transaction);
-        boolean check = db.executeQuery(sql_openAccount);
+        ConnectDB().executeQuery(sql_transaction);
+        boolean check = ConnectDB().executeQuery(sql_openAccount);
         return check;
     }
 
     public static void deposit(long acc_id, int amount) {
         // Connect to database
-        CSDbDelegate db = new CSDbDelegate("cs14sitkmutt.me", "3306", "CSC105_G3", "CSC105_G3", "cstermproj");
-        System.out.println(db.connect());
+        
+        System.out.println(ConnectDB().connect());
         String code = "DPS";
         String sql_depositvalue = "UPDATE BANK_ACCOUNT SET balance = (balance + " + amount + ") WHERE acc_id = ('" + acc_id + "')";
         String sql_transaction = "INSERT INTO BANK_TRANSACTION (code,staff_id,date,amount,acc_id,balance)"
                 + " VALUES ('" + code + "','1234','" + new java.sql.Date(System.currentTimeMillis()) + "'," + amount + "," + acc_id + ","+(amount+getBalanceNow(acc_id))+
         ")";
-        db.executeQuery(sql_depositvalue);     
-        db.executeQuery(sql_transaction);
+        ConnectDB().executeQuery(sql_depositvalue);     
+        ConnectDB().executeQuery(sql_transaction);
     }
 
     
     
     public static double getBalanceNow(long acc_id) {
-        CSDbDelegate db = new CSDbDelegate("cs14sitkmutt.me", "3306", "CSC105_G3", "CSC105_G3", "cstermproj");
-        System.out.println(db.connect());
+        
+        System.out.println(ConnectDB().connect());
         double balance = 0;
         String sql = "SELECT balance FROM BANK_ACCOUNT WHERE acc_id = ('" + acc_id + "')";
 
-        ArrayList<HashMap> data = db.queryRows(sql);
+        ArrayList<HashMap> data = ConnectDB().queryRows(sql);
 
         if (data != null && data.size() > 0) {
             for (int i = 0; i < data.size(); i++) {
@@ -195,8 +199,8 @@ public class BankAccount {
     public static void withdrawal(long acc_id, int amount) {
         // Connect to database
         System.out.println("Widrawal");
-        CSDbDelegate db = new CSDbDelegate("cs14sitkmutt.me", "3306", "CSC105_G3", "CSC105_G3", "cstermproj");
-        System.out.println(db.connect());
+        
+        System.out.println(ConnectDB().connect());
         String code = "WID";
         String sql_depositvalue = "UPDATE BANK_ACCOUNT SET balance = (balance -" + amount + ")WHERE acc_id = ('" + acc_id + "')";
 
@@ -204,19 +208,20 @@ public class BankAccount {
                 + " VALUES ('" + code + "','1234','" + new java.sql.Date(System.currentTimeMillis()) +
                     "'," + amount + "," + acc_id + ","+(getBalanceNow(acc_id)-amount)+
         ")";
-        db.executeQuery(sql_depositvalue);
-        db.executeQuery(sql_transaction);
+        ConnectDB().executeQuery(sql_depositvalue);
+        ConnectDB().executeQuery(sql_transaction);
 
     }
 
     public static BankAccount search(long acc_id) {
         // Connect to database
-        CSDbDelegate db = new CSDbDelegate("cs14sitkmutt.me", "3306", "CSC105_G3", "CSC105_G3", "cstermproj");
-        System.out.println(db.connect());
+        
+        
+        System.out.println(ConnectDB().connect());
 
         String sql_search = "SELECT * FROM BANK_ACCOUNT WHERE acc_id = ('" + acc_id + "')";
 
-        ArrayList<HashMap> data = db.queryRows(sql_search);
+        ArrayList<HashMap> data = ConnectDB().queryRows(sql_search);
         BankAccount ba = null;
 
         if (data != null && data.size() > 0) {
@@ -250,5 +255,6 @@ public class BankAccount {
         System.out.println(db.connect());
 
     }
+    
 
 }
