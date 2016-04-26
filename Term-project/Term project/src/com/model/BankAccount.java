@@ -8,6 +8,7 @@ package com.model;
 import edu.sit.cs.db.CSDbDelegate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JTextField;
 
 /**
  *
@@ -242,6 +243,10 @@ public class BankAccount {
         }
         return ba;
     }
+    public static boolean checkEmpty(JTextField j){
+     return  j.getText().length()<=0;
+    }
+
 
     public static void main(String[] args) {
         System.out.println(System.currentTimeMillis());

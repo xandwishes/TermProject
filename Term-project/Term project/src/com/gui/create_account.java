@@ -211,14 +211,22 @@ public class create_account extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void buttonNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNextActionPerformed
-        // TODO add your handling code here:
-        int n = JOptionPane.showConfirmDialog(null,
-            "Sucess! your account was created",
-            "Message",
-            JOptionPane.YES_NO_OPTION);
-        System.out.print(n);
-        if(n == 1){
-            setVisible(true);  
+         // TODO add your handling code here:
+//        int n = JOptionPane.showConfirmDialog(null,
+//            "Sucess! your account was created",
+//            "Message",
+//            JOptionPane.YES_NO_OPTION);
+       // int n = JOptionPane.showMessageDialog(null, "alert", "Succes", JOptionPane.ERROR_MESSAGE);
+       
+        //System.out.print(n);
+//        if(n == 1){
+//          //  setVisible(true);  
+//        }else{
+        if(BankAccount.checkEmpty(nametf)){
+               JOptionPane.showMessageDialog(null, "Fill name", "Alert", JOptionPane.INFORMATION_MESSAGE);
+        }else
+        if(BankAccount.checkEmpty(idtf)){
+              JOptionPane.showMessageDialog(null, "Fill the Identity number", "Alert", JOptionPane.INFORMATION_MESSAGE);
         }else{
             String gender = "";
             if(malebutton.isSelected()){
@@ -226,14 +234,16 @@ public class create_account extends javax.swing.JFrame {
             }else if(femalebutton.isSelected()){
                 gender = "F";
             }
+           
             BankAccount.openAccount(nametf.getText(), Double.parseDouble(deposittf.getText()), gender, emailtf.getText(),
                                     phonetf.getText(), idtf.getText(), revenuetf.getText(),careercb.getSelectedItem().toString()
                                     ,Integer.parseInt(agetf.getText()), birthdateTF.getText(), addresstf.getText());
-            
+            JOptionPane.showMessageDialog(this,"Sucess! your account was created");
             displayApp profile = new displayApp();
             profile.setVisible(true);
             setVisible(false);
-        }
+       }
+
     }//GEN-LAST:event_buttonNextActionPerformed
 
     private void nametfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nametfActionPerformed
