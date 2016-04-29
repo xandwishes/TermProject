@@ -204,8 +204,7 @@ public class create_account extends javax.swing.JFrame {
         if(n==1){
             setVisible(true);
         }else{
-            displayApp profile = new displayApp();
-            profile.setVisible(true);
+            call.callDisplayApp();
             setVisible(false);
         }
     }//GEN-LAST:event_cancelButtonActionPerformed
@@ -239,8 +238,7 @@ public class create_account extends javax.swing.JFrame {
                                     phonetf.getText(), idtf.getText(), revenuetf.getText(),careercb.getSelectedItem().toString()
                                     ,Integer.parseInt(agetf.getText()), birthdateTF.getText(), addresstf.getText());
             JOptionPane.showMessageDialog(this,"Sucess! your account was created");
-            displayApp profile = new displayApp();
-            profile.setVisible(true);
+            call.callDisplayApp();
             setVisible(false);
        }
 

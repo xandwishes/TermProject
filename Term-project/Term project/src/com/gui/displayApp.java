@@ -8,6 +8,7 @@ package com.gui;
 import com.model.BankAccount;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author Nann
@@ -139,59 +140,52 @@ public class displayApp extends javax.swing.JFrame {
             if(n==1){
                 setVisible(true);
             }else{
-                emp_login emp = new emp_login();
-                emp.setVisible(true);
+                call.callEmpLogin();
+                
                 setVisible(false);
             }
     }//GEN-LAST:event_logoutBTTActionPerformed
 
     private void withdrawBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawBTTActionPerformed
         // TODO add your handling code here:
-        withDrawal dp = new withDrawal();
-        dp.setVisible(true);
+        call.callWithDrawal();
         setVisible(false);
         
     }//GEN-LAST:event_withdrawBTTActionPerformed
 
     private void depositButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositButtonActionPerformed
         // TODO add your handling code here:
-        deposit wd = new deposit();
-        wd.setVisible(true);
+        call.callDeposit();
         setVisible(false);
     }//GEN-LAST:event_depositButtonActionPerformed
 
     private void transferBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferBTTActionPerformed
         // TODO add your handling code here:
-        transfer_not acc = new transfer_not();
-        acc.setVisible(true);
+        call.callTransferNot();
         setVisible(false);
     }//GEN-LAST:event_transferBTTActionPerformed
 
     private void createAccButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccButtonActionPerformed
         // TODO add your handling code here:
-        create_account acc = new create_account();
-        acc.setVisible(true);
+        call.callCreateAccount();
         setVisible(false);
     }//GEN-LAST:event_createAccButtonActionPerformed
 
     private void statementPrintBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statementPrintBTTActionPerformed
         // TODO add your handling code here:
-        statement_printout print = new statement_printout();
-        print.setVisible(true);
+        call.callStatementPrintout();
         setVisible(false);
     }//GEN-LAST:event_statementPrintBTTActionPerformed
 
     private void transferAccBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferAccBTTActionPerformed
         // TODO add your handling code here:
-        transfer_account acc = new transfer_account();
-        acc.setVisible(true);
+        call.callTransferAccount();
         setVisible(false);
     }//GEN-LAST:event_transferAccBTTActionPerformed
 
     private void interestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_interestButtonActionPerformed
         // TODO add your handling code here:
-        interest in = new interest();
-        in.setVisible(true);
+        call.callInterest();
         setVisible(false);
     }//GEN-LAST:event_interestButtonActionPerformed
 

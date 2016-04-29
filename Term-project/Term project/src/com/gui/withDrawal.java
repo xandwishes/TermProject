@@ -176,8 +176,7 @@ public class withDrawal extends javax.swing.JFrame {
                     setVisible(true);
                 }else{
                 BankAccount.withdrawal(Long.parseLong(idTF.getText()), Integer.parseInt(amountTF.getText()));
-                displayApp profile = new displayApp();
-                profile.setVisible(true);
+                call.callDisplayApp();
                 setVisible(false);
                 }
             }else{
@@ -196,8 +195,7 @@ public class withDrawal extends javax.swing.JFrame {
             if(n==1){
                 setVisible(true);
             }else{
-                displayApp profile = new displayApp();
-                profile.setVisible(true);
+                call.callDisplayApp();
                 setVisible(false);
             }
     }//GEN-LAST:event_cancelButtonActionPerformed

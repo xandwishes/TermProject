@@ -239,8 +239,7 @@ public class transfer_account extends javax.swing.JFrame {
                     }else{
                         BankAccount.deposit(Long.parseLong(id2.getText()), Integer.parseInt(amountTF.getText()));
                         BankAccount.withdrawal(Long.parseLong(id.getText()), Integer.parseInt(amountTF.getText()));
-                        displayApp profile = new displayApp();
-                        profile.setVisible(true);
+                        call.callDisplayApp();
                         setVisible(false);
                     }
                 }else{
@@ -260,8 +259,7 @@ public class transfer_account extends javax.swing.JFrame {
             if(n==1){
                 setVisible(true);
             }else{
-                displayApp profile = new displayApp();
-                profile.setVisible(true);
+                call.callDisplayApp();
                 setVisible(false);
             }
     }//GEN-LAST:event_cancelButtonActionPerformed

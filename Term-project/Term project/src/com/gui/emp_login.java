@@ -73,8 +73,7 @@ public class emp_login extends javax.swing.JFrame {
         BankOfficer a = BankOfficer.searchEmp(userTF.getText(), passTF.getText());
         if(a != null){
             JOptionPane.showMessageDialog(this,"'"+a.getEmp_name()+"' log in sucess!");
-            displayApp profile = new displayApp();
-            profile.setVisible(true);
+            call.callDisplayApp();
             setVisible(false);
         }else{
             JOptionPane.showMessageDialog(this, "Please try again");

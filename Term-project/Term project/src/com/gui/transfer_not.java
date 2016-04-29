@@ -155,8 +155,7 @@ public class transfer_not extends javax.swing.JFrame {
         if(n==1){
             setVisible(true);
         }else{
-            displayApp profile = new displayApp();
-            profile.setVisible(true);
+            call.callDisplayApp();
             setVisible(false);
         }
     }//GEN-LAST:event_cancelButtonActionPerformed
@@ -174,8 +173,7 @@ public class transfer_not extends javax.swing.JFrame {
         }else{
             if(a != null){
                 BankAccount.deposit(Long.parseLong(id.getText()), Integer.parseInt(amountTF.getText()));
-                displayApp profile = new displayApp();
-                profile.setVisible(true);
+                call.callDisplayApp();
                 setVisible(false);
             }else{
                 JOptionPane.showMessageDialog(this, "Please try again");

@@ -7,6 +7,8 @@ package com.gui;
 
 import com.model.BankAccount;
 import com.model.BankTransaction;
+
+
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -15,7 +17,6 @@ import javax.swing.JOptionPane;
  * @author Nann
  */
 public class interest extends javax.swing.JFrame {
-
     /**
      * Creates new form interest
      */
@@ -128,10 +129,9 @@ public class interest extends javax.swing.JFrame {
             if(n==1){
                 setVisible(true);
             }else{
-                
-                displayApp profile = new displayApp();
-                profile.setVisible(true);
-                setVisible(false);
+                 
+           call.callDisplayApp();
+           setVisible(false);
             }
     }//GEN-LAST:event_cancelButtonActionPerformed
 

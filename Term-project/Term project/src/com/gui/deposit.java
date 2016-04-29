@@ -166,8 +166,7 @@ public class deposit extends javax.swing.JFrame {
         }else{
             if(a != null){
                 BankAccount.deposit(Long.parseLong(accidTF.getText()), Integer.parseInt(amountTF.getText()));
-                displayApp profile = new displayApp();
-                profile.setVisible(true);
+                call.callDisplayApp();
                 setVisible(false);
             }else{
                 JOptionPane.showMessageDialog(this, "Please try again");
@@ -186,8 +185,7 @@ public class deposit extends javax.swing.JFrame {
                 setVisible(true);
             }else{
                 
-                displayApp profile = new displayApp();
-                profile.setVisible(true);
+               call.callDisplayApp();
                 setVisible(false);
             }
     }//GEN-LAST:event_cancelButtonActionPerformed

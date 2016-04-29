@@ -196,8 +196,7 @@ public class statement_printout extends javax.swing.JFrame {
         if (n == 1) {
             setVisible(true);
         } else {
-            displayApp profile = new displayApp();
-            profile.setVisible(true);
+            call.callDisplayApp();
             setVisible(false);
         }
     }//GEN-LAST:event_nextButtonActionPerformed
@@ -212,8 +211,7 @@ public class statement_printout extends javax.swing.JFrame {
         if (n == 1) {
             setVisible(true);
         } else {
-            displayApp profile = new displayApp();
-            profile.setVisible(true);
+            call.callDisplayApp();
             setVisible(false);
         }
     }//GEN-LAST:event_cancelButtonActionPerformed

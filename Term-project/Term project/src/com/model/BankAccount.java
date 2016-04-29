@@ -5,11 +5,11 @@
  */
 package com.model;
 
+import com.gui.displayApp;
 import edu.sit.cs.db.CSDbDelegate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JTextField;
-
 /**
  *
  * @author Nann
@@ -243,6 +243,9 @@ public class BankAccount {
         }
         return ba;
     }
+    
+    
+    
     public static boolean checkEmpty(JTextField j){
      return  j.getText().length()<=0;
     }
