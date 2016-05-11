@@ -156,32 +156,33 @@ public class deposit extends javax.swing.JFrame {
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
         BankAccount a = BankAccount.search(Long.parseLong(accidTF.getText()));
-        int n = JOptionPane.showConfirmDialog(null,
-            "Success!",
-            "Deposit",
-            JOptionPane.YES_NO_OPTION);
-        System.out.print(n); // Use n for response
-        if(n==1){
-            setVisible(true);
-        }else{
-            if(a != null){
-                BankAccount.deposit(Long.parseLong(accidTF.getText()), Integer.parseInt(amountTF.getText()));
-                call.callDisplayApp();
-                setVisible(false);
+        if(BankAccount.checkEmpty((accidTF))){
+              JOptionPane.showMessageDialog(null, "Fill the Identity number", "Alert", JOptionPane.INFORMATION_MESSAGE);
             }else{
-                JOptionPane.showMessageDialog(this, "Please try again");
+                int n = JOptionPane.showConfirmDialog(null,
+                    "Success!",
+                    "Deposit",
+                    JOptionPane.YES_NO_OPTION);
+                System.out.print(n); // Use n for response
+                if(n==1){
+                    setVisible(true);
+                }else{
+            
+                    if(a != null){
+                        BankAccount.deposit(Long.parseLong(accidTF.getText()), Integer.parseInt(amountTF.getText()));
+                        call.callDisplayApp();
+                        setVisible(false);
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Please try again");
+                    }
+                }
             }
-        }
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
-        int n = JOptionPane.showConfirmDialog(null,
-            "Are you sure?",
-            "Cancel",
-            JOptionPane.YES_NO_OPTION);
-            System.out.print(n); // Use n for response
-            if(n==1){
+      
+            if(!call.isCancel()){
                 setVisible(true);
             }else{
                 

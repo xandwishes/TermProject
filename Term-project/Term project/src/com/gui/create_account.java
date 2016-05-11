@@ -196,12 +196,8 @@ public class create_account extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
-        int n = JOptionPane.showConfirmDialog(null,
-            "Are you sure?",
-            "Cancel",
-            JOptionPane.YES_NO_OPTION);
-        System.out.print(n); // Use n for response
-        if(n==1){
+        
+        if(!call.isCancel()){
             setVisible(true);
         }else{
             call.callDisplayApp();

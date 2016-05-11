@@ -132,12 +132,8 @@ public class displayApp extends javax.swing.JFrame {
 
     private void logoutBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBTTActionPerformed
         // TODO add your handling code here:
-        int n = JOptionPane.showConfirmDialog(null,
-            "Are you sure?",
-            "Cancal",
-            JOptionPane.YES_NO_OPTION);
-            System.out.print(n); // Use n for response
-            if(n==1){
+        
+            if(!call.isCancel()){
                 setVisible(true);
             }else{
                 call.callEmpLogin();

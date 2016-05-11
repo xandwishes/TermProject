@@ -5,6 +5,8 @@
  */
 package com.gui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author zxcvbnm
@@ -56,4 +58,20 @@ public class call {
     emp_login emp = new emp_login();
     emp.setVisible(true);
     }
+    
+    public static boolean isCancel(){
+     int n = JOptionPane.showConfirmDialog(null,
+            "Are you sure?",
+            "Cancel",
+            JOptionPane.YES_NO_OPTION);
+     if(n==0)
+      return true;
+     
+     return false;
+     
+    }
+    
+    
+    
+    
 }
