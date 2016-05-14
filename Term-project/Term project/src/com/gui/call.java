@@ -59,16 +59,13 @@ public class call {
     emp.setVisible(true);
     }
     
-    public static boolean isCancel(){
+    
+    public static boolean useConfirmDialog(String title,String message){
      int n = JOptionPane.showConfirmDialog(null,
-            "Are you sure?",
-            "Cancel",
+            message,
+            title,
             JOptionPane.YES_NO_OPTION);
-     if(n==0)
-      return true;
-     
-     return false;
-     
+    return n==0; 
     }
     
     

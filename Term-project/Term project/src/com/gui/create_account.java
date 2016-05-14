@@ -144,7 +144,7 @@ public class create_account extends javax.swing.JFrame {
         jScrollPane2.setViewportView(addresstf);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(160, 300, 166, 96);
+        jScrollPane2.setBounds(160, 300, 244, 84);
 
         DMYLB.setText("D / M / Y");
         getContentPane().add(DMYLB);
@@ -197,7 +197,7 @@ public class create_account extends javax.swing.JFrame {
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
         
-        if(!call.isCancel()){
+        if(!call.useConfirmDialog("cancel","Are you sure")){
             setVisible(true);
         }else{
             call.callDisplayApp();
@@ -229,6 +229,7 @@ public class create_account extends javax.swing.JFrame {
             }else if(femalebutton.isSelected()){
                 gender = "F";
             }
+            
            
             BankAccount.openAccount(nametf.getText(), Double.parseDouble(deposittf.getText()), gender, emailtf.getText(),
                                     phonetf.getText(), idtf.getText(), revenuetf.getText(),careercb.getSelectedItem().toString()

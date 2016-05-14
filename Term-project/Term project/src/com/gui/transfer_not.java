@@ -148,7 +148,7 @@ public class transfer_not extends javax.swing.JFrame {
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
         
-        if(!call.isCancel()){
+        if(!call.useConfirmDialog("cancel","Are you sure")){
             setVisible(true);
         }else{
             call.callDisplayApp();
@@ -159,12 +159,8 @@ public class transfer_not extends javax.swing.JFrame {
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
         BankAccount a = BankAccount.search(Long.parseLong(id.getText()));
-        int n = JOptionPane.showConfirmDialog(null,
-            "Success!",
-            "Message",
-            JOptionPane.YES_NO_OPTION);
-        System.out.print(n); // Use n for response
-        if(n==1){
+        
+        if(!call.useConfirmDialog("message", "Success!")){
             setVisible(true);
         }else{
             if(a != null){

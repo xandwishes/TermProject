@@ -122,7 +122,7 @@ public class interest extends javax.swing.JFrame {
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
         
-            if(!call.isCancel()){
+            if(!call.useConfirmDialog("cancel","Are you sure")){
                 setVisible(true);
             }else{
                  
