@@ -14,7 +14,7 @@ import static javax.swing.JOptionPane.QUESTION_MESSAGE;
  * @author Nann
  */
 public class withDrawal extends javax.swing.JFrame {
-
+private boolean checkSearch;
     /**
      * Creates new form deposit
      */
@@ -161,24 +161,29 @@ public class withDrawal extends javax.swing.JFrame {
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
+       
+        if(checkSearch && !BankAccount.checkEmpty(amountTF) && !BankAccount.checkEmpty(idTF)){ 
         BankAccount a = BankAccount.search(Long.parseLong(idTF.getText()));
-        
-        if(!call.useConfirmDialog("Withdraw", "Are you sure you withdraw this amount?")){
-            setVisible(true);
-        }else{
-            if(a != null){
+        if(a != null){
+                if(!call.useConfirmDialog("Withdraw", "Are you sure you withdraw this amount?")){
+                    setVisible(true);
+                }
                 if(Integer.parseInt(amountTF.getText()) > a.getBalance()){
                     JOptionPane.showMessageDialog(this, "Error! "+ accNameTF.getText()+" account's overdrawn " );
                     setVisible(true);
                 }else{
                 BankAccount.withdrawal(Long.parseLong(idTF.getText()), Integer.parseInt(amountTF.getText()));
+                JOptionPane.showMessageDialog(this, "Withdrawn Accomplish");
                 call.callDisplayApp();
                 setVisible(false);
                 }
             }else{
-                JOptionPane.showMessageDialog(this, "Please try again");
+                JOptionPane.showMessageDialog(this, "Please try again, Might be wrong ID");
             }
+        
         }
+        
+        
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -194,19 +199,22 @@ public class withDrawal extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        String id1 = idTF.getText();
-        if(id1==null || id1.equals("")) id1="0";
-        BankAccount a = BankAccount.search(Long.parseLong(id1));
+        if(!BankAccount.checkEmpty(idTF)){ 
+//        String id1 = idTF.getText();
+//        if(id1==null || id1.equals("")) id1="0";
+        BankAccount a = BankAccount.search(Long.parseLong(idTF.getText()));
         if(a != null){
             accNameTF.setText(a.getAcc_name());
             idnoTF.setText(a.getId_no());
             amountTF.setEnabled(true);
+            checkSearch = true;
         }else{
             JOptionPane.showMessageDialog(this, "Please try again");
             amountTF.setEnabled(false);
             accNameTF.setText(null);
             idnoTF.setText(null);
         }  
+        }
     }//GEN-LAST:event_searchButtonActionPerformed
 
     /**

@@ -14,7 +14,7 @@ import javax.swing.JTextField;
  *
  * @author Nann
  */
-public class BankAccount {
+public class BankAccount{
     
     private long acc_id;
     private String acc_name;
@@ -133,13 +133,16 @@ public class BankAccount {
     public void setBalance(double balance) {
         this.balance = balance;
     }
+   
 
     public static boolean openAccount(String name, double balance,
             String gender, String email,
             String phone_num, String id_no,
             String revenue_month, String career, int age,
             String birthdate, String address) {
-
+        
+        
+        
         CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
         System.out.println(db.connect());
 
@@ -254,8 +257,8 @@ public class BankAccount {
     public static void main(String[] args) {
         System.out.println(System.currentTimeMillis());
         System.out.println(new java.sql.Date(System.currentTimeMillis()));
-        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
+//        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
+//        System.out.println(db.connect());
 
     }
 

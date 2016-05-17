@@ -21,7 +21,8 @@ import javax.swing.SwingUtilities;
  * @author Nann
  */
 public class statement_printout extends javax.swing.JFrame {
-
+    private boolean checkSearch;
+    
     public statement_printout() {
         initComponents();
     }
@@ -82,6 +83,12 @@ public class statement_printout extends javax.swing.JFrame {
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextButtonActionPerformed(evt);
+            }
+        });
+
+        AccIdNameTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AccIdNameTFActionPerformed(evt);
             }
         });
 
@@ -159,11 +166,8 @@ public class statement_printout extends javax.swing.JFrame {
     private void searchBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBTTActionPerformed
         // TODO add your handling code here:
 
-        String id1 = AccIdNameTF.getText();
-        if (id1 == null || id1.equals("")) {
-            id1 = "0";
-        }
-        List<BankTransaction> a = BankTransaction.searchByID(Long.parseLong(id1));
+        if(!BankAccount.checkEmpty(AccIdNameTF)){   
+        List<BankTransaction> a = BankTransaction.searchByID(Long.parseLong(AccIdNameTF.getText()));
         if (a != null) {
             jPanel1.removeAll();
             jPanel1.setLayout(new java.awt.GridLayout(0, 5));
@@ -178,22 +182,24 @@ public class statement_printout extends javax.swing.JFrame {
 
             jPanel1.revalidate();
             jPanel1.repaint();
-
+            checkSearch = true;
             //1430622565586
         } else {
             JOptionPane.showMessageDialog(this, "Please try again");
+        }
         }
 
     }//GEN-LAST:event_searchBTTActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
-        
+        if(checkSearch && !BankAccount.checkEmpty(AccIdNameTF)){
         if (!call.useConfirmDialog("message","Success!")) {
             setVisible(true);
         } else {
             call.callDisplayApp();
             setVisible(false);
+        }
         }
     }//GEN-LAST:event_nextButtonActionPerformed
 
@@ -207,6 +213,33 @@ public class statement_printout extends javax.swing.JFrame {
             setVisible(false);
         }
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void AccIdNameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccIdNameTFActionPerformed
+        // TODO add your handling code here:
+        if(!BankAccount.checkEmpty(AccIdNameTF)){   
+        List<BankTransaction> a = BankTransaction.searchByID(Long.parseLong(AccIdNameTF.getText()));
+        if (a != null) {
+            jPanel1.removeAll();
+            jPanel1.setLayout(new java.awt.GridLayout(0, 5));
+
+            for (BankTransaction b : a) {
+                jPanel1.add(new JLabel(b.getDate().toString().substring(0, 10)));
+                jPanel1.add(new JLabel(b.getCode().toString()));
+                jPanel1.add(new JLabel(b.getAmount() + ""));
+                jPanel1.add(new JLabel(b.getBalance() + ""));
+                jPanel1.add(new JLabel(b.getStaff_id().toString()));
+            }
+
+            jPanel1.revalidate();
+            jPanel1.repaint();
+            checkSearch = true;
+            //1430622565586
+        } else {
+            JOptionPane.showMessageDialog(this, "Please try again");
+        }
+        }
+     
+    }//GEN-LAST:event_AccIdNameTFActionPerformed
 
     /**
      * @param args the command line arguments

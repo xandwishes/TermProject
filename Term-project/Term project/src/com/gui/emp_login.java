@@ -61,6 +61,12 @@ public class emp_login extends javax.swing.JFrame {
         usernameLabel.setBounds(40, 20, 80, 30);
         getContentPane().add(userTF);
         userTF.setBounds(40, 50, 160, 30);
+
+        passTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passTFActionPerformed(evt);
+            }
+        });
         getContentPane().add(passTF);
         passTF.setBounds(40, 120, 160, 30);
 
@@ -80,6 +86,19 @@ public class emp_login extends javax.swing.JFrame {
             setVisible(true);
         }
     }//GEN-LAST:event_enterButtonActionPerformed
+
+    private void passTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTFActionPerformed
+        // TODO add your handling code here:
+        BankOfficer a = BankOfficer.searchEmp(userTF.getText(), passTF.getText());
+        if(a != null){
+            JOptionPane.showMessageDialog(this,"'"+a.getEmp_name()+"' log in sucess!");
+            call.callDisplayApp();
+            setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(this, "Please try again");
+            setVisible(true);
+        }
+    }//GEN-LAST:event_passTFActionPerformed
 
     /**
      * @param args the command line arguments

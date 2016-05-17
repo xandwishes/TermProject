@@ -14,7 +14,7 @@ import static javax.swing.JOptionPane.QUESTION_MESSAGE;
  * @author Nann
  */
 public class deposit extends javax.swing.JFrame {
-
+private boolean checkSearch;
     /**
      * Creates new form deposit
      */
@@ -155,28 +155,32 @@ public class deposit extends javax.swing.JFrame {
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
+        if(checkSearch && !BankAccount.checkEmpty(accidTF) && !BankAccount.checkEmpty(amountTF)){
         BankAccount a = BankAccount.search(Long.parseLong(accidTF.getText()));
-        if(BankAccount.checkEmpty((accidTF))){
-              JOptionPane.showMessageDialog(null, "Fill the Identity number", "Alert", JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                int n = JOptionPane.showConfirmDialog(null,
-                    "Success!",
-                    "Deposit",
-                    JOptionPane.YES_NO_OPTION);
-                System.out.print(n); // Use n for response
-                if(n==1){
-                    setVisible(true);
-                }else{
+//        if(BankAccount.checkEmpty((accidTF))){
+//              JOptionPane.showMessageDialog(null, "Fill the Identity number", "Alert", JOptionPane.INFORMATION_MESSAGE);
+//            }else{
+//                int n = JOptionPane.showConfirmDialog(null,
+//                    "Success!",
+//                    "Deposit",
+//                    JOptionPane.YES_NO_OPTION);
+//                System.out.print(n); // Use n for response
+//                if(n==1){
+//                    setVisible(true);
+//                }else{
             
                     if(a != null){
+                        
                         BankAccount.deposit(Long.parseLong(accidTF.getText()), Integer.parseInt(amountTF.getText()));
+                        if(!call.useConfirmDialog("Deposit", "Deposit Accomplish"))
                         call.callDisplayApp();
                         setVisible(false);
                     }else{
                         JOptionPane.showMessageDialog(this, "Please try again");
                     }
-                }
-            }
+               // }
+          //  }
+        }
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -193,17 +197,20 @@ public class deposit extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        String id = accidTF.getText();
-        if(id==null || id.equals("")) id="0";
-        
-        BankAccount a = BankAccount.search(Long.parseLong(id));
+        if(!BankAccount.checkEmpty(accidTF)){ 
+//        String id = accidTF.getText();
+//        if(id==null || id.equals("")) id="0";
+//        
+        BankAccount a = BankAccount.search(Long.parseLong(accidTF.getText()));
         if(a != null){
             nameTF.setText(a.getAcc_name());
             amountTF.setEnabled(true);
+            checkSearch = true;
         }else{
             JOptionPane.showMessageDialog(this, "Please try agian");
             amountTF.setEnabled(false);
             nameTF.setText(null);
+        }
         }
     }//GEN-LAST:event_searchButtonActionPerformed
 
