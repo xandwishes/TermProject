@@ -6,7 +6,8 @@
 package com.gui;
 
 import com.model.BankAccount;
-import com.model.BankTransaction;
+import com.model.Search;
+
 
 
 import java.util.List;
@@ -59,6 +60,12 @@ public class interest extends javax.swing.JFrame {
         });
 
         AccNoLB.setText("Account No.");
+
+        accidTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accidTFActionPerformed(evt);
+            }
+        });
 
         interestLB.setText("Interest");
 
@@ -133,9 +140,8 @@ public class interest extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
-        String id = accidTF.getText();
-        if(id==null || id.equals("")) id="0";
-        BankAccount a = BankAccount.search(Long.parseLong(id));
+        if(!BankAccount.checkEmpty(accidTF)){
+        Search a = Search.searchCustomer(Long.parseLong(accidTF.getText()));
         if(a != null){
             jLabel1.setText("Last balance : "+ a.getBalance());
             jLabel4.setText("Interest : "+ (a.getBalance()*0.1/100));
@@ -144,7 +150,23 @@ public class interest extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(this, "Please try again");
         }
+        }
     }//GEN-LAST:event_okButtonActionPerformed
+
+    private void accidTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accidTFActionPerformed
+        // TODO add your handling code here:
+        if(!BankAccount.checkEmpty(accidTF)){
+        Search a = Search.searchCustomer(Long.parseLong(accidTF.getText()));
+        if(a != null){
+            jLabel1.setText("Last balance : "+ a.getBalance());
+            jLabel4.setText("Interest : "+ (a.getBalance()*0.1/100));
+            jLabel5.setText("Balance : "+ (a.getBalance()+(a.getBalance()*0.1/100)));
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Please try again");
+        }
+        }
+    }//GEN-LAST:event_accidTFActionPerformed
 
     /**
      * @param args the command line arguments

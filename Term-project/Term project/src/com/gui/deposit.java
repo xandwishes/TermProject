@@ -6,6 +6,7 @@
 package com.gui;
 
 import com.model.BankAccount;
+import com.model.Search;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.QUESTION_MESSAGE;
 
@@ -156,30 +157,18 @@ private boolean checkSearch;
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
         if(checkSearch && !BankAccount.checkEmpty(accidTF) && !BankAccount.checkEmpty(amountTF)){
-        BankAccount a = BankAccount.search(Long.parseLong(accidTF.getText()));
-//        if(BankAccount.checkEmpty((accidTF))){
-//              JOptionPane.showMessageDialog(null, "Fill the Identity number", "Alert", JOptionPane.INFORMATION_MESSAGE);
-//            }else{
-//                int n = JOptionPane.showConfirmDialog(null,
-//                    "Success!",
-//                    "Deposit",
-//                    JOptionPane.YES_NO_OPTION);
-//                System.out.print(n); // Use n for response
-//                if(n==1){
-//                    setVisible(true);
-//                }else{
-            
+        Search a = Search.searchCustomer(Long.parseLong(accidTF.getText()));
                     if(a != null){
                         
                         BankAccount.deposit(Long.parseLong(accidTF.getText()), Integer.parseInt(amountTF.getText()));
-                        if(!call.useConfirmDialog("Deposit", "Deposit Accomplish"))
+                        JOptionPane.showMessageDialog(this,"Deposit Accomplished");
                         call.callDisplayApp();
                         setVisible(false);
+                        
                     }else{
                         JOptionPane.showMessageDialog(this, "Please try again");
                     }
-               // }
-          //  }
+              
         }
     }//GEN-LAST:event_nextButtonActionPerformed
 
@@ -201,7 +190,7 @@ private boolean checkSearch;
 //        String id = accidTF.getText();
 //        if(id==null || id.equals("")) id="0";
 //        
-        BankAccount a = BankAccount.search(Long.parseLong(accidTF.getText()));
+        Search a = Search.searchCustomer(Long.parseLong(accidTF.getText()));
         if(a != null){
             nameTF.setText(a.getAcc_name());
             amountTF.setEnabled(true);

@@ -37,12 +37,10 @@ public class displayApp extends javax.swing.JFrame {
         logoutBTT = new javax.swing.JButton();
         depositButton = new javax.swing.JButton();
         withdrawBTT = new javax.swing.JButton();
-        transferBTT = new javax.swing.JButton();
         createAccButton = new javax.swing.JButton();
         statementPrintBTT = new javax.swing.JButton();
         transferAccBTT = new javax.swing.JButton();
         interestButton = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Profile");
@@ -77,15 +75,6 @@ public class displayApp extends javax.swing.JFrame {
         getContentPane().add(withdrawBTT);
         withdrawBTT.setBounds(0, 100, 170, 100);
 
-        transferBTT.setText("Transfer");
-        transferBTT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transferBTTActionPerformed(evt);
-            }
-        });
-        getContentPane().add(transferBTT);
-        transferBTT.setBounds(170, 50, 170, 50);
-
         createAccButton.setText("Create account");
         createAccButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +82,7 @@ public class displayApp extends javax.swing.JFrame {
             }
         });
         getContentPane().add(createAccButton);
-        createAccButton.setBounds(0, 0, 170, 100);
+        createAccButton.setBounds(0, 200, 170, 100);
 
         statementPrintBTT.setText("Statemant Print");
         statementPrintBTT.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +91,7 @@ public class displayApp extends javax.swing.JFrame {
             }
         });
         getContentPane().add(statementPrintBTT);
-        statementPrintBTT.setBounds(0, 200, 170, 50);
+        statementPrintBTT.setBounds(0, 0, 170, 50);
 
         transferAccBTT.setText("Transfer<account>");
         transferAccBTT.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +100,7 @@ public class displayApp extends javax.swing.JFrame {
             }
         });
         getContentPane().add(transferAccBTT);
-        transferAccBTT.setBounds(170, 0, 170, 50);
+        transferAccBTT.setBounds(170, 0, 170, 100);
 
         interestButton.setText("Interest");
         interestButton.addActionListener(new java.awt.event.ActionListener() {
@@ -120,11 +109,7 @@ public class displayApp extends javax.swing.JFrame {
             }
         });
         getContentPane().add(interestButton);
-        interestButton.setBounds(0, 250, 170, 50);
-
-        jButton11.setText("Statemant Print");
-        getContentPane().add(jButton11);
-        jButton11.setBounds(0, 250, 170, 50);
+        interestButton.setBounds(0, 50, 170, 50);
 
         setSize(new java.awt.Dimension(346, 329));
         setLocationRelativeTo(null);
@@ -154,12 +139,6 @@ public class displayApp extends javax.swing.JFrame {
         call.callDeposit();
         setVisible(false);
     }//GEN-LAST:event_depositButtonActionPerformed
-
-    private void transferBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferBTTActionPerformed
-        // TODO add your handling code here:
-        call.callTransferNot();
-        setVisible(false);
-    }//GEN-LAST:event_transferBTTActionPerformed
 
     private void createAccButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccButtonActionPerformed
         // TODO add your handling code here:
@@ -228,11 +207,9 @@ public class displayApp extends javax.swing.JFrame {
     private javax.swing.JButton createAccButton;
     private javax.swing.JButton depositButton;
     private javax.swing.JButton interestButton;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton logoutBTT;
     private javax.swing.JButton statementPrintBTT;
     private javax.swing.JButton transferAccBTT;
-    private javax.swing.JButton transferBTT;
     private javax.swing.JButton withdrawBTT;
     // End of variables declaration//GEN-END:variables
 }

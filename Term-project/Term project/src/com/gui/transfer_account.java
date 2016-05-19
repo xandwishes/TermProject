@@ -6,6 +6,7 @@
 package com.gui;
 
 import com.model.BankAccount;
+import com.model.Search;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.QUESTION_MESSAGE;
 
@@ -14,7 +15,8 @@ import static javax.swing.JOptionPane.QUESTION_MESSAGE;
  * @author Nann
  */
 public class transfer_account extends javax.swing.JFrame {
-
+    private boolean checkLSearch;
+    private boolean checkRSearch;
     /**
      * Creates new form deposit
      */
@@ -163,13 +165,13 @@ public class transfer_account extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(transferAccLB, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(284, 284, 284))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(239, 239, 239))))
+                        .addGap(239, 239, 239))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(transferAccLB, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(284, 284, 284))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,11 +225,10 @@ public class transfer_account extends javax.swing.JFrame {
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
-        BankAccount a = BankAccount.search(Long.parseLong(id.getText()));
+        if(checkLSearch && checkRSearch && !BankAccount.checkEmpty(id) && !BankAccount.checkEmpty(id2)&& !BankAccount.checkEmpty(amountTF)){
+        Search a = Search.searchCustomer(Long.parseLong(id.getText()));
             
-            if(!call.useConfirmDialog("message", "Success!")){
-                setVisible(true);
-            }else{
+            
                 if(a != null){
                     if(Integer.parseInt(amountTF.getText()) > a.getBalance()){
                         JOptionPane.showMessageDialog(this, "Error! "+ LnameTF.getText()+" account's overdrawn " );
@@ -235,13 +236,15 @@ public class transfer_account extends javax.swing.JFrame {
                     }else{
                         BankAccount.deposit(Long.parseLong(id2.getText()), Integer.parseInt(amountTF.getText()));
                         BankAccount.withdrawal(Long.parseLong(id.getText()), Integer.parseInt(amountTF.getText()));
+                        JOptionPane.showMessageDialog(null, "Transfre Accomplished");
                         call.callDisplayApp();
                         setVisible(false);
                     }
                 }else{
                     JOptionPane.showMessageDialog(this, "Please try again");
                 }
-            }
+            
+        }
         
     }//GEN-LAST:event_nextButtonActionPerformed
 
@@ -258,18 +261,19 @@ public class transfer_account extends javax.swing.JFrame {
 
     private void LsearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LsearchButtonActionPerformed
         // TODO add your handling code here:
-        String id1 = id.getText();
-        if(id1==null || id1.equals("")) id1="0";
-        BankAccount a = BankAccount.search(Long.parseLong(id1));
+        if(!BankAccount.checkEmpty(id)){
+        Search a = Search.searchCustomer(Long.parseLong(id.getText()));
         if(a != null){
             id2.setEnabled(true);
             LnameTF.setText(a.getAcc_name());
             LidnoTF.setText(a.getId_no());
+            checkLSearch = true;
         }else{
             JOptionPane.showMessageDialog(this, "Please try again");
             id2.setEnabled(false);
             LnameTF.setText(null);
             LidnoTF.setText(null);
+        }
         }
     }//GEN-LAST:event_LsearchButtonActionPerformed
 
@@ -279,17 +283,18 @@ public class transfer_account extends javax.swing.JFrame {
 
     private void RsearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RsearchButtonActionPerformed
         // TODO add your handling code here:
-        String id = id2.getText();
-        if(id==null || id.equals("")) id="0";
-        BankAccount a = BankAccount.search(Long.parseLong(id));
+       if(!BankAccount.checkEmpty(id2)){
+        Search a = Search.searchCustomer(Long.parseLong(id2.getText()));
         if(a != null){
             amountTF.setEnabled(true);
             RnameTF.setText(a.getAcc_name());
+            checkRSearch = true;
         }else{
             JOptionPane.showMessageDialog(this, "Please try again");
             amountTF.setEnabled(false);
             RnameTF.setText(null);
         }
+       }
     }//GEN-LAST:event_RsearchButtonActionPerformed
 
     /**

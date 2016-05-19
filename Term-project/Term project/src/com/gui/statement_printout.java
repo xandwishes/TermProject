@@ -6,7 +6,8 @@
 package com.gui;
 
 import com.model.BankAccount;
-import com.model.BankTransaction;
+
+import com.model.Search;
 import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -118,16 +119,16 @@ public class statement_printout extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 16, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(AccLB, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addGap(14, 14, 14)
+                        .addComponent(AccLB, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(AccIdNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
                         .addComponent(searchBTT, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,7 +153,7 @@ public class statement_printout extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -167,12 +168,12 @@ public class statement_printout extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if(!BankAccount.checkEmpty(AccIdNameTF)){   
-        List<BankTransaction> a = BankTransaction.searchByID(Long.parseLong(AccIdNameTF.getText()));
+        List<Search> a = Search.searchByID(Long.parseLong(AccIdNameTF.getText()));
         if (a != null) {
             jPanel1.removeAll();
             jPanel1.setLayout(new java.awt.GridLayout(0, 5));
 
-            for (BankTransaction b : a) {
+            for (Search b : a) {
                 jPanel1.add(new JLabel(b.getDate().toString().substring(0, 10)));
                 jPanel1.add(new JLabel(b.getCode().toString()));
                 jPanel1.add(new JLabel(b.getAmount() + ""));
@@ -217,12 +218,12 @@ public class statement_printout extends javax.swing.JFrame {
     private void AccIdNameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccIdNameTFActionPerformed
         // TODO add your handling code here:
         if(!BankAccount.checkEmpty(AccIdNameTF)){   
-        List<BankTransaction> a = BankTransaction.searchByID(Long.parseLong(AccIdNameTF.getText()));
+        List<Search> a = Search.searchByID(Long.parseLong(AccIdNameTF.getText()));
         if (a != null) {
             jPanel1.removeAll();
             jPanel1.setLayout(new java.awt.GridLayout(0, 5));
 
-            for (BankTransaction b : a) {
+            for (Search b : a) {
                 jPanel1.add(new JLabel(b.getDate().toString().substring(0, 10)));
                 jPanel1.add(new JLabel(b.getCode().toString()));
                 jPanel1.add(new JLabel(b.getAmount() + ""));

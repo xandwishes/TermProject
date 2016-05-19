@@ -43,11 +43,6 @@ public class call {
      transfer_account trans = new transfer_account();
      trans.setVisible(true);
     }
-   
-    public static void callTransferNot(){
-     transfer_not trans = new transfer_not();
-     trans.setVisible(true);
-    }
     
     public static void callWithDrawal(){
      withDrawal with = new withDrawal();

@@ -6,7 +6,7 @@
 package com.gui;
 
 import com.model.BankAccount;
-import com.model.BankTransaction;
+
 import edu.sit.cs.db.CSDbDelegate;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -71,7 +71,7 @@ public class create_account extends javax.swing.JFrame {
         createAcc.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         createAcc.setText("Create account");
         getContentPane().add(createAcc);
-        createAcc.setBounds(320, 20, 220, 60);
+        createAcc.setBounds(310, 20, 280, 60);
 
         namesur.setText("Name-Surname");
         getContentPane().add(namesur);

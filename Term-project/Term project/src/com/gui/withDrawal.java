@@ -6,6 +6,7 @@
 package com.gui;
 
 import com.model.BankAccount;
+import com.model.Search;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.QUESTION_MESSAGE;
 
@@ -117,13 +118,13 @@ private boolean checkSearch;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(withdrawLB, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(144, 144, 144))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74))))
+                        .addGap(74, 74, 74))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(withdrawLB, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(144, 144, 144))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +149,7 @@ private boolean checkSearch;
                     .addComponent(enterValueLB, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(amountTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bathLB, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -163,7 +164,7 @@ private boolean checkSearch;
         // TODO add your handling code here:
        
         if(checkSearch && !BankAccount.checkEmpty(amountTF) && !BankAccount.checkEmpty(idTF)){ 
-        BankAccount a = BankAccount.search(Long.parseLong(idTF.getText()));
+        Search a = Search.searchCustomer(Long.parseLong(idTF.getText()));
         if(a != null){
                 if(!call.useConfirmDialog("Withdraw", "Are you sure you withdraw this amount?")){
                     setVisible(true);
@@ -202,7 +203,7 @@ private boolean checkSearch;
         if(!BankAccount.checkEmpty(idTF)){ 
 //        String id1 = idTF.getText();
 //        if(id1==null || id1.equals("")) id1="0";
-        BankAccount a = BankAccount.search(Long.parseLong(idTF.getText()));
+        Search a = Search.searchCustomer(Long.parseLong(idTF.getText()));
         if(a != null){
             accNameTF.setText(a.getAcc_name());
             idnoTF.setText(a.getId_no());
