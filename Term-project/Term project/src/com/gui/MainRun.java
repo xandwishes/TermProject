@@ -5,6 +5,8 @@
  */
 package com.gui;
 
+import edu.sit.cs.db.CSDbDelegate;
+
 
 
 /**
@@ -12,7 +14,7 @@ package com.gui;
  * @author zxcvbnm
  */
 public class MainRun extends javax.swing.JFrame {
-    
+    CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
     /**
      * Creates new form MainRun
      */
@@ -49,6 +51,8 @@ public class MainRun extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        MainRun m = new MainRun();
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -77,6 +81,7 @@ public class MainRun extends javax.swing.JFrame {
             public void run() {
                
                 new emp_login().setVisible(true);
+              //  System.out.println(m.db.disconnect()+"main");
             }
         });
         

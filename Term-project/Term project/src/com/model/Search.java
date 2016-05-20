@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
 /**
  *
  * @author zxcvbnm
  */
-public class Search extends ConnectDB{
+public class Search {
     private String acc_name;
     private long acc_id;
     private String trans_id;
@@ -36,7 +37,8 @@ public class Search extends ConnectDB{
     private int age;
     private String birthdate;
     private String address;
-    
+    CSDbDelegate db;
+    Sql sql = new Sql();
     
 
     public double getBalance() {
@@ -169,11 +171,10 @@ public class Search extends ConnectDB{
     
     public List<Search> searchByID(long acc_id){
         // Connect to database
+        db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
+        System.out.println(db.connect());
          List<Search> list = null;
-        
-        String sql_search  = "SELECT * FROM BANK_TRANSACTION b JOIN BANK_ACCOUNT ba ON ba.acc_id = b.acc_id WHERE ba.acc_id =  ('"+acc_id+"')";
-       
-        ArrayList<HashMap> data= db.queryRows(sql_search);
+        ArrayList<HashMap> data= db.queryRows(sql.sqlsearchTransac(acc_id));
         
         Search ba = null;
 
@@ -198,12 +199,9 @@ public class Search extends ConnectDB{
         return list;
     }
     public Search searchEmp(String user, String pass){
-        // Connect to database
-        
-        
-        String sql_searchEmp  = "SELECT * FROM BANK_OFFICER WHERE USERNAME = ('"+user+"') AND PASSWORD = ('"+pass+"')";
-        
-        ArrayList<HashMap> data= db.queryRows(sql_searchEmp);
+        db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
+        System.out.println(db.connect());
+        ArrayList<HashMap> data= db.queryRows(sql.sqlSearchEmp(user, pass));
         Search bo = null;
 
         if(data!=null && data.size()>0){
@@ -220,11 +218,9 @@ public class Search extends ConnectDB{
         return bo;
     }
     public Search searchCustomer(long acc_id) {
-        // Connect to database
-        
-        String sql_search = "SELECT * FROM BANK_ACCOUNT WHERE acc_id = ('" + acc_id + "')";
-
-        ArrayList<HashMap> data = db.queryRows(sql_search);
+        db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
+        System.out.println(db.connect());
+        ArrayList<HashMap> data = db.queryRows(sql.sqlSearchCustomer(acc_id));
         Search ba = null;
 
         if (data != null && data.size() > 0) {
@@ -238,13 +234,15 @@ public class Search extends ConnectDB{
                 ba.setBalance(Double.parseDouble((String) std.get("balance")));
                 ba.setDate((String) std.get("date"));
                 ba.setId_no((String) std.get("id_no"));
-                ba.setCareer((String) std.get("career"));
-                ba.setAge(Integer.parseInt((String) std.get("age")));
-                ba.setBirthdate((String) std.get("birthdate"));
+               
                 ba.setEmail((String) std.get("email"));
-                ba.setGender((String) std.get("gender"));
+                
                 ba.setPhone_num((String) std.get("phone_num"));
-                ba.setRevenue_month((String) std.get("revenue_month"));
+//                ba.setRevenue_month((String) std.get("revenue_month"));
+//                ba.setCareer((String) std.get("career"));
+//                ba.setAge(Integer.parseInt((String) std.get("age")));
+//                ba.setBirthdate((String) std.get("birthdate"));
+//                ba.setGender((String) std.get("gender"));
 
             }
         }

@@ -212,17 +212,11 @@ public class create_account extends javax.swing.JFrame {
         if(BankAccount.checkEmpty(idtf)){
               JOptionPane.showMessageDialog(null, "Fill Identity number", "Alert", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            String gender = "";
-            if(malebutton.isSelected()){
-                gender = "M";
-            }else if(femalebutton.isSelected()){
-                gender = "F";
-            }
+           
             
             try{
-                bankAccount.openAccount(nametf.getText(), Double.parseDouble(deposittf.getText()), gender, emailtf.getText(),
-                                        phonetf.getText(), idtf.getText(), revenuetf.getText(),careercb.getSelectedItem().toString()
-                                        ,Integer.parseInt(agetf.getText()), birthdateTF.getText(), addresstf.getText());
+                bankAccount.openAccount(nametf.getText(), Double.parseDouble(deposittf.getText()), emailtf.getText(),
+                                        phonetf.getText(), idtf.getText(), addresstf.getText());
                 JOptionPane.showMessageDialog(this,"Account Created");
                 call.callDisplayApp();
                 setVisible(false);
