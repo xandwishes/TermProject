@@ -5,12 +5,14 @@
  */
 package com.gui;
 
+
+
 /**
  *
  * @author zxcvbnm
  */
 public class MainRun extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form MainRun
      */
@@ -69,13 +71,15 @@ public class MainRun extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainRun.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
+       
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+               
                 new emp_login().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

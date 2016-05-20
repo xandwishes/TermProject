@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
  * @author Nann
  */
 public class interest extends javax.swing.JFrame {
+    Search search = new Search();
     /**
      * Creates new form interest
      */
@@ -141,7 +142,7 @@ public class interest extends javax.swing.JFrame {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
         if(!BankAccount.checkEmpty(accidTF)){
-        Search a = Search.searchCustomer(Long.parseLong(accidTF.getText()));
+        Search a = search.searchCustomer(Long.parseLong(accidTF.getText()));
         if(a != null){
             jLabel1.setText("Last balance : "+ a.getBalance());
             jLabel4.setText("Interest : "+ (a.getBalance()*0.1/100));
@@ -156,7 +157,7 @@ public class interest extends javax.swing.JFrame {
     private void accidTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accidTFActionPerformed
         // TODO add your handling code here:
         if(!BankAccount.checkEmpty(accidTF)){
-        Search a = Search.searchCustomer(Long.parseLong(accidTF.getText()));
+        Search a = search.searchCustomer(Long.parseLong(accidTF.getText()));
         if(a != null){
             jLabel1.setText("Last balance : "+ a.getBalance());
             jLabel4.setText("Interest : "+ (a.getBalance()*0.1/100));

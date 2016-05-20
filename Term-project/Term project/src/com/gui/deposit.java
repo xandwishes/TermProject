@@ -16,6 +16,8 @@ import static javax.swing.JOptionPane.QUESTION_MESSAGE;
  */
 public class deposit extends javax.swing.JFrame {
 private boolean checkSearch;
+BankAccount bankAccount = new BankAccount();
+Search search = new Search();
     /**
      * Creates new form deposit
      */
@@ -157,10 +159,10 @@ private boolean checkSearch;
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
         if(checkSearch && !BankAccount.checkEmpty(accidTF) && !BankAccount.checkEmpty(amountTF)){
-        Search a = Search.searchCustomer(Long.parseLong(accidTF.getText()));
+        Search a = search.searchCustomer(Long.parseLong(accidTF.getText()));
                     if(a != null){
                         
-                        BankAccount.deposit(Long.parseLong(accidTF.getText()), Integer.parseInt(amountTF.getText()));
+                        bankAccount.deposit(Long.parseLong(accidTF.getText()), Integer.parseInt(amountTF.getText()));
                         JOptionPane.showMessageDialog(this,"Deposit Accomplished");
                         call.callDisplayApp();
                         setVisible(false);
@@ -190,7 +192,7 @@ private boolean checkSearch;
 //        String id = accidTF.getText();
 //        if(id==null || id.equals("")) id="0";
 //        
-        Search a = Search.searchCustomer(Long.parseLong(accidTF.getText()));
+        Search a = search.searchCustomer(Long.parseLong(accidTF.getText()));
         if(a != null){
             nameTF.setText(a.getAcc_name());
             amountTF.setEnabled(true);

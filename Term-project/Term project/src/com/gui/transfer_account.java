@@ -17,6 +17,8 @@ import static javax.swing.JOptionPane.QUESTION_MESSAGE;
 public class transfer_account extends javax.swing.JFrame {
     private boolean checkLSearch;
     private boolean checkRSearch;
+    BankAccount bankAccount = new BankAccount();
+    Search search = new Search();
     /**
      * Creates new form deposit
      */
@@ -226,7 +228,7 @@ public class transfer_account extends javax.swing.JFrame {
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
         if(checkLSearch && checkRSearch && !BankAccount.checkEmpty(id) && !BankAccount.checkEmpty(id2)&& !BankAccount.checkEmpty(amountTF)){
-        Search a = Search.searchCustomer(Long.parseLong(id.getText()));
+        Search a = search.searchCustomer(Long.parseLong(id.getText()));
             
             
                 if(a != null){
@@ -234,8 +236,8 @@ public class transfer_account extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "Error! "+ LnameTF.getText()+" account's overdrawn " );
                         setVisible(true);
                     }else{
-                        BankAccount.deposit(Long.parseLong(id2.getText()), Integer.parseInt(amountTF.getText()));
-                        BankAccount.withdrawal(Long.parseLong(id.getText()), Integer.parseInt(amountTF.getText()));
+                        bankAccount.deposit(Long.parseLong(id2.getText()), Integer.parseInt(amountTF.getText()));
+                        bankAccount.withdrawal(Long.parseLong(id.getText()), Integer.parseInt(amountTF.getText()));
                         JOptionPane.showMessageDialog(null, "Transfer Accomplished");
                         call.callDisplayApp();
                         setVisible(false);
@@ -262,7 +264,7 @@ public class transfer_account extends javax.swing.JFrame {
     private void LsearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LsearchButtonActionPerformed
         // TODO add your handling code here:
         if(!BankAccount.checkEmpty(id)){
-        Search a = Search.searchCustomer(Long.parseLong(id.getText()));
+        Search a = search.searchCustomer(Long.parseLong(id.getText()));
         if(a != null){
             id2.setEnabled(true);
             LnameTF.setText(a.getAcc_name());
@@ -284,7 +286,7 @@ public class transfer_account extends javax.swing.JFrame {
     private void RsearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RsearchButtonActionPerformed
         // TODO add your handling code here:
        if(!BankAccount.checkEmpty(id2)){
-        Search a = Search.searchCustomer(Long.parseLong(id2.getText()));
+        Search a = search.searchCustomer(Long.parseLong(id2.getText()));
         if(a != null){
             amountTF.setEnabled(true);
             RnameTF.setText(a.getAcc_name());

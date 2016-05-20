@@ -5,7 +5,7 @@
  */
 package com.gui;
 
-import com.model.BankAccount;
+
 
 import com.model.Search;
 import javax.swing.JOptionPane;
@@ -15,12 +15,15 @@ import javax.swing.JOptionPane;
  * @author Nann
  */
 public class emp_login extends javax.swing.JFrame {
-
+    Search search = new Search();
+    
     /**
      * Creates new form displayApp
      */
     public emp_login() {
+        
         initComponents();
+       
         
     }
 
@@ -77,7 +80,8 @@ public class emp_login extends javax.swing.JFrame {
 
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
             // TODO add your handling code here:
-        Search a = Search.searchEmp(userTF.getText(), passTF.getText());
+        
+        Search a = search.searchEmp(userTF.getText(), passTF.getText());
         if(a != null){
             JOptionPane.showMessageDialog(this,"'"+a.getEmp_name()+"' log in sucess!");
             call.callDisplayApp();
@@ -90,7 +94,7 @@ public class emp_login extends javax.swing.JFrame {
 
     private void passTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTFActionPerformed
         // TODO add your handling code here:
-        Search a = Search.searchEmp(userTF.getText(), passTF.getText());
+        Search a = search.searchEmp(userTF.getText(), passTF.getText());
         if(a != null){
             JOptionPane.showMessageDialog(this,"'"+a.getEmp_name()+"' log in sucess!");
             call.callDisplayApp();

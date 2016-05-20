@@ -23,8 +23,10 @@ import javax.swing.SwingUtilities;
  */
 public class statement_printout extends javax.swing.JFrame {
     private boolean checkSearch;
+    Search search = new Search();
     
     public statement_printout() {
+        System.out.println("statement");
         initComponents();
     }
 
@@ -168,7 +170,7 @@ public class statement_printout extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if(!BankAccount.checkEmpty(AccIdNameTF)){   
-        List<Search> a = Search.searchByID(Long.parseLong(AccIdNameTF.getText()));
+        List<Search> a = search.searchByID(Long.parseLong(AccIdNameTF.getText()));
         if (a != null) {
             jPanel1.removeAll();
             jPanel1.setLayout(new java.awt.GridLayout(0, 5));
@@ -218,7 +220,7 @@ public class statement_printout extends javax.swing.JFrame {
     private void AccIdNameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccIdNameTFActionPerformed
         // TODO add your handling code here:
         if(!BankAccount.checkEmpty(AccIdNameTF)){   
-        List<Search> a = Search.searchByID(Long.parseLong(AccIdNameTF.getText()));
+        List<Search> a = search.searchByID(Long.parseLong(AccIdNameTF.getText()));
         if (a != null) {
             jPanel1.removeAll();
             jPanel1.setLayout(new java.awt.GridLayout(0, 5));

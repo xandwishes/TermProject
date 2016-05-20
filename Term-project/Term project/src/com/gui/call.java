@@ -60,6 +60,7 @@ public class call {
             message,
             title,
             JOptionPane.YES_NO_OPTION);
+        System.out.println(n);
     return n==0; 
     }
     

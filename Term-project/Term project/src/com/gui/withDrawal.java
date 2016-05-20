@@ -15,7 +15,9 @@ import static javax.swing.JOptionPane.QUESTION_MESSAGE;
  * @author Nann
  */
 public class withDrawal extends javax.swing.JFrame {
-private boolean checkSearch;
+    private boolean checkSearch;
+    BankAccount bankAccount = new BankAccount();
+    Search search = new Search();
     /**
      * Creates new form deposit
      */
@@ -161,19 +163,26 @@ private boolean checkSearch;
         // TODO add your handling code here:
        
         if(checkSearch && !BankAccount.checkEmpty(amountTF) && !BankAccount.checkEmpty(idTF)){ 
-        Search a = Search.searchCustomer(Long.parseLong(idTF.getText()));
+        Search a = search.searchCustomer(Long.parseLong(idTF.getText()));
         if(a != null){
                 if(!call.useConfirmDialog("Withdraw", "Are you sure you withdraw this amount?")){
                     setVisible(true);
-                }
-                if(Integer.parseInt(amountTF.getText()) > a.getBalance()){
-                    JOptionPane.showMessageDialog(this, "Error! "+ accNameTF.getText()+" account's overdrawn " );
-                    setVisible(true);
+                    
                 }else{
-                BankAccount.withdrawal(Long.parseLong(idTF.getText()), Integer.parseInt(amountTF.getText()));
-                JOptionPane.showMessageDialog(this, "Withdrawn Accomplish");
-                call.callDisplayApp();
-                setVisible(false);
+                    try{
+                        if(Integer.parseInt(amountTF.getText()) > a.getBalance()){
+                            JOptionPane.showMessageDialog(this, "Error! "+ accNameTF.getText()+" account's overdrawn " );
+                            setVisible(true);
+                        }else{
+                            bankAccount.withdrawal(Long.parseLong(idTF.getText()), Integer.parseInt(amountTF.getText()));
+                            JOptionPane.showMessageDialog(this, "Withdrawn Accomplish");
+                            call.callDisplayApp();
+                            setVisible(false);
+                        }
+                    }
+                    catch(Exception e){
+                        JOptionPane.showMessageDialog(this,e.getMessage(),"Alert",JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }else{
                 JOptionPane.showMessageDialog(this, "Please try again, Might be wrong ID");
@@ -198,9 +207,7 @@ private boolean checkSearch;
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
         if(!BankAccount.checkEmpty(idTF)){ 
-//        String id1 = idTF.getText();
-//        if(id1==null || id1.equals("")) id1="0";
-        Search a = Search.searchCustomer(Long.parseLong(idTF.getText()));
+            Search a = search.searchCustomer(Long.parseLong(idTF.getText()));
         if(a != null){
             accNameTF.setText(a.getAcc_name());
             idnoTF.setText(a.getId_no());

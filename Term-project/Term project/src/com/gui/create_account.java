@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  * @author Nann
  */
 public class create_account extends javax.swing.JFrame {
-
+    BankAccount bankAccount = new BankAccount();
     /**
      * Creates new form create_account
      */
@@ -210,7 +210,7 @@ public class create_account extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(null, "Fill name", "Alert", JOptionPane.INFORMATION_MESSAGE);
         }else
         if(BankAccount.checkEmpty(idtf)){
-              JOptionPane.showMessageDialog(null, "Fill the Identity number", "Alert", JOptionPane.INFORMATION_MESSAGE);
+              JOptionPane.showMessageDialog(null, "Fill Identity number", "Alert", JOptionPane.INFORMATION_MESSAGE);
         }else{
             String gender = "";
             if(malebutton.isSelected()){
@@ -219,13 +219,18 @@ public class create_account extends javax.swing.JFrame {
                 gender = "F";
             }
             
-           
-            BankAccount.openAccount(nametf.getText(), Double.parseDouble(deposittf.getText()), gender, emailtf.getText(),
-                                    phonetf.getText(), idtf.getText(), revenuetf.getText(),careercb.getSelectedItem().toString()
-                                    ,Integer.parseInt(agetf.getText()), birthdateTF.getText(), addresstf.getText());
-            JOptionPane.showMessageDialog(this,"Sucess! your account was created");
-            call.callDisplayApp();
-            setVisible(false);
+            try{
+                bankAccount.openAccount(nametf.getText(), Double.parseDouble(deposittf.getText()), gender, emailtf.getText(),
+                                        phonetf.getText(), idtf.getText(), revenuetf.getText(),careercb.getSelectedItem().toString()
+                                        ,Integer.parseInt(agetf.getText()), birthdateTF.getText(), addresstf.getText());
+                JOptionPane.showMessageDialog(this,"Account Created");
+                call.callDisplayApp();
+                setVisible(false);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this,e.getMessage(),"Alert",JOptionPane.ERROR_MESSAGE);
+            }
+            
+                   
        }
 
     }//GEN-LAST:event_buttonNextActionPerformed

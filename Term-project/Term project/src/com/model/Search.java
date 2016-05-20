@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author zxcvbnm
  */
-public class Search {
+public class Search extends ConnectDB{
     private String acc_name;
     private long acc_id;
     private String trans_id;
@@ -36,6 +36,7 @@ public class Search {
     private int age;
     private String birthdate;
     private String address;
+    
     
 
     public double getBalance() {
@@ -166,11 +167,10 @@ public class Search {
     }
     
     
-    public static List<Search> searchByID(long acc_id){
+    public List<Search> searchByID(long acc_id){
         // Connect to database
          List<Search> list = null;
-        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
+        
         String sql_search  = "SELECT * FROM BANK_TRANSACTION b JOIN BANK_ACCOUNT ba ON ba.acc_id = b.acc_id WHERE ba.acc_id =  ('"+acc_id+"')";
        
         ArrayList<HashMap> data= db.queryRows(sql_search);
@@ -197,10 +197,9 @@ public class Search {
         }
         return list;
     }
-    public static Search searchEmp(String user, String pass){
+    public Search searchEmp(String user, String pass){
         // Connect to database
-        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
+        
         
         String sql_searchEmp  = "SELECT * FROM BANK_OFFICER WHERE USERNAME = ('"+user+"') AND PASSWORD = ('"+pass+"')";
         
@@ -220,11 +219,9 @@ public class Search {
         }
         return bo;
     }
-    public static Search searchCustomer(long acc_id) {
+    public Search searchCustomer(long acc_id) {
         // Connect to database
-        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
-
+        
         String sql_search = "SELECT * FROM BANK_ACCOUNT WHERE acc_id = ('" + acc_id + "')";
 
         ArrayList<HashMap> data = db.queryRows(sql_search);

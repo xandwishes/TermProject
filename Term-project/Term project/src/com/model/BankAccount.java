@@ -15,7 +15,7 @@ import javax.swing.JTextField;
  *
  * @author Nann
  */
-public class BankAccount{
+public class BankAccount extends ConnectDB implements BankingSystem{
     
     private long acc_id;
     private String acc_name;
@@ -31,6 +31,8 @@ public class BankAccount{
     private String birthdate;
     private String address;
     
+    
+   
     public void setAcc_id(long acc_id) {
         this.acc_id = acc_id;
     }
@@ -136,17 +138,11 @@ public class BankAccount{
     }
    
 
-    public static boolean openAccount(String name, double balance,
+    public void openAccount(String name, double balance,
             String gender, String email,
             String phone_num, String id_no,
             String revenue_month, String career, int age,
             String birthdate, String address) {
-        
-        
-        
-        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
-
         long id = System.currentTimeMillis();
 
         String sql_openAccount = "INSERT INTO "
@@ -160,28 +156,32 @@ public class BankAccount{
                 + " VALUES ('" + code + "','1234','" + new java.sql.Date(System.currentTimeMillis()) + "'," + balance + "," + id + ","+balance+
         ")";
         db.executeQuery(sql_transaction);
-        boolean check = db.executeQuery(sql_openAccount);
-        return check;
+        db.executeQuery(sql_openAccount);
+        
     }
 
-    public static void deposit(long acc_id, int amount) {
+    public void deposit(long acc_id, int amount) {
         // Connect to database
-        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
+
         String code = "DPS";
         String sql_depositvalue = "UPDATE BANK_ACCOUNT SET balance = (balance + " + amount + ") WHERE acc_id = ('" + acc_id + "')";
         String sql_transaction = "INSERT INTO BANK_TRANSACTION (code,staff_id,date,amount,acc_id,balance)"
                 + " VALUES ('" + code + "','1234','" + new java.sql.Date(System.currentTimeMillis()) + "'," + amount + "," + acc_id + ","+(amount+getBalanceNow(acc_id))+
         ")";
+        try{
         db.executeQuery(sql_depositvalue);     
         db.executeQuery(sql_transaction);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 
     
     
-    public static double getBalanceNow(long acc_id) {
-        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
+    public double getBalanceNow(long acc_id) {
+//        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
+//        System.out.println(db.connect());
         double balance = 0;
         String sql = "SELECT balance FROM BANK_ACCOUNT WHERE acc_id = ('" + acc_id + "')";
 
@@ -197,11 +197,11 @@ public class BankAccount{
         return balance;
     }
 
-    public static void withdrawal(long acc_id, int amount) {
-        // Connect to database
-        System.out.println("Widrawal");
-        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
+    public void withdrawal(long acc_id, int amount) {
+        
+//        System.out.println("Widrawal");
+//        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
+//        System.out.println(db.connect());
         String code = "WID";
         String sql_depositvalue = "UPDATE BANK_ACCOUNT SET balance = (balance -" + amount + ")WHERE acc_id = ('" + acc_id + "')";
 
@@ -211,56 +211,12 @@ public class BankAccount{
         ")";
         db.executeQuery(sql_depositvalue);
         db.executeQuery(sql_transaction);
+     
 
     }
-
-    public static BankAccount search(long acc_id) {
-        // Connect to database
-        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
-
-        String sql_search = "SELECT * FROM BANK_ACCOUNT WHERE acc_id = ('" + acc_id + "')";
-
-        ArrayList<HashMap> data = db.queryRows(sql_search);
-        BankAccount ba = null;
-
-        if (data != null && data.size() > 0) {
-            ba = new BankAccount();
-            for (int i = 0; i < data.size(); i++) {
-                HashMap std = data.get(i);
-
-                ba.setAcc_name((String) std.get("acc_name"));
-                ba.setAcc_id(Long.parseLong((String) std.get("acc_id")));
-                ba.setAddress((String) std.get("address"));
-                ba.setBalance(Double.parseDouble((String) std.get("balance")));
-                ba.setDate((String) std.get("date"));
-                ba.setId_no((String) std.get("id_no"));
-                ba.setCareer((String) std.get("career"));
-                ba.setAge(Integer.parseInt((String) std.get("age")));
-                ba.setBirthdate((String) std.get("birthdate"));
-                ba.setEmail((String) std.get("email"));
-                ba.setGender((String) std.get("gender"));
-                ba.setPhone_num((String) std.get("phone_num"));
-                ba.setRevenue_month((String) std.get("revenue_month"));
-
-            }
-        }
-        return ba;
-        
-//       
-    }
-    
-    
     
     public static boolean checkEmpty(JTextField j){
      return  j.getText().length()<=0;
     }
-
-
-//    public static void main(String[] args) {
-//        System.out.println(System.currentTimeMillis());
-//        System.out.println(new java.sql.Date(System.currentTimeMillis()));
-//         
-//    }
 
 }
