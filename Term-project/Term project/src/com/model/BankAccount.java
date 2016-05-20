@@ -6,6 +6,7 @@
 package com.model;
 
 import com.gui.displayApp;
+import com.gui.emp_login;
 import edu.sit.cs.db.CSDbDelegate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -256,12 +257,10 @@ public class BankAccount{
     }
 
 
-    public static void main(String[] args) {
-        System.out.println(System.currentTimeMillis());
-        System.out.println(new java.sql.Date(System.currentTimeMillis()));
-//        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-//        System.out.println(db.connect());
-
-    }
+//    public static void main(String[] args) {
+//        System.out.println(System.currentTimeMillis());
+//        System.out.println(new java.sql.Date(System.currentTimeMillis()));
+//         
+//    }
 
 }
