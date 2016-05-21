@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.view;
+package com.controller;
 
 import com.model.BankAccount;
-
-
 import com.model.Search;
 import com.model.Statement;
 import java.io.IOException;
@@ -221,7 +219,7 @@ public class HomeController extends BankAccount implements Initializable {
     @FXML
     private void logout(ActionEvent event) throws IOException {
         Stage stage = (Stage) logout_btn.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("Login_employee.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/view/Login_employee.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -234,6 +232,7 @@ public class HomeController extends BankAccount implements Initializable {
         acc_num_tf.clear();
         acc_name_tf.clear();
         name_tf.clear();
+        search_balance_tf.clear();
         identity_tf.clear();
         depo_value_tf.clear();
         with_value_tf.clear();
@@ -259,6 +258,7 @@ public class HomeController extends BankAccount implements Initializable {
             with_balance_tf.setText(Double.toString(acc.getBalance()));
             depo_value_tf.setDisable(false);
             with_value_tf.setDisable(false);
+            updateBalance();
             setDataToTable(Long.parseLong(id));
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -268,12 +268,20 @@ public class HomeController extends BankAccount implements Initializable {
             alert.showAndWait();
         }
     }
+    
+    private void updateBalance(){
+         Search acc = searchCustomer(Long.parseLong(acc_num_tf.getText()));
+         search_balance_tf.setText(Double.toString(acc.getBalance()));
+         depo_balance_tf.setText(Double.toString(acc.getBalance()));
+         with_balance_tf.setText(Double.toString(acc.getBalance()));
+    }
+    
     @FXML
     private void depo_enter(ActionEvent event) throws IOException {
         if(!checkEmpty(depo_value_tf)){
         if (Integer.parseInt(depo_value_tf.getText()) > 0) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Success");
+            alert.setTitle("Confirm Deposit");
             alert.setHeaderText(null);
             alert.setContentText(acc_name_tf.getText() + " deposit: " + Integer.parseInt(depo_value_tf.getText()) + "?");
             Optional<ButtonType> result = alert.showAndWait();
@@ -283,7 +291,9 @@ public class HomeController extends BankAccount implements Initializable {
                     alert1.setTitle("Success");
                     alert1.setHeaderText(null);
                     alert1.setContentText("Success");
+                    alert1.show();
                     depo_value_tf.clear();
+                    updateBalance();
             } else {
             }
         } else {
@@ -298,21 +308,31 @@ public class HomeController extends BankAccount implements Initializable {
 
     @FXML
     private void with_enter(ActionEvent event) throws IOException {
-        if (Integer.parseInt(with_value_tf.getText()) > 0 || with_value_tf.getText() != null) {
+        if (Integer.parseInt(with_value_tf.getText()) > 0 || !with_value_tf.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Complete");
+            alert.setTitle("Confirm Withdrawal");
             alert.setHeaderText(null);
             alert.setContentText(acc_name_tf.getText() + " deposit: " + Integer.parseInt(with_value_tf.getText()) + "?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                withdrawal(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(with_value_tf.getText()));
-                Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                 Search acc = searchCustomer(Long.parseLong(acc_num_tf.getText()));
+                 if(Integer.parseInt(with_value_tf.getText()) < acc.getBalance()){
+                    withdrawal(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(with_value_tf.getText()));
+                    Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
                     alert1.setTitle("Success");
                     alert1.setHeaderText(null);
                     alert1.setContentText("Success");
+                    alert1.show();
                     with_value_tf.clear();
-            } else {
-            }
+                    updateBalance();
+                 }else{
+                    Alert alert1 = new Alert(Alert.AlertType.WARNING);
+                    alert1.setTitle("Erroneous");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Not enough balance!");
+                    alert1.show();
+                 }
+            } 
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erroneous");
@@ -440,11 +460,11 @@ public class HomeController extends BankAccount implements Initializable {
         Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
 	alert1.setTitle("Succes");
 	alert1.setHeaderText(null);
-	alert1.setContentText("Success!\nYour Account Name is ");
+	alert1.setContentText("Success! Your account is created");
 	alert1.show();
         
         Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/view/Home.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -454,7 +474,7 @@ public class HomeController extends BankAccount implements Initializable {
     @FXML
     private void cancel(ActionEvent event) throws IOException {
         Stage stage = (Stage) new_cancel_btn.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/view/Home.fxml"));
         Scene scene = new Scene(root); 
         stage.setScene(scene);
         stage.show();

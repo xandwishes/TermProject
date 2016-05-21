@@ -12,10 +12,6 @@ package com.model;
  */
 public class Sql extends BankFunction{
     
-
-    
- 
-  
    public String sqlSearchEmp(String user, String pass){
        return "SELECT * FROM BANK_OFFICER WHERE USERNAME = ('"+user+"') AND PASSWORD = ('"+pass+"')";
    }

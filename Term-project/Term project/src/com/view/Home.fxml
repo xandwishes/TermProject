@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.view.HomeController">
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.controller.HomeController">
   <children>
     <BorderPane layoutX="0.0" layoutY="0.0" prefHeight="511.0" prefWidth="800.0">
       <center>
@@ -135,7 +135,7 @@
                 </Button>
               </children>
             </Pane>
-            <Pane fx:id="search_pane" layoutX="26.0" layoutY="19.0" prefHeight="226.0" prefWidth="448.0" visible="false">
+            <Pane fx:id="search_pane" layoutX="26.0" layoutY="19.0" prefHeight="226.0" prefWidth="448.0" visible="true">
               <children>
                 <Label id="acc_search_lb" fx:id="search_acc_lb" alignment="CENTER" font="$x2" layoutX="226.0" layoutY="14.0" prefHeight="26.0" prefWidth="158.0" text="Search Account" textAlignment="CENTER" />
                 <Label fx:id="acc_num_lb" font="$x1" layoutX="101.0" layoutY="86.0" prefHeight="19.0" prefWidth="137.0" text="Account Number" />

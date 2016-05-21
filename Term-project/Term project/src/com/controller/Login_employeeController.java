@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.view;
+package com.controller;
 
 import com.model.Search;
 import java.io.IOException;
@@ -46,10 +46,9 @@ public class Login_employeeController implements Initializable {
     @FXML
     private void login(ActionEvent event) throws IOException {
         Search emp_acc = search.searchEmp(login_user_tf.getText(), login_pass_tf.getText());
-        
         if(emp_acc != null){
             Stage stage = (Stage) login_user_tf.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/view/Home.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
