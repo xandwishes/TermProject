@@ -5,6 +5,7 @@
  */
 package com.controller;
 
+import com.controller.Use;
 import com.model.BankAccount;
 import com.model.Search;
 import com.model.Statement;
@@ -41,6 +42,7 @@ import javafx.stage.Stage;
  */
 public class HomeController extends BankAccount implements Initializable {
    
+    Use use = new Use();
     @FXML
     private TextField trans_name_tf;
     @FXML
@@ -261,38 +263,12 @@ public class HomeController extends BankAccount implements Initializable {
             updateBalance();
             setDataToTable(Long.parseLong(id));
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("Please try again");
-            alert.showAndWait();
-        }
+            use.alert("Information Dialog", null, "Please try again", Alert.AlertType.ERROR);
+            }
     }
     
     public void searchEnter(ActionEvent event) {
-        String id = acc_num_tf.getText();
-        if (id == null || id.equals("")) {
-            id = "0";
-        }
-        Search acc = searchCustomer(Long.parseLong(id));
-        if (acc != null) {
-            acc_name_tf.setText(acc.getAcc_name());
-            name_tf.setText(acc.getAcc_name());
-            identity_tf.setText(acc.getId_no());
-            search_balance_tf.setText(Double.toString(acc.getBalance()));
-            depo_balance_tf.setText(Double.toString(acc.getBalance()));
-            with_balance_tf.setText(Double.toString(acc.getBalance()));
-            depo_value_tf.setDisable(false);
-            with_value_tf.setDisable(false);
-            updateBalance();
-            setDataToTable(Long.parseLong(id));
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("Please try again");
-            alert.showAndWait();
-        }
+        search_acc(event);
     }
     
     private void updateBalance(){
@@ -313,22 +289,14 @@ public class HomeController extends BankAccount implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 deposit(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(depo_value_tf.getText()));
-                Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-                    alert1.setTitle("Success");
-                    alert1.setHeaderText(null);
-                    alert1.setContentText("Success");
-                    alert1.show();
-                    depo_value_tf.clear();
-                    updateBalance();
+                use.alert("Success", null, "Success", Alert.AlertType.INFORMATION);
+                depo_value_tf.clear();
+                updateBalance();
             } else {
             }
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erroneous");
-            alert.setHeaderText(null);
-            alert.setContentText("Please try again");
-            alert.showAndWait();
-        }
+                use.alert("Erroneous", null,"Please try again", Alert.AlertType.ERROR);
+               }
         }
     }
     public void a(ActionEvent event) throws IOException{
@@ -348,28 +316,16 @@ public class HomeController extends BankAccount implements Initializable {
                  Search acc = searchCustomer(Long.parseLong(acc_num_tf.getText()));
                  if(Integer.parseInt(with_value_tf.getText()) <= acc.getBalance()){
                     withdrawal(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(with_value_tf.getText()));
-                    Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-                    alert1.setTitle("Success");
-                    alert1.setHeaderText(null);
-                    alert1.setContentText("Success");
-                    alert1.show();
+                    use.alert("Success", null, "Success", Alert.AlertType.INFORMATION);
                     with_value_tf.clear();
                     updateBalance();
                  }else{
-                    Alert alert1 = new Alert(Alert.AlertType.WARNING);
-                    alert1.setTitle("Erroneous");
-                    alert1.setHeaderText(null);
-                    alert1.setContentText("Not enough balance!");
-                    alert1.show();
-                 }
+                    use.alert("Erroneous", null, "Not enough balance!", Alert.AlertType.WARNING);
+                    }
             } 
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erroneous");
-            alert.setHeaderText(null);
-            alert.setContentText("Please try again");
-            alert.showAndWait();
-        }
+            use.alert("Erroneous", null,"Please try again", Alert.AlertType.ERROR);
+           }
         }
     }
     public void withKeyboard(ActionEvent event) throws IOException {
@@ -401,12 +357,8 @@ public class HomeController extends BankAccount implements Initializable {
                 trans_acc_name_tf.setText(trans_acc.getAcc_name());
                 trans_value_tf.setDisable(false);
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Transfer error");
-                alert.setHeaderText(null);
-                alert.setContentText("Please try again");
-                alert.showAndWait();
-            }
+                use.alert("Transfer error", id, "Please try again", Alert.AlertType.ERROR);
+                }
         }
     }
     public void searchTranKeyboard(ActionEvent event) {
@@ -431,11 +383,8 @@ public class HomeController extends BankAccount implements Initializable {
                 //Not enough to transaction to "trans_acc_num_tf"(trans_acc get from acc)
                 //And will go back to edit "trans_value_tf"
                 if (Integer.parseInt(trans_value_tf.getText()) > acc.getBalance()) {
-                    Alert alert1 = new Alert(Alert.AlertType.ERROR);
-                    alert1.setTitle("Transaction Error!");
-                    alert1.setHeaderText(null);
-                    alert1.setContentText(acc_name_tf.getText() + " account's overdrawn");
-                    alert1.showAndWait();
+                    use.alert("Transaction Error!", null, acc_name_tf.getText() + " account's overdrawn", Alert.AlertType.ERROR);
+                    
                 } else {  //Transaction correctly then go to home(clear everythings)
                     deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
                     withdrawal(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
@@ -444,10 +393,8 @@ public class HomeController extends BankAccount implements Initializable {
 //                    Scene scene = new Scene(root);
 //                    stage.setScene(scene);
 //                    stage.show();
-                    Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-                    alert1.setTitle("Success");
-                    alert1.setHeaderText(null);
-                    alert1.setContentText("Success");
+                    use.alert("Success", null, "Success", Alert.AlertType.INFORMATION);
+                    
                     trans_value_tf.clear();
                     //menu_tab.getSelectionModel().select(with_tab);
                     return;
@@ -466,19 +413,12 @@ public class HomeController extends BankAccount implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) { //Click "ok button" > will go back to home(clear everythings)
                 deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
-                Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-                alert1.setTitle("Success");
-                alert1.setHeaderText(null);
-                alert1.setContentText("Success");
+                use.alert("Success", null, "Success", Alert.AlertType.INFORMATION);
                 trans_value_tf.clear();
             }
 
         } else {  // transaction wrong (<=0)
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Transaction Error!");
-            alert.setHeaderText(null);
-            alert.setContentText("Please try again");
-            alert.showAndWait();
+                use.alert("Transaction Error!", null, acc_name_tf.getText() + " account's overdrawn", Alert.AlertType.ERROR);
         }
     }
     
@@ -500,11 +440,8 @@ public class HomeController extends BankAccount implements Initializable {
         BankAccount acc = new BankAccount();
         openAccount(new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
                 new_email_tf.getText(), new_phone_tf.getText(), new_identity_num_tf.getText(), new_address_tf.getText());
-        Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-	alert1.setTitle("Succes");
-	alert1.setHeaderText(null);
-	alert1.setContentText("Success! Your account is created");
-	alert1.show();
+        
+        use.alert("Succes", null, "Success! Your account is created", Alert.AlertType.INFORMATION);
         
         Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/com/view/Home.fxml"));
