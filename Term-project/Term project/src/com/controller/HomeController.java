@@ -5,7 +5,7 @@
  */
 package com.controller;
 
-import com.controller.Use;
+
 import com.model.BankAccount;
 import com.model.Search;
 import com.model.Statement;
@@ -246,25 +246,24 @@ public class HomeController extends BankAccount implements Initializable {
     
     @FXML
     private void search_acc(ActionEvent event) {
-        String id = acc_num_tf.getText();
-        if (id == null || id.equals("")) {
-            id = "0";
+        if(!checkEmpty(acc_num_tf)){
+           
+            Search acc = searchCustomer(Long.parseLong(acc_num_tf.getText()));
+            if (acc != null) {
+                acc_name_tf.setText(acc.getAcc_name());
+                name_tf.setText(acc.getAcc_name());
+                identity_tf.setText(acc.getId_no());
+                search_balance_tf.setText(Double.toString(acc.getBalance()));
+                depo_balance_tf.setText(Double.toString(acc.getBalance()));
+                with_balance_tf.setText(Double.toString(acc.getBalance()));
+                depo_value_tf.setDisable(false);
+                with_value_tf.setDisable(false);
+                updateBalance();
+                setDataToTable(Long.parseLong(acc_num_tf.getText()));
+            } else {
+                use.alert("Information Dialog", null, "Please try again", Alert.AlertType.ERROR);
+                }
         }
-        Search acc = searchCustomer(Long.parseLong(id));
-        if (acc != null) {
-            acc_name_tf.setText(acc.getAcc_name());
-            name_tf.setText(acc.getAcc_name());
-            identity_tf.setText(acc.getId_no());
-            search_balance_tf.setText(Double.toString(acc.getBalance()));
-            depo_balance_tf.setText(Double.toString(acc.getBalance()));
-            with_balance_tf.setText(Double.toString(acc.getBalance()));
-            depo_value_tf.setDisable(false);
-            with_value_tf.setDisable(false);
-            updateBalance();
-            setDataToTable(Long.parseLong(id));
-        } else {
-            use.alert("Information Dialog", null, "Please try again", Alert.AlertType.ERROR);
-            }
     }
     
     public void searchEnter(ActionEvent event) {
@@ -292,6 +291,7 @@ public class HomeController extends BankAccount implements Initializable {
                 use.alert("Success", null, "Success", Alert.AlertType.INFORMATION);
                 depo_value_tf.clear();
                 updateBalance();
+                setDataToTable(Long.parseLong(acc_num_tf.getText()));
             } else {
             }
         } else {
@@ -319,6 +319,7 @@ public class HomeController extends BankAccount implements Initializable {
                     use.alert("Success", null, "Success", Alert.AlertType.INFORMATION);
                     with_value_tf.clear();
                     updateBalance();
+                    setDataToTable(Long.parseLong(acc_num_tf.getText()));
                  }else{
                     use.alert("Erroneous", null, "Not enough balance!", Alert.AlertType.WARNING);
                     }
@@ -369,7 +370,8 @@ public class HomeController extends BankAccount implements Initializable {
     @FXML
     private void trans_thrid_acc(ActionEvent event) throws IOException {
         //For acc-to-acc
-        if (Integer.parseInt(trans_value_tf.getText()) >= 0 && acc_num_tf.getText() != null && !acc_num_tf.getText().equals("") && trans_acc_num_tf.getText() != null) {
+        if(!checkEmpty(acc_num_tf) && !checkEmpty(trans_acc_num_tf)){
+        if (Integer.parseInt(trans_value_tf.getText()) >= 0) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Transaction Complete");
             alert.setHeaderText(null);
@@ -388,6 +390,8 @@ public class HomeController extends BankAccount implements Initializable {
                 } else {  //Transaction correctly then go to home(clear everythings)
                     deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
                     withdrawal(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
+                    updateBalance();
+                    setDataToTable(Long.parseLong(acc_num_tf.getText()));
 //                    Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
 //                    Parent root = FXMLLoader.load(getClass().getResource("HomeFXML.fxml"));
 //                    Scene scene = new Scene(root);
@@ -402,23 +406,28 @@ public class HomeController extends BankAccount implements Initializable {
             }
 
         }
+        }else 
+            if(checkEmpty(acc_num_tf) && !checkEmpty(trans_acc_num_tf)){
 
         //For one acc(deposit to acc)
-        if (Integer.parseInt(trans_value_tf.getText()) >= 0 && acc_num_tf.getText().equals("") && trans_acc_num_tf.getText() != null) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Transaction Complete");
-            alert.setHeaderText(null);
-            alert.setContentText(" Transaction to " + trans_acc_name_tf.getText() + ": " + Integer.parseInt(trans_value_tf.getText()) + "?");
-            //if-else for popup check message "ok button" or "cancel button" transaction
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) { //Click "ok button" > will go back to home(clear everythings)
-                deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
-                use.alert("Success", null, "Success", Alert.AlertType.INFORMATION);
-                trans_value_tf.clear();
-            }
+                if (Integer.parseInt(trans_value_tf.getText()) >= 0 ){
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Transaction Complete");
+                    alert.setHeaderText(null);
+                    alert.setContentText(" Transaction to " + trans_acc_name_tf.getText() + ": " + Integer.parseInt(trans_value_tf.getText()) + "?");
+                    //if-else for popup check message "ok button" or "cancel button" transaction
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.get() == ButtonType.OK) { //Click "ok button" > will go back to home(clear everythings)
+                        deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
+                        updateBalance();
+                        setDataToTable(Long.parseLong(acc_num_tf.getText()));
+                        use.alert("Success", null, "Success", Alert.AlertType.INFORMATION);
+                        trans_value_tf.clear();
+                    }
 
-        } else {  // transaction wrong (<=0)
-                use.alert("Transaction Error!", null, acc_name_tf.getText() + " account's overdrawn", Alert.AlertType.ERROR);
+                } else {  // transaction wrong (<=0)
+                        use.alert("Transaction Error!", null, acc_name_tf.getText() + " account's overdrawn", Alert.AlertType.ERROR);
+                }
         }
     }
     
@@ -436,19 +445,20 @@ public class HomeController extends BankAccount implements Initializable {
 
     @FXML
     private void register(ActionEvent event) throws IOException {
-        
-        BankAccount acc = new BankAccount();
-        openAccount(new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
-                new_email_tf.getText(), new_phone_tf.getText(), new_identity_num_tf.getText(), new_address_tf.getText());
-        
-        use.alert("Succes", null, "Success! Your account is created", Alert.AlertType.INFORMATION);
-        
-        Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/com/view/Home.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-	
+        if(!checkEmpty(new_acc_name_tf) && !checkEmpty(new_fname_tf) && !checkEmpty(new_lname_tf) && !checkEmpty(new_depo_tf) && !checkEmpty(new_email_tf)
+                        && !checkEmpty(new_phone_tf) && !checkEmpty(new_identity_num_tf)){
+            BankAccount acc = new BankAccount();
+            openAccount(new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
+                    new_email_tf.getText(), new_phone_tf.getText(), new_identity_num_tf.getText(), new_address_tf.getText());
+
+            use.alert("Succes", null, "Success! Your account is created", Alert.AlertType.INFORMATION);
+
+            Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/com/view/Home.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     @FXML

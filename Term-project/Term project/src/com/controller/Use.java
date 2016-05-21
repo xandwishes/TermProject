@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 public class Use {
     
     public void alert(String title,String header,String context,Alert.AlertType alertType){
-              Alert alert1 =      alert1 = new Alert(alertType);
+              Alert alert1 = new Alert(alertType);
                     alert1.setTitle(title);
                     alert1.setHeaderText(header);
                     alert1.setContentText(context);
