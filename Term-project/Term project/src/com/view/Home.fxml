@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import java.net.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -10,13 +11,10 @@
 <AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.view.HomeController">
   <children>
     <BorderPane layoutX="0.0" layoutY="0.0" prefHeight="511.0" prefWidth="800.0">
-      <bottom>
-        <Pane prefHeight="60.0" prefWidth="694.0" />
-      </bottom>
       <center>
-        <Pane fx:id="search_acc" prefHeight="422.0" prefWidth="465.0" visible="true">
+        <Pane id="main_pane" fx:id="search_acc" prefHeight="422.0" prefWidth="465.0" styleClass="main_pane" visible="true">
           <children>
-            <Pane fx:id="depo_pane" layoutX="14.0" layoutY="-28.0" prefHeight="394.0" prefWidth="612.0" visible="false">
+            <Pane fx:id="depo_pane" layoutX="26.0" layoutY="19.0" prefHeight="394.0" prefWidth="612.0" visible="false">
               <children>
                 <Label id="amount_lb" layoutX="101.0" layoutY="86.0" prefHeight="19.0" prefWidth="123.0" text="Enter value">
                   <font>
@@ -27,7 +25,11 @@
                 <Label id="amount_lb" font="$x1" layoutX="474.0" layoutY="86.0" prefHeight="18.999900000002526" prefWidth="61.0" text="Bath" />
                 <Label id="amount_lb" font="$x1" layoutX="101.0" layoutY="117.0" prefHeight="19.0" prefWidth="123.0" text="Balance" />
                 <TextField id="amount_tf" fx:id="depo_balance_tf" disable="true" layoutX="260.0" layoutY="117.0" prefWidth="200.0" />
-                <Button fx:id="depo_enter_btn" font="$x1" layoutX="390.0" layoutY="157.0" mnemonicParsing="false" onAction="#depo_enter" prefHeight="35.0" prefWidth="70.0" text="Enter" />
+                <Button fx:id="depo_enter_btn" font="$x1" layoutX="390.0" layoutY="157.0" mnemonicParsing="false" onAction="#depo_enter" prefHeight="35.0" prefWidth="70.0" styleClass="button_in" text="Enter">
+                  <stylesheets>
+                    <URL value="@styleSheet.css" />
+                  </stylesheets>
+                </Button>
                 <Label id="amount_lb" font="$x1" layoutX="474.0" layoutY="117.0" prefHeight="18.999900000002526" prefWidth="61.0" text="Bath" />
                 <Label id="acc_search_lb" alignment="CENTER" layoutX="226.0" layoutY="14.0" prefHeight="26.0" prefWidth="158.0" text="Deposit" textAlignment="CENTER">
                   <font>
@@ -36,50 +38,69 @@
                 </Label>
               </children>
             </Pane>
-            <Pane fx:id="with_pane" layoutX="14.0" layoutY="-28.0" prefHeight="200.0" prefWidth="455.0" visible="false">
+            <Pane fx:id="with_pane" layoutX="26.0" layoutY="19.0" prefHeight="200.0" prefWidth="455.0" visible="false">
               <children>
                 <Label id="amount_lb" font="$x1" layoutX="101.0" layoutY="86.0" prefHeight="19.0" prefWidth="123.0" text="Enter value" />
                 <TextField id="amount_tf" fx:id="with_value_tf" disable="true" layoutX="260.0" layoutY="86.0" prefWidth="200.0" />
                 <Label id="amount_lb" font="$x1" layoutX="474.0" layoutY="86.0" prefHeight="18.999900000002526" prefWidth="61.0" text="Bath" />
                 <Label id="amount_lb" font="$x1" layoutX="101.0" layoutY="117.0" prefHeight="19.0" prefWidth="123.0" text="Balance" />
                 <TextField id="amount_tf" fx:id="with_balance_tf" disable="true" layoutX="260.0" layoutY="117.0" prefWidth="200.0" />
-                <Button fx:id="with_enter_btn" layoutX="390.0" layoutY="157.0" mnemonicParsing="false" onAction="#with_enter" prefHeight="35.0" prefWidth="70.0" text="Enter" />
+                <Button fx:id="with_enter_btn" layoutX="390.0" layoutY="157.0" mnemonicParsing="false" onAction="#with_enter" prefHeight="35.0" prefWidth="70.0" styleClass="button_in" text="Enter">
+                  <stylesheets>
+                    <URL value="@styleSheet.css" />
+                  </stylesheets>
+                </Button>
                 <Label id="amount_lb" font="$x1" layoutX="474.0" layoutY="117.0" prefHeight="18.999900000002526" prefWidth="61.0" text="Bath" />
                 <Label id="acc_search_lb" alignment="CENTER" font="$x2" layoutX="226.0" layoutY="14.0" prefHeight="26.0" prefWidth="158.0" text="Withdrawal" textAlignment="CENTER" />
               </children>
             </Pane>
-            <Pane fx:id="trans_pane" layoutX="14.0" layoutY="-28.0" prefHeight="246.0" prefWidth="455.0" visible="false">
+            <Pane fx:id="trans_pane" layoutX="26.0" layoutY="19.0" prefHeight="246.0" prefWidth="455.0" visible="false">
               <children>
                 <TextField id="amount_tf" fx:id="trans_acc_name_tf" disable="true" layoutX="260.0" layoutY="117.0" prefWidth="200.0" />
                 <Label id="amount_lb" font="$x1" layoutX="477.0" layoutY="179.0" prefHeight="18.999900000002526" prefWidth="61.0" text="Bath" />
                 <TextField id="amount_tf" fx:id="trans_name_tf" disable="true" layoutX="260.0" layoutY="148.0" prefWidth="200.0" />
                 <Label id="amount_lb" font="$x1" layoutX="101.0" layoutY="86.0" prefHeight="19.0" prefWidth="137.0" text="Thrid Party Number" />
                 <TextField id="amount_tf" fx:id="trans_acc_num_tf" layoutX="260.0" layoutY="86.0" prefWidth="200.0" />
-                <Button id="search_btn" font="$x1" layoutX="469.0" layoutY="84.0" mnemonicParsing="false" onAction="#search_trans_acc" prefHeight="22.0" prefWidth="61.0" text="Search" />
+                <Button id="search_btn" font="$x1" layoutX="469.0" layoutY="84.0" mnemonicParsing="false" onAction="#search_trans_acc" prefHeight="22.0" prefWidth="61.0" styleClass="button_in" text="Search">
+                  <stylesheets>
+                    <URL value="@styleSheet.css" />
+                  </stylesheets>
+                </Button>
                 <Label id="acc_name_lb" font="$x1" layoutX="101.0" layoutY="117.0" prefHeight="19.0" prefWidth="147.0" text="Thrid Party Account Name" />
                 <Label id="name_lb" font="$x1" layoutX="101.0" layoutY="148.0" prefHeight="19.0" prefWidth="137.0" text="Thrid Party Name" />
                 <Label id="amount_lb" font="$x1" layoutX="101.0" layoutY="177.0" prefHeight="19.0" prefWidth="123.0" text="Enter value" />
                 <TextField id="amount_tf" fx:id="trans_value_tf" disable="true" layoutX="260.0" layoutY="178.0" prefWidth="200.0" />
-                <Button id="with_enter_btn" fx:id="trans_enter_btn" layoutX="297.0" layoutY="237.0" mnemonicParsing="false" onAction="#trans_thrid_acc" prefHeight="35.0" prefWidth="70.0" text="Enter" />
-                <Button id="search_btn" fx:id="trans_clear_btn" font="$x1" layoutX="390.0" layoutY="237.0" mnemonicParsing="false" onAction="#clear_trans" prefHeight="35.0" prefWidth="70.0" text="Clear" />
+                <Button id="with_enter_btn" fx:id="trans_enter_btn" layoutX="297.0" layoutY="237.0" mnemonicParsing="false" onAction="#trans_thrid_acc" prefHeight="35.0" prefWidth="70.0" styleClass="button_in" text="Enter">
+                  <stylesheets>
+                    <URL value="@styleSheet.css" />
+                  </stylesheets>
+                </Button>
+                <Button id="search_btn" fx:id="trans_clear_btn" font="$x1" layoutX="390.0" layoutY="237.0" mnemonicParsing="false" onAction="#clear_trans" prefHeight="35.0" prefWidth="70.0" styleClass="clear_btn" text="Clear">
+                  <stylesheets>
+                    <URL value="@styleSheet.css" />
+                  </stylesheets>
+                </Button>
                 <Label id="acc_search_lb" alignment="CENTER" font="$x2" layoutX="226.0" layoutY="14.0" prefHeight="26.0" prefWidth="158.0" text="Transfer" textAlignment="CENTER" />
               </children>
             </Pane>
-            <Pane fx:id="state_pane" layoutX="14.0" layoutY="-28.0" prefHeight="436.0" prefWidth="609.0" visible="false">
+            <Pane fx:id="state_pane" layoutX="26.0" layoutY="19.0" prefHeight="436.0" prefWidth="609.0" visible="false">
               <children>
-                <TableView fx:id="statement_table" editable="false" focusTraversable="true" layoutX="0.0" layoutY="59.0" prefHeight="360.0" prefWidth="600.9999694824219">
+                <TableView fx:id="statement_table" editable="false" focusTraversable="true" layoutX="0.0" layoutY="59.0" prefHeight="360.0" prefWidth="600.9999694824219" styleClass="table">
                   <columns>
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="Date" fx:id="column_date" />
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="Code" fx:id="column_code" />
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="Balance" fx:id="column_balance" />
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="Amount" fx:id="column_amount" />
-                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="Staff ID" fx:id="column_staffId" />
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" styleClass="table" text="Date" fx:id="column_date" />
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" styleClass="table" text="Code" fx:id="column_code" />
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" styleClass="table" text="Balance" fx:id="column_balance" />
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" styleClass="table" text="Amount" fx:id="column_amount" />
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" styleClass="table" text="Staff ID" fx:id="column_staffId" />
                   </columns>
+                  <stylesheets>
+                    <URL value="@styleSheet.css" />
+                  </stylesheets>
                 </TableView>
                 <Label id="acc_search_lb" alignment="CENTER" font="$x2" layoutX="226.0" layoutY="14.0" prefHeight="26.0" prefWidth="158.0" text="Statement" textAlignment="CENTER" />
               </children>
             </Pane>
-            <Pane fx:id="new_pane" layoutX="14.0" layoutY="-28.0" prefHeight="473.0" prefWidth="606.0" visible="false">
+            <Pane fx:id="new_pane" layoutX="26.0" layoutY="19.0" prefHeight="473.0" prefWidth="606.0" visible="false">
               <children>
                 <Label id="new_first_lb" layoutX="101.0" layoutY="86.0" prefWidth="142.0" text="Account Name" textAlignment="LEFT">
                   <font>
@@ -102,11 +123,19 @@
                 <TextField fx:id="new_email_tf" layoutX="260.0" layoutY="236.0" prefWidth="200.0" />
                 <TextField id="new_deposit_tf" fx:id="new_depo_tf" layoutX="260.0" layoutY="372.0" prefWidth="200.0" />
                 <TextArea id="new_address_ta" fx:id="new_address_tf" layoutX="260.0" layoutY="267.0" prefHeight="97.0" prefWidth="200.0" wrapText="true" />
-                <Button id="new_enter_btn" fx:id="new_create_btn" layoutX="169.0" layoutY="417.0" mnemonicParsing="false" onAction="#register" prefHeight="34.0" prefWidth="108.0" text="Create Account" />
-                <Button id="new_enter_btn" fx:id="new_cancel_btn" layoutX="289.0" layoutY="417.0" mnemonicParsing="false" onAction="#cancel" prefHeight="34.0" prefWidth="108.0" text="Cancel" />
+                <Button id="new_enter_btn" fx:id="new_create_btn" layoutX="169.0" layoutY="417.0" mnemonicParsing="false" onAction="#register" prefHeight="34.0" prefWidth="108.0" styleClass="button_in" text="Create Account">
+                  <stylesheets>
+                    <URL value="@styleSheet.css" />
+                  </stylesheets>
+                </Button>
+                <Button id="new_enter_btn" fx:id="new_cancel_btn" layoutX="289.0" layoutY="417.0" mnemonicParsing="false" onAction="#cancel" prefHeight="34.0" prefWidth="108.0" styleClass="clear_btn" text="Cancel">
+                  <stylesheets>
+                    <URL value="@styleSheet.css" />
+                  </stylesheets>
+                </Button>
               </children>
             </Pane>
-            <Pane fx:id="search_pane" layoutX="14.0" layoutY="-28.0" prefHeight="226.0" prefWidth="448.0" visible="false">
+            <Pane fx:id="search_pane" layoutX="26.0" layoutY="19.0" prefHeight="226.0" prefWidth="448.0" visible="false">
               <children>
                 <Label id="acc_search_lb" fx:id="search_acc_lb" alignment="CENTER" font="$x2" layoutX="226.0" layoutY="14.0" prefHeight="26.0" prefWidth="158.0" text="Search Account" textAlignment="CENTER" />
                 <Label fx:id="acc_num_lb" font="$x1" layoutX="101.0" layoutY="86.0" prefHeight="19.0" prefWidth="137.0" text="Account Number" />
@@ -117,49 +146,71 @@
                 <TextField fx:id="acc_name_tf" disable="true" editable="true" layoutX="260.0" layoutY="116.0" prefWidth="200.0" />
                 <TextField fx:id="name_tf" disable="true" layoutX="260.0" layoutY="146.0" prefWidth="200.0" />
                 <TextField fx:id="identity_tf" disable="true" layoutX="260.0" layoutY="176.0" prefWidth="200.0" />
-                <Button fx:id="search_btn" font="$x1" layoutX="300.0" layoutY="254.0" mnemonicParsing="false" onAction="#search_acc" prefHeight="35.0" prefWidth="70.0" text="Search" />
-                <Button id="search_btn" fx:id="clear_btn" font="$x1" layoutX="390.0" layoutY="254.0" mnemonicParsing="false" onAction="#clear_search" prefHeight="35.0" prefWidth="70.0" text="Clear" />
+                <Button fx:id="search_btn" font="$x1" layoutX="300.0" layoutY="254.0" mnemonicParsing="false" onAction="#search_acc" prefHeight="35.0" prefWidth="70.0" styleClass="button_in" text="Search">
+                  <stylesheets>
+                    <URL value="@styleSheet.css" />
+                  </stylesheets>
+                </Button>
+                <Button id="search_btn" fx:id="clear_btn" font="$x1" layoutX="390.0" layoutY="254.0" mnemonicParsing="false" onAction="#clear_search" prefHeight="35.0" prefWidth="70.0" styleClass="clear_btn" text="Clear">
+                  <stylesheets>
+                    <URL value="@styleSheet.css" />
+                  </stylesheets>
+                </Button>
                 <Label id="amount_lb" font="$x1" layoutX="101.0" layoutY="207.0" prefHeight="19.0" prefWidth="123.0" text="Your balance" />
                 <TextField id="amount_tf" fx:id="search_balance_tf" disable="true" layoutX="260.0" layoutY="207.0" prefWidth="200.0" />
                 <Label id="amount_lb" font="$x1" layoutX="477.0" layoutY="209.0" prefHeight="18.999900000002526" prefWidth="61.0" text="Bath" />
               </children>
             </Pane>
-            <Pane id="trans_pane" layoutX="24.0" layoutY="-18.0" prefHeight="246.0" prefWidth="455.0" visible="false">
-              <children>
-                <TextField id="amount_tf" disable="true" layoutX="260.0" layoutY="117.0" prefWidth="200.0" />
-                <Label id="amount_lb" font="$x1" layoutX="477.0" layoutY="179.0" prefHeight="18.999900000002526" prefWidth="61.0" text="Bath" />
-                <TextField id="amount_tf" disable="true" layoutX="260.0" layoutY="148.0" prefWidth="200.0" />
-                <Label id="amount_lb" font="$x1" layoutX="101.0" layoutY="86.0" prefHeight="19.0" prefWidth="137.0" text="Thrid Party Number" />
-                <TextField id="amount_tf" layoutX="260.0" layoutY="86.0" prefWidth="200.0" />
-                <Button id="search_btn" font="$x1" layoutX="469.0" layoutY="84.0" mnemonicParsing="false" onAction="#search_trans_acc" prefHeight="22.0" prefWidth="61.0" text="Search" />
-                <Label id="acc_name_lb" font="$x1" layoutX="101.0" layoutY="117.0" prefHeight="19.0" prefWidth="147.0" text="Thrid Party Account Name" />
-                <Label id="name_lb" font="$x1" layoutX="101.0" layoutY="148.0" prefHeight="19.0" prefWidth="137.0" text="Thrid Party Name" />
-                <Label id="amount_lb" font="$x1" layoutX="101.0" layoutY="177.0" prefHeight="19.0" prefWidth="123.0" text="Enter value" />
-                <TextField id="amount_tf" disable="true" layoutX="260.0" layoutY="178.0" prefWidth="200.0" />
-                <Button id="with_enter_btn" layoutX="297.0" layoutY="237.0" mnemonicParsing="false" onAction="#trans_thrid_acc" prefHeight="35.0" prefWidth="70.0" text="Enter" />
-                <Button id="search_btn" font="$x1" layoutX="390.0" layoutY="237.0" mnemonicParsing="false" onAction="#clear_trans" prefHeight="35.0" prefWidth="70.0" text="Clear" />
-                <Label id="acc_search_lb" alignment="CENTER" font="$x2" layoutX="226.0" layoutY="14.0" prefHeight="26.0" prefWidth="158.0" text="Transfer" textAlignment="CENTER" />
-              </children>
-            </Pane>
           </children>
+          <stylesheets>
+            <URL value="@styleSheet.css" />
+          </stylesheets>
         </Pane>
       </center>
       <left>
-        <VBox prefHeight="542.0" prefWidth="148.0">
+        <VBox id="left_box" prefHeight="511.0" prefWidth="134.0" styleClass="left_box">
           <children>
-            <Button id="open_acc_btn" fx:id="new_acc_btn" font="$x1" mnemonicParsing="false" onAction="#new_acc" prefHeight="48.0" prefWidth="137.0" text="Open New Account" />
-            <Button id="open_acc_btn" fx:id="search_acc_main_btn" font="$x1" mnemonicParsing="false" onAction="#search" prefHeight="48.0" prefWidth="137.0" text="Search Account" />
-            <Button id="open_acc_btn" fx:id="depo_btn" font="$x1" mnemonicParsing="false" onAction="#deposit" prefHeight="48.0" prefWidth="137.0" text="Deposit" />
-            <Button id="open_acc_btn" fx:id="with_btn" font="$x1" mnemonicParsing="false" onAction="#withdrawal" prefHeight="48.0" prefWidth="137.0" text="Withdrawal" />
-            <Button id="open_acc_btn" fx:id="trans_btn" font="$x1" mnemonicParsing="false" onAction="#transfer" prefHeight="48.0" prefWidth="137.0" text="Transfer" />
-            <Button id="open_acc_btn" fx:id="state_btn" font="$x1" mnemonicParsing="false" onAction="#statement" prefHeight="48.0" prefWidth="137.0" text="Statement" />
-            <Button fx:id="logout_btn" font="$x1" mnemonicParsing="false" onAction="#logout" prefHeight="48.0" prefWidth="137.0" text="Log Out" />
+            <Button id="open_acc_btn" fx:id="new_acc_btn" font="$x1" mnemonicParsing="false" onAction="#new_acc" prefHeight="48.0" prefWidth="137.0" styleClass="button_main" text="Open New Account">
+              <stylesheets>
+                <URL value="@styleSheet.css" />
+              </stylesheets>
+            </Button>
+            <Button id="open_acc_btn" fx:id="search_acc_main_btn" font="$x1" mnemonicParsing="false" onAction="#search" prefHeight="48.0" prefWidth="137.0" styleClass="button_main" text="Search Account">
+              <stylesheets>
+                <URL value="@styleSheet.css" />
+              </stylesheets>
+            </Button>
+            <Button id="open_acc_btn" fx:id="depo_btn" font="$x1" mnemonicParsing="false" onAction="#deposit" prefHeight="48.0" prefWidth="137.0" styleClass="button_main" text="Deposit">
+              <stylesheets>
+                <URL value="@styleSheet.css" />
+              </stylesheets>
+            </Button>
+            <Button id="open_acc_btn" fx:id="with_btn" font="$x1" mnemonicParsing="false" onAction="#withdrawal" prefHeight="48.0" prefWidth="137.0" styleClass="button_main" text="Withdrawal">
+              <stylesheets>
+                <URL value="@styleSheet.css" />
+              </stylesheets>
+            </Button>
+            <Button id="open_acc_btn" fx:id="trans_btn" font="$x1" mnemonicParsing="false" onAction="#transfer" prefHeight="48.0" prefWidth="137.0" styleClass="button_main" text="Transfer">
+              <stylesheets>
+                <URL value="@styleSheet.css" />
+              </stylesheets>
+            </Button>
+            <Button id="open_acc_btn" fx:id="state_btn" font="$x1" mnemonicParsing="false" onAction="#statement" prefHeight="48.0" prefWidth="137.0" styleClass="button_main" text="Statement">
+              <stylesheets>
+                <URL value="@styleSheet.css" />
+              </stylesheets>
+            </Button>
+            <Button fx:id="logout_btn" font="$x1" mnemonicParsing="false" onAction="#logout" prefHeight="48.0" prefWidth="137.0" styleClass="button_main" text="Log Out">
+              <stylesheets>
+                <URL value="@styleSheet.css" />
+              </stylesheets>
+            </Button>
           </children>
+          <stylesheets>
+            <URL value="@styleSheet.css" />
+          </stylesheets>
         </VBox>
       </left>
-      <top>
-        <Pane prefHeight="60.0" prefWidth="694.0" />
-      </top>
     </BorderPane>
   </children>
 </AnchorPane>

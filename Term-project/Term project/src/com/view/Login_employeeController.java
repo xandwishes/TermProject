@@ -31,9 +31,9 @@ public class Login_employeeController implements Initializable {
     @FXML
     private TextField login_user_tf;
     @FXML
-    private Button login_enter_btn;
-    @FXML
     private PasswordField login_pass_tf;
+    @FXML
+    private Button login_enter_btn;
 
     /**
      * Initializes the controller class.

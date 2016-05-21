@@ -7,7 +7,22 @@ and open the template in the editor.
     Created on : Apr 25, 2016, 2:32:32 PM
     Author     : Nann
 */
-.login_btn{
-    -fx-background-color: #009688;
+
+.left_box{
+    -fx-background-color: #595355;
+}
+.button_main{
+    -fx-background-color: #595355;
     -fx-text-fill: #FFFFFF;
+}
+.button_in{
+    -fx-background-color: #836d75;
+    -fx-text-fill: #FFFFFF;
+}
+.clear_btn{
+    -fx-background-color: #beb7b6;
+    -fx-text-fill: #FFFFFF;
+}
+.table{
+    -fx-background-color: #d9d9d9;
 }

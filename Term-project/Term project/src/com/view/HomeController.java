@@ -279,11 +279,11 @@ public class HomeController extends BankAccount implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 deposit(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(depo_value_tf.getText()));
-                Stage stage = (Stage) depo_enter_btn.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+                Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                    alert1.setTitle("Success");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Success");
+                    depo_value_tf.clear();
             } else {
             }
         } else {
@@ -306,11 +306,11 @@ public class HomeController extends BankAccount implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 withdrawal(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(with_value_tf.getText()));
-                Stage stage = (Stage) with_enter_btn.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+                Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                    alert1.setTitle("Success");
+                    alert1.setHeaderText(null);
+                    alert1.setContentText("Success");
+                    with_value_tf.clear();
             } else {
             }
         } else {
@@ -407,11 +407,11 @@ public class HomeController extends BankAccount implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) { //Click "ok button" > will go back to home(clear everythings)
                 deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
-                Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+                Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                alert1.setTitle("Success");
+                alert1.setHeaderText(null);
+                alert1.setContentText("Success");
+                trans_value_tf.clear();
             }
 
         } else {  // transaction wrong (<=0)
@@ -425,6 +425,10 @@ public class HomeController extends BankAccount implements Initializable {
 
     @FXML
     private void clear_trans(ActionEvent event) {
+        trans_name_tf.clear();
+        trans_value_tf.clear();
+        trans_acc_name_tf.clear();
+        trans_acc_num_tf.clear();
     }
 
     @FXML
@@ -433,28 +437,18 @@ public class HomeController extends BankAccount implements Initializable {
         BankAccount acc = new BankAccount();
         openAccount(new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
                 new_email_tf.getText(), new_phone_tf.getText(), new_identity_num_tf.getText(), new_address_tf.getText());
+        Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+	alert1.setTitle("Succes");
+	alert1.setHeaderText(null);
+	alert1.setContentText("Success!\nYour Account Name is ");
+	alert1.show();
+        
         Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        
-                bankAccount.openAccount(new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
-                new_email_tf.getText(), new_phone_tf.getText(), new_identity_num_tf.getText(), new_address_tf.getText());
-	BankAccount acc;	
-		
-			Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-			alert1.setTitle("Succes");
-			alert1.setHeaderText(null);
-			alert1.setContentText("Success!\nYour Account Name is ");
-			alert1.show();
-			
-			Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
-			Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-			Scene scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		
+	
     }
 
     @FXML
