@@ -6,9 +6,10 @@
 package com.gui;
 
 import com.model.BankAccount;
+import com.model.BankFunction;
 import com.model.Search;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.QUESTION_MESSAGE;
+
 
 /**
  *
@@ -162,27 +163,30 @@ public class withDrawal extends javax.swing.JFrame {
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
        
-        if(checkSearch && !BankAccount.checkEmpty(amountTF) && !BankAccount.checkEmpty(idTF)){ 
+        if(checkSearch && !BankFunction.checkEmpty(amountTF) && !BankFunction.checkEmpty(idTF)){ 
         Search a = search.searchCustomer(Long.parseLong(idTF.getText()));
         if(a != null){
                 if(!call.useConfirmDialog("Withdraw", "Are you sure you withdraw this amount?")){
                     setVisible(true);
                     
                 }else{
-                    try{
+                    //try{
                         if(Integer.parseInt(amountTF.getText()) > a.getBalance()){
                             JOptionPane.showMessageDialog(this, "Error! "+ accNameTF.getText()+" account's overdrawn " );
                             setVisible(true);
                         }else{
+                           
                             bankAccount.withdrawal(Long.parseLong(idTF.getText()), Integer.parseInt(amountTF.getText()));
+                           
                             JOptionPane.showMessageDialog(this, "Withdrawn Accomplish");
                             call.callDisplayApp();
                             setVisible(false);
                         }
-                    }
-                    catch(Exception e){
-                        JOptionPane.showMessageDialog(this,e.getMessage(),"Alert",JOptionPane.ERROR_MESSAGE);
-                    }
+                  //  }
+//                    catch(Exception e){
+//                        
+//                        JOptionPane.showMessageDialog(this,e.getMessage(),"Alert",JOptionPane.ERROR_MESSAGE);
+//                    }
                 }
             }else{
                 JOptionPane.showMessageDialog(this, "Please try again, Might be wrong ID");
@@ -206,7 +210,7 @@ public class withDrawal extends javax.swing.JFrame {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        if(!BankAccount.checkEmpty(idTF)){ 
+        if(!BankFunction.checkEmpty(idTF)){ 
             Search a = search.searchCustomer(Long.parseLong(idTF.getText()));
         if(a != null){
             accNameTF.setText(a.getAcc_name());

@@ -10,9 +10,9 @@ import com.model.BankAccount;
  *
  * @author zxcvbnm
  */
-public class Sql {
+public class Sql extends BankFunction{
     Sql sql;
-    BankAccount bankAccount;
+ 
   
    public String sqlSearchEmp(String user, String pass){
        return "SELECT * FROM BANK_OFFICER WHERE USERNAME = ('"+user+"') AND PASSWORD = ('"+pass+"')";
@@ -47,12 +47,12 @@ public class Sql {
        if(code.toLowerCase().matches("wid")||code.toLowerCase().matches("wit")){
        return "INSERT INTO BANK_TRANSACTION (code,staff_id,date,amount,acc_id,balance)"
                 + " VALUES ('" + code + "','1234','" + new java.sql.Date(System.currentTimeMillis()) +
-                    "'," + amount + "," + acc_id + ","+(bankAccount.getBalanceNow(acc_id)-amount)+
+                    "'," + amount + "," + acc_id + ","+(getBalanceNow(acc_id)-amount)+
         ")";
        }else
            if(code.toLowerCase().matches("dep")){
                return "INSERT INTO BANK_TRANSACTION (code,staff_id,date,amount,acc_id,balance)"
-                + " VALUES ('" + code + "','1234','" + new java.sql.Date(System.currentTimeMillis()) + "'," + amount + "," + acc_id + ","+(amount+bankAccount.getBalanceNow(acc_id))+
+                + " VALUES ('" + code + "','1234','" + new java.sql.Date(System.currentTimeMillis()) + "'," + amount + "," + acc_id + ","+(amount+getBalanceNow(acc_id))+
         ")";
            }
        else

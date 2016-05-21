@@ -15,11 +15,13 @@ import java.util.HashMap;
  */
 public class ConnectDB {
     public CSDbDelegate db;
-    public ConnectDB(){
-        db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
-    }
     
+    public String connect(){
+        db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
+        
+     return db.connect();
+     
+    }
     public void executeQuery(String s){
        db.connect();
        db.executeQuery(s);

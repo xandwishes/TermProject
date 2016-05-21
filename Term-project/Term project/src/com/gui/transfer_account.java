@@ -6,6 +6,7 @@
 package com.gui;
 
 import com.model.BankAccount;
+import com.model.BankFunction;
 import com.model.Search;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.QUESTION_MESSAGE;
@@ -227,7 +228,7 @@ public class transfer_account extends javax.swing.JFrame {
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
-        if(checkLSearch && checkRSearch && !BankAccount.checkEmpty(id) && !BankAccount.checkEmpty(id2)&& !BankAccount.checkEmpty(amountTF)){
+        if(checkLSearch && checkRSearch && !BankFunction.checkEmpty(id) && !BankFunction.checkEmpty(id2)&& !BankFunction.checkEmpty(amountTF)){
         Search a = search.searchCustomer(Long.parseLong(id.getText()));
             
             
@@ -263,7 +264,7 @@ public class transfer_account extends javax.swing.JFrame {
 
     private void LsearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LsearchButtonActionPerformed
         // TODO add your handling code here:
-        if(!BankAccount.checkEmpty(id)){
+        if(!BankFunction.checkEmpty(id)){
         Search a = search.searchCustomer(Long.parseLong(id.getText()));
         if(a != null){
             id2.setEnabled(true);
@@ -285,7 +286,7 @@ public class transfer_account extends javax.swing.JFrame {
 
     private void RsearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RsearchButtonActionPerformed
         // TODO add your handling code here:
-       if(!BankAccount.checkEmpty(id2)){
+       if(!BankFunction.checkEmpty(id2)){
         Search a = search.searchCustomer(Long.parseLong(id2.getText()));
         if(a != null){
             amountTF.setEnabled(true);

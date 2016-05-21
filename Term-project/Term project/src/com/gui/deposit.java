@@ -6,6 +6,7 @@
 package com.gui;
 
 import com.model.BankAccount;
+import com.model.BankFunction;
 import com.model.Search;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.QUESTION_MESSAGE;
@@ -158,7 +159,7 @@ Search search = new Search();
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
-        if(checkSearch && !BankAccount.checkEmpty(accidTF) && !BankAccount.checkEmpty(amountTF)){
+        if(checkSearch && !BankFunction.checkEmpty(accidTF) && !BankFunction.checkEmpty(amountTF)){
         Search a = search.searchCustomer(Long.parseLong(accidTF.getText()));
                     if(a != null){
                         
@@ -188,7 +189,7 @@ Search search = new Search();
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        if(!BankAccount.checkEmpty(accidTF)){ 
+        if(!BankFunction.checkEmpty(accidTF)){ 
 //        String id = accidTF.getText();
 //        if(id==null || id.equals("")) id="0";
 //        

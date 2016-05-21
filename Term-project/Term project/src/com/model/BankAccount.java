@@ -30,7 +30,7 @@ public class BankAccount implements BankingSystem{
     private String birthdate;
     private String address;
     BankAccount bankAccount;
-    Sql sql;
+    Sql sql = new Sql();
     CSDbDelegate db;
     
    
@@ -140,15 +140,15 @@ public class BankAccount implements BankingSystem{
    
 
     public void openAccount(String name, double balance, String email,String phone_num, String id_no,String address) {
-        db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
+//        db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
+//        System.out.println(db.connect());
         db.executeQuery(sql.sqlcreateAccount(name, balance, email, phone_num, id_no, address));
         db.executeQuery(sql.sqlUpdateTransac(1, (int)balance, "opa"));
     }
 
     public void deposit(long acc_id, int amount) {
-        db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
+//        db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
+//        System.out.println(db.connect());
         db.executeQuery(sql.sqlDeposit(acc_id, amount));
         db.executeQuery(sql.sqlUpdateTransac(acc_id, amount, "dep"));
     }
@@ -156,30 +156,11 @@ public class BankAccount implements BankingSystem{
     public void withdrawal(long acc_id, int amount) {
         db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
         System.out.println(db.connect());
-        db.executeQuery(sql.sqlDeposit(acc_id, amount));
+        db.executeQuery(sql.sqlWithdraw(acc_id, amount));
+        
         db.executeQuery(sql.sqlUpdateTransac(acc_id,amount,"wit"));
     }
     
-    public double getBalanceNow(long acc_id) {
-        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
-        double balance = 0;
-        String sql = "SELECT balance FROM BANK_ACCOUNT WHERE acc_id = ('" + acc_id + "')";
-
-        ArrayList<HashMap> data = db.queryRows(sql);
-
-        if (data != null && data.size() > 0) {
-            for (int i = 0; i < data.size(); i++) {
-                HashMap std = data.get(i);
-
-                balance = Double.parseDouble((String) std.get("balance"));
-            }
-        }
-        return balance;
-    }
-    
-    public static boolean checkEmpty(JTextField j){
-     return  j.getText().length()<=0;
-    }
+     
 
 }

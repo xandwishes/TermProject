@@ -6,6 +6,7 @@
 package com.gui;
 
 import com.model.BankAccount;
+import com.model.BankFunction;
 
 import com.model.Search;
 import java.awt.Color;
@@ -169,7 +170,7 @@ public class statement_printout extends javax.swing.JFrame {
     private void searchBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBTTActionPerformed
         // TODO add your handling code here:
 
-        if(!BankAccount.checkEmpty(AccIdNameTF)){   
+        if(!BankFunction.checkEmpty(AccIdNameTF)){   
         List<Search> a = search.searchByID(Long.parseLong(AccIdNameTF.getText()));
         if (a != null) {
             jPanel1.removeAll();
@@ -196,7 +197,7 @@ public class statement_printout extends javax.swing.JFrame {
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         // TODO add your handling code here:
-        if(checkSearch && !BankAccount.checkEmpty(AccIdNameTF)){
+        if(checkSearch && !BankFunction.checkEmpty(AccIdNameTF)){
         if (!call.useConfirmDialog("message","Success!")) {
             setVisible(true);
         } else {
@@ -219,7 +220,7 @@ public class statement_printout extends javax.swing.JFrame {
 
     private void AccIdNameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccIdNameTFActionPerformed
         // TODO add your handling code here:
-        if(!BankAccount.checkEmpty(AccIdNameTF)){   
+        if(!BankFunction.checkEmpty(AccIdNameTF)){   
         List<Search> a = search.searchByID(Long.parseLong(AccIdNameTF.getText()));
         if (a != null) {
             jPanel1.removeAll();

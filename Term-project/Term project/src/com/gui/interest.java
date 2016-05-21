@@ -6,6 +6,7 @@
 package com.gui;
 
 import com.model.BankAccount;
+import com.model.BankFunction;
 import com.model.Search;
 
 
@@ -141,7 +142,7 @@ public class interest extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
-        if(!BankAccount.checkEmpty(accidTF)){
+        if(!BankFunction.checkEmpty(accidTF)){
         Search a = search.searchCustomer(Long.parseLong(accidTF.getText()));
         if(a != null){
             jLabel1.setText("Last balance : "+ a.getBalance());
@@ -156,7 +157,7 @@ public class interest extends javax.swing.JFrame {
 
     private void accidTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accidTFActionPerformed
         // TODO add your handling code here:
-        if(!BankAccount.checkEmpty(accidTF)){
+        if(!BankFunction.checkEmpty(accidTF)){
         Search a = search.searchCustomer(Long.parseLong(accidTF.getText()));
         if(a != null){
             jLabel1.setText("Last balance : "+ a.getBalance());

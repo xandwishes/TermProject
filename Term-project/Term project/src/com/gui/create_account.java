@@ -6,6 +6,7 @@
 package com.gui;
 
 import com.model.BankAccount;
+import com.model.BankFunction;
 
 import edu.sit.cs.db.CSDbDelegate;
 import java.awt.GridLayout;
@@ -206,10 +207,10 @@ public class create_account extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void buttonNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNextActionPerformed
-        if(BankAccount.checkEmpty(nametf)){
+        if(BankFunction.checkEmpty(nametf)){
                JOptionPane.showMessageDialog(null, "Fill name", "Alert", JOptionPane.INFORMATION_MESSAGE);
         }else
-        if(BankAccount.checkEmpty(idtf)){
+        if(BankFunction.checkEmpty(idtf)){
               JOptionPane.showMessageDialog(null, "Fill Identity number", "Alert", JOptionPane.INFORMATION_MESSAGE);
         }else{
            
