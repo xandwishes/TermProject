@@ -5,7 +5,7 @@
  */
 package com.view;
 
-import com.model.BankOfficer;
+import com.model.Search;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,7 +27,7 @@ import javafx.stage.Stage;
  * @author Nann
  */
 public class Login_employeeController implements Initializable {
-
+    Search search = new Search();
     @FXML
     private TextField login_user_tf;
     @FXML
@@ -45,7 +45,7 @@ public class Login_employeeController implements Initializable {
 
     @FXML
     private void login(ActionEvent event) throws IOException {
-        BankOfficer emp_acc = BankOfficer.searchEmp(login_user_tf.getText(), login_pass_tf.getText());
+        Search emp_acc = search.searchEmp(login_user_tf.getText(), login_pass_tf.getText());
         
         if(emp_acc != null){
             Stage stage = (Stage) login_user_tf.getScene().getWindow();

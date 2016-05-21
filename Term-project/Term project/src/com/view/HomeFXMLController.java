@@ -6,7 +6,7 @@
 package com.view;
 
 import com.model.BankAccount;
-import com.model.BankTransaction;
+import com.model.Search;
 import com.model.Statement;
 import java.io.IOException;
 import java.net.URL;
@@ -41,7 +41,7 @@ import javafx.stage.Stage;
  * @author Nann
  */
 public class HomeFXMLController implements Initializable {
-
+    Search search = new Search();
     @FXML
     private AnchorPane Search;
     @FXML
@@ -160,8 +160,8 @@ public class HomeFXMLController implements Initializable {
     }
     
     private void setDataToTable(long id){
-       List<BankTransaction> list = BankTransaction.searchByID(id);
-       for(BankTransaction b : list){
+       List<Search> list = search.searchByID(id);
+       for(Search b : list){
            statementData.add(new Statement(b.getDate(), b.getCode(), b.getBalance()+"", b.getAmount()+"", b.getStaff_id()));
        }
         
