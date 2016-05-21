@@ -89,7 +89,6 @@ public class HomeController extends BankAccount implements Initializable {
     private TextField trans_acc_num_tf;
     @FXML
     private TextField trans_value_tf;
-    @FXML
     private TextField trans_acc_balance_tf;
     @FXML
     private Button trans_enter_btn;
@@ -158,6 +157,8 @@ public class HomeController extends BankAccount implements Initializable {
     @FXML
     private TableView<Statement> statement_table;
     private ObservableList<Statement> statementData = FXCollections.observableArrayList();
+    @FXML
+    private TextField search_balance_tf;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -173,68 +174,50 @@ public class HomeController extends BankAccount implements Initializable {
            statementData.add(new Statement(b.getDate(), b.getCode(), b.getBalance()+"", b.getAmount()+"", b.getStaff_id()));
        }
        statement_table.setItems(statementData);
-    }    
-    
+    }
     
     @FXML
     private void search(ActionEvent event) {
+        hideAll();
         search_pane.setVisible(true);
-        new_pane.setVisible(false);
-        depo_pane.setVisible(false);
-        trans_pane.setVisible(false);
-        state_pane.setVisible(false);
-        with_pane.setVisible(false);
     }
     @FXML
     private void new_acc(ActionEvent event) {
+        hideAll();
         new_pane.setVisible(true);
-        search_pane.setVisible(false);
-        depo_pane.setVisible(false);
-        trans_pane.setVisible(false);
-        state_pane.setVisible(false);
-        with_pane.setVisible(false);
-        search_pane.setVisible(false);
     }
     @FXML
     private void deposit(ActionEvent event) {
+        hideAll();
         depo_pane.setVisible(true);
-        new_pane.setVisible(false);
-        trans_pane.setVisible(false);
-        state_pane.setVisible(false);
-        with_pane.setVisible(false);
-        search_pane.setVisible(false);
     }
 
     @FXML
     private void withdrawal(ActionEvent event) {
+        hideAll();
         with_pane.setVisible(true);
-        depo_pane.setVisible(false);
-        new_pane.setVisible(false);
-        trans_pane.setVisible(false);
-        state_pane.setVisible(false);
-        search_pane.setVisible(false);
     }
 
     @FXML
     private void transfer(ActionEvent event) {
+        hideAll();
         trans_pane.setVisible(true);
-        depo_pane.setVisible(false);
-        new_pane.setVisible(false);
-        state_pane.setVisible(false);
-        with_pane.setVisible(false);
-        search_pane.setVisible(false);
     }
 
     @FXML
     private void statement(ActionEvent event) {
+        hideAll();
         state_pane.setVisible(true);
-        depo_pane.setVisible(false);
-        new_pane.setVisible(false);
-        trans_pane.setVisible(false);
-        with_pane.setVisible(false);
-        search_pane.setVisible(false);
     }
-
+    public void hideAll(){
+        search_pane.setVisible(false);
+        new_pane.setVisible(false);
+        depo_pane.setVisible(false);
+        trans_pane.setVisible(false);
+        state_pane.setVisible(false);
+        with_pane.setVisible(false);
+    }
+    
     @FXML
     private void logout(ActionEvent event) throws IOException {
         Stage stage = (Stage) logout_btn.getScene().getWindow();
@@ -271,6 +254,7 @@ public class HomeController extends BankAccount implements Initializable {
             acc_name_tf.setText(acc.getAcc_name());
             name_tf.setText(acc.getAcc_name());
             identity_tf.setText(acc.getId_no());
+            search_balance_tf.setText(Double.toString(acc.getBalance()));
             depo_balance_tf.setText(Double.toString(acc.getBalance()));
             with_balance_tf.setText(Double.toString(acc.getBalance()));
             depo_value_tf.setDisable(false);
@@ -283,14 +267,13 @@ public class HomeController extends BankAccount implements Initializable {
             alert.setContentText("Please try again");
             alert.showAndWait();
         }
-        
     }
     @FXML
     private void depo_enter(ActionEvent event) throws IOException {
         if(!checkEmpty(depo_value_tf)){
         if (Integer.parseInt(depo_value_tf.getText()) > 0) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Complete");
+            alert.setTitle("Success");
             alert.setHeaderText(null);
             alert.setContentText(acc_name_tf.getText() + " deposit: " + Integer.parseInt(depo_value_tf.getText()) + "?");
             Optional<ButtonType> result = alert.showAndWait();
@@ -361,7 +344,6 @@ public class HomeController extends BankAccount implements Initializable {
         } else if (trans_acc != null && acc != null) {
             trans_acc_name_tf.setText(trans_acc.getAcc_name());
             trans_acc_name_tf.setText(trans_acc.getAcc_name());
-            trans_acc_balance_tf.setText(Double.toString(acc.getBalance())); //only this get from normal id
             trans_value_tf.setDisable(false);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -407,8 +389,8 @@ public class HomeController extends BankAccount implements Initializable {
                     alert1.setTitle("Success");
                     alert1.setHeaderText(null);
                     alert1.setContentText("Success");
-                    alert1.showAndWait();
-                   // menu_tab.getSelectionModel().select(with_tab);
+                    trans_value_tf.clear();
+                    //menu_tab.getSelectionModel().select(with_tab);
                     return;
                 }
             }
@@ -457,11 +439,22 @@ public class HomeController extends BankAccount implements Initializable {
         stage.setScene(scene);
         stage.show();
         
-        Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-        alert1.setTitle("Succes");
-        alert1.setHeaderText(null);
-        alert1.setContentText("Success! Your Account Name is "+acc.getAcc_name()+"\nYour Account Number is "+acc.getAcc_id());
-        alert1.showAndWait();
+                bankAccount.openAccount(new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
+                new_email_tf.getText(), new_phone_tf.getText(), new_identity_num_tf.getText(), new_address_tf.getText());
+	BankAccount acc;	
+		
+			Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+			alert1.setTitle("Succes");
+			alert1.setHeaderText(null);
+			alert1.setContentText("Success!\nYour Account Name is ");
+			alert1.show();
+			
+			Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
+			Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		
     }
 
     @FXML
