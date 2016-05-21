@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author zxcvbnm
  */
-public class Search {
+public class Search extends Sql{
     private String acc_name;
     private long acc_id;
     private String trans_id;
@@ -38,7 +38,7 @@ public class Search {
     private String birthdate;
     private String address;
     CSDbDelegate db;
-    Sql sql = new Sql();
+ 
     
 
     public double getBalance() {
@@ -174,7 +174,7 @@ public class Search {
         db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
         System.out.println(db.connect());
          List<Search> list = null;
-        ArrayList<HashMap> data= db.queryRows(sql.sqlsearchTransac(acc_id));
+        ArrayList<HashMap> data= db.queryRows(sqlsearchTransac(acc_id));
         
         Search ba = null;
 
@@ -201,7 +201,7 @@ public class Search {
     public Search searchEmp(String user, String pass){
         db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
         System.out.println(db.connect());
-        ArrayList<HashMap> data= db.queryRows(sql.sqlSearchEmp(user, pass));
+        ArrayList<HashMap> data= db.queryRows(sqlSearchEmp(user, pass));
         Search bo = null;
 
         if(data!=null && data.size()>0){
@@ -220,7 +220,7 @@ public class Search {
     public Search searchCustomer(long acc_id) {
         db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
         System.out.println(db.connect());
-        ArrayList<HashMap> data = db.queryRows(sql.sqlSearchCustomer(acc_id));
+        ArrayList<HashMap> data = db.queryRows(sqlSearchCustomer(acc_id));
         Search ba = null;
 
         if (data != null && data.size() > 0) {

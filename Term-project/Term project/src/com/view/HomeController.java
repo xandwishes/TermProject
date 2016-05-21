@@ -6,6 +6,8 @@
 package com.view;
 
 import com.model.BankAccount;
+
+
 import com.model.Search;
 import com.model.Statement;
 import java.io.IOException;
@@ -39,9 +41,8 @@ import javafx.stage.Stage;
  *
  * @author Nann
  */
-public class HomeController implements Initializable {
-    Search search = new Search();
-    BankAccount bankAccount = new BankAccount();
+public class HomeController extends BankAccount implements Initializable {
+   
     @FXML
     private TextField trans_name_tf;
     @FXML
@@ -167,7 +168,7 @@ public class HomeController implements Initializable {
         column_staffId.setCellValueFactory(new PropertyValueFactory<Statement, String>("column_staffId"));
     }
     private void setDataToTable(long id){
-       List<Search> list = search.searchByID(id);
+       List<Search> list = searchByID(id);
        for(Search b : list){
            statementData.add(new Statement(b.getDate(), b.getCode(), b.getBalance()+"", b.getAmount()+"", b.getStaff_id()));
        }
@@ -265,7 +266,7 @@ public class HomeController implements Initializable {
         if (id == null || id.equals("")) {
             id = "0";
         }
-        Search acc = search.searchCustomer(Long.parseLong(id));
+        Search acc = searchCustomer(Long.parseLong(id));
         if (acc != null) {
             acc_name_tf.setText(acc.getAcc_name());
             name_tf.setText(acc.getAcc_name());
@@ -286,6 +287,7 @@ public class HomeController implements Initializable {
     }
     @FXML
     private void depo_enter(ActionEvent event) throws IOException {
+        if(!checkEmpty(depo_value_tf)){
         if (Integer.parseInt(depo_value_tf.getText()) > 0) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Complete");
@@ -293,7 +295,7 @@ public class HomeController implements Initializable {
             alert.setContentText(acc_name_tf.getText() + " deposit: " + Integer.parseInt(depo_value_tf.getText()) + "?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                bankAccount.deposit(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(depo_value_tf.getText()));
+                deposit(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(depo_value_tf.getText()));
                 Stage stage = (Stage) depo_enter_btn.getScene().getWindow();
                 Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
                 Scene scene = new Scene(root);
@@ -308,6 +310,7 @@ public class HomeController implements Initializable {
             alert.setContentText("Please try again");
             alert.showAndWait();
         }
+        }
     }
 
     @FXML
@@ -319,7 +322,7 @@ public class HomeController implements Initializable {
             alert.setContentText(acc_name_tf.getText() + " deposit: " + Integer.parseInt(with_value_tf.getText()) + "?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                BankAccount.withdrawal(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(with_value_tf.getText()));
+                withdrawal(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(with_value_tf.getText()));
                 Stage stage = (Stage) with_enter_btn.getScene().getWindow();
                 Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
                 Scene scene = new Scene(root);
@@ -348,8 +351,8 @@ public class HomeController implements Initializable {
             id = "0";
         }
 
-        BankAccount trans_acc = BankAccount.search(Long.parseLong(trans_id));
-        BankAccount acc = BankAccount.search(Long.parseLong(id));
+        Search trans_acc = searchCustomer(Long.parseLong(trans_id));
+        Search acc = searchCustomer(Long.parseLong(id));
 
         if (trans_acc != null && acc == null) {
             trans_acc_name_tf.setText(trans_acc.getAcc_name());
@@ -381,7 +384,7 @@ public class HomeController implements Initializable {
             //if-else for popup check message "ok button" or "cancel button" transaction
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {     //Click "ok button" > will go back to home(clear everythings)
-                BankAccount acc = BankAccount.search(Long.parseLong(acc_num_tf.getText()));
+                Search acc = searchCustomer(Long.parseLong(acc_num_tf.getText()));
 
                 //For balance of "acc_num_tf"(acc give to trans_acc) 
                 //Not enough to transaction to "trans_acc_num_tf"(trans_acc get from acc)
@@ -393,8 +396,8 @@ public class HomeController implements Initializable {
                     alert1.setContentText(acc_name_tf.getText() + " account's overdrawn");
                     alert1.showAndWait();
                 } else {  //Transaction correctly then go to home(clear everythings)
-                    bankAccount.deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
-                    BankAccount.withdrawal(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
+                    deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
+                    withdrawal(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
 //                    Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
 //                    Parent root = FXMLLoader.load(getClass().getResource("HomeFXML.fxml"));
 //                    Scene scene = new Scene(root);
@@ -421,7 +424,7 @@ public class HomeController implements Initializable {
             //if-else for popup check message "ok button" or "cancel button" transaction
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) { //Click "ok button" > will go back to home(clear everythings)
-                bankAccount.deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
+                deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
                 Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
                 Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
                 Scene scene = new Scene(root);
@@ -444,8 +447,9 @@ public class HomeController implements Initializable {
 
     @FXML
     private void register(ActionEvent event) throws IOException {
+        
         BankAccount acc = new BankAccount();
-        bankAccount.openAccount(new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
+        openAccount(new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
                 new_email_tf.getText(), new_phone_tf.getText(), new_identity_num_tf.getText(), new_address_tf.getText());
         Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));

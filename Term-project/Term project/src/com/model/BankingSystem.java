@@ -13,8 +13,8 @@ public interface BankingSystem {
     
     public void withdrawal(long acc_id, int amount);
     public void deposit(long acc_id, int amount);
-    public void openAccount(String name, double balance,String email,
-            String phone_num, String id_no, String address);
+    public void openAccount(String acc_name,String fname,String lname, double balance, String email, String phone_num,
+                                      String id_no, String address);
     
    
   //  public void closeaccount();

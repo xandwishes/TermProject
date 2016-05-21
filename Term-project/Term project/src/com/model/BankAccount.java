@@ -13,7 +13,7 @@ import java.util.HashMap;
  *
  * @author Nann
  */
-public class BankAccount {
+public class BankAccount extends Search implements BankingSystem{
     
     private long acc_id;
     private String acc_name;
@@ -25,7 +25,8 @@ public class BankAccount {
     private String phone_num;
     private String id_no;
     private String address;
-    Sql sql = new Sql();
+   
+    
     
     public void setAcc_id(long acc_id) {
         this.acc_id = acc_id;
@@ -109,106 +110,25 @@ public class BankAccount {
 
         CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
         System.out.println(db.connect());
-        db.executeQuery(sql.sqlcreateAccount(acc_name, balance, email, phone_num, id_no, address));
-        db.executeQuery(sql.sqlUpdateTransac(1, (int)balance, "opa"));
-
-//        long id = System.currentTimeMillis();
-//
-//        String sql_openAccount = "INSERT INTO "
-//                + "BANK_ACCOUNT(acc_id,acc_name,fname,lname,balance,date,email,phone_num,id_no,address)"
-//                + "VALUES ('" + id + "','"+acc_name+"','" + fname + "','"+ lname + "','" + balance + "','" + new java.sql.Date(System.currentTimeMillis())
-//                +  "','" + email + "','" + phone_num + "','" + id_no + "','" + address + "')";
-//
-//        String code = "OPA";
-//        String sql_transaction = "INSERT INTO BANK_TRANSACTION (code,staff_id,date,amount,acc_id,balance)"
-//                + " VALUES ('" + code + "','1234','" + new java.sql.Date(System.currentTimeMillis()) + "'," + balance + "," + id + ","+balance+
-//        ")";
-       
-    }
+        db.executeQuery(sqlcreateAccount(acc_name, balance, email, phone_num, id_no, address));
+        db.executeQuery(sqlUpdateTransac(1, (int)balance, "opa"));
+     }
 
     public void deposit(long acc_id, int amount) {
         // Connect to database
         CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
         System.out.println(db.connect());
-//        String code = "DPS";
-//        String sql_depositvalue = "UPDATE BANK_ACCOUNT SET balance = (balance + " + amount + ") WHERE acc_id = ('" + acc_id + "')";
-//        String sql_transaction = "INSERT INTO BANK_TRANSACTION (code,staff_id,date,amount,acc_id,balance)"
-//                + " VALUES ('" + code + "','1234','" + new java.sql.Date(System.currentTimeMillis()) + "'," + amount + "," + acc_id + ","+(amount+getBalanceNow(acc_id))+
-//        ")";
-       db.executeQuery(sql.sqlDeposit(acc_id, amount));
-       db.executeQuery(sql.sqlUpdateTransac(acc_id, amount, "dep"));
+        db.executeQuery(sqlUpdateTransac(acc_id, amount, "dep"));
     }
-    public static double getBalanceNow(long acc_id) {
+    
+
+    public void withdrawal(long acc_id, int amount) {
         CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
         System.out.println(db.connect());
-        double balance = 0;
-        String sql = "SELECT balance FROM BANK_ACCOUNT WHERE acc_id = ('" + acc_id + "')";
-
-        ArrayList<HashMap> data = db.queryRows(sql);
-
-        if (data != null && data.size() > 0) {
-            for (int i = 0; i < data.size(); i++) {
-                HashMap std = data.get(i);
-
-                balance = Double.parseDouble((String) std.get("balance"));
-            }
-        }
-        return balance;
-    }
-
-    public static void withdrawal(long acc_id, int amount) {
-        // Connect to database
-        System.out.println("Widrawal");
-        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
-        String code = "WID";
-        String sql_depositvalue = "UPDATE BANK_ACCOUNT SET balance = (balance -" + amount + ")WHERE acc_id = ('" + acc_id + "')";
-
-        String sql_transaction = "INSERT INTO BANK_TRANSACTION (code,staff_id,date,amount,acc_id,balance)"
-                + " VALUES ('" + code + "','1234','" + new java.sql.Date(System.currentTimeMillis()) +
-                    "'," + amount + "," + acc_id + ","+(getBalanceNow(acc_id)-amount)+
-        ")";
-        db.executeQuery(sql_depositvalue);
-        db.executeQuery(sql_transaction);
+        db.executeQuery(sqlWithdraw(acc_id, amount));
+        db.executeQuery(sqlUpdateTransac(acc_id,amount,"wit"));
 
     }
 
-    public static BankAccount search(long acc_id) {
-        // Connect to database
-        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-        System.out.println(db.connect());
-
-        String sql_search = "SELECT * FROM BANK_ACCOUNT WHERE acc_id = ('" + acc_id + "')";
-
-        ArrayList<HashMap> data = db.queryRows(sql_search);
-        BankAccount ba = null;
-
-        if (data != null && data.size() > 0) {
-            ba = new BankAccount();
-            for (int i = 0; i < data.size(); i++) {
-                HashMap std = data.get(i);
-
-                ba.setAcc_name((String) std.get("acc_name"));
-                ba.setAcc_id(Long.parseLong((String) std.get("acc_id")));
-                ba.setAddress((String) std.get("address"));
-                ba.setBalance(Double.parseDouble((String) std.get("balance")));
-                ba.setDate((String) std.get("date"));
-                ba.setId_no((String) std.get("id_no"));
-                ba.setEmail((String) std.get("email"));
-                ba.setPhone_num((String) std.get("phone_num"));
-                ba.setFname((String) std.get("fname"));
-                ba.setLname((String) std.get("lname"));
-            }
-        }
-        return ba;
-    }
-
-//    public static void main(String[] args) {
-//        System.out.println(System.currentTimeMillis());
-//        System.out.println(new java.sql.Date(System.currentTimeMillis()));
-//        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-//        System.out.println(db.connect());
-//
-//    }
-
+  
 }

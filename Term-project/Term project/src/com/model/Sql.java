@@ -4,14 +4,16 @@
  * and open the template in the editor.
  */
 package com.model;
-import com.model.BankAccount;
+
 
 /**
  *
  * @author zxcvbnm
  */
 public class Sql extends BankFunction{
-    Sql sql;
+    
+
+    
  
   
    public String sqlSearchEmp(String user, String pass){

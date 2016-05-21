@@ -5,21 +5,23 @@
  */
 package com.model;
 
+import edu.sit.cs.db.CSDbDelegate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.JTextField;
+import javafx.scene.control.TextField;
+
 
 /**
  *
  * @author zxcvbnm
  */
-public class BankFunction extends ConnectDB{
+public class BankFunction{
     
    
             
     public double getBalanceNow(long acc_id) {
-//        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
-//        System.out.println(db.connect());
+        CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
+        System.out.println(db.connect());
         double balance = 0;
         String sql = "SELECT balance FROM BANK_ACCOUNT WHERE acc_id = ('" + acc_id + "')";
 
@@ -35,7 +37,7 @@ public class BankFunction extends ConnectDB{
         return balance;
     }
     
-    public static boolean checkEmpty(JTextField j){
+    public static boolean checkEmpty(TextField j){
      return  j.getText().length()<=0;
     }
 }
