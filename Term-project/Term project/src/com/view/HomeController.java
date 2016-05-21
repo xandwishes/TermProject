@@ -41,6 +41,7 @@ import javafx.stage.Stage;
  */
 public class HomeController implements Initializable {
     Search search = new Search();
+    BankAccount bankAccount = new BankAccount();
     @FXML
     private TextField trans_name_tf;
     @FXML
@@ -292,7 +293,7 @@ public class HomeController implements Initializable {
             alert.setContentText(acc_name_tf.getText() + " deposit: " + Integer.parseInt(depo_value_tf.getText()) + "?");
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                BankAccount.deposit(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(depo_value_tf.getText()));
+                bankAccount.deposit(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(depo_value_tf.getText()));
                 Stage stage = (Stage) depo_enter_btn.getScene().getWindow();
                 Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
                 Scene scene = new Scene(root);
@@ -392,7 +393,7 @@ public class HomeController implements Initializable {
                     alert1.setContentText(acc_name_tf.getText() + " account's overdrawn");
                     alert1.showAndWait();
                 } else {  //Transaction correctly then go to home(clear everythings)
-                    BankAccount.deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
+                    bankAccount.deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
                     BankAccount.withdrawal(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
 //                    Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
 //                    Parent root = FXMLLoader.load(getClass().getResource("HomeFXML.fxml"));
@@ -420,7 +421,7 @@ public class HomeController implements Initializable {
             //if-else for popup check message "ok button" or "cancel button" transaction
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) { //Click "ok button" > will go back to home(clear everythings)
-                BankAccount.deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
+                bankAccount.deposit(Long.parseLong(trans_acc_num_tf.getText()), Integer.parseInt(trans_value_tf.getText()));
                 Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
                 Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
                 Scene scene = new Scene(root);
@@ -444,7 +445,7 @@ public class HomeController implements Initializable {
     @FXML
     private void register(ActionEvent event) throws IOException {
         BankAccount acc = new BankAccount();
-        BankAccount.openAccount(new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
+        bankAccount.openAccount(new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
                 new_email_tf.getText(), new_phone_tf.getText(), new_identity_num_tf.getText(), new_address_tf.getText());
         Stage stage = (Stage) trans_enter_btn.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
