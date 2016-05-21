@@ -5,6 +5,7 @@
  */
 package com.controller;
 
+import com.model.BankAccount;
 import com.model.Search;
 import java.io.IOException;
 import java.net.URL;
@@ -26,7 +27,7 @@ import javafx.stage.Stage;
  *
  * @author Nann
  */
-public class Login_employeeController implements Initializable {
+public class Login_employeeController extends BankAccount implements Initializable {
     Search search = new Search();
     @FXML
     private TextField login_user_tf;
@@ -45,20 +46,26 @@ public class Login_employeeController implements Initializable {
 
     @FXML
     private void login(ActionEvent event) throws IOException {
-        Search emp_acc = search.searchEmp(login_user_tf.getText(), login_pass_tf.getText());
-        if(emp_acc != null){
-            Stage stage = (Stage) login_user_tf.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/com/view/Home.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("Try again");
-            alert.showAndWait();
+        if(!checkEmpty(login_user_tf) && !checkEmpty(login_pass_tf)){
+            Search emp_acc = search.searchEmp(login_user_tf.getText(), login_pass_tf.getText());
+            if(emp_acc != null){
+                Stage stage = (Stage) login_user_tf.getScene().getWindow();
+                Parent root = FXMLLoader.load(getClass().getResource("/com/view/Home.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Try again");
+                alert.showAndWait();
+            }
         }
     }
+    public void enter(ActionEvent event) throws IOException {
+        login(event);
+    }
+        
     
 }

@@ -269,6 +269,32 @@ public class HomeController extends BankAccount implements Initializable {
         }
     }
     
+    public void searchEnter(ActionEvent event) {
+        String id = acc_num_tf.getText();
+        if (id == null || id.equals("")) {
+            id = "0";
+        }
+        Search acc = searchCustomer(Long.parseLong(id));
+        if (acc != null) {
+            acc_name_tf.setText(acc.getAcc_name());
+            name_tf.setText(acc.getAcc_name());
+            identity_tf.setText(acc.getId_no());
+            search_balance_tf.setText(Double.toString(acc.getBalance()));
+            depo_balance_tf.setText(Double.toString(acc.getBalance()));
+            with_balance_tf.setText(Double.toString(acc.getBalance()));
+            depo_value_tf.setDisable(false);
+            with_value_tf.setDisable(false);
+            updateBalance();
+            setDataToTable(Long.parseLong(id));
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Please try again");
+            alert.showAndWait();
+        }
+    }
+    
     private void updateBalance(){
          Search acc = searchCustomer(Long.parseLong(acc_num_tf.getText()));
          search_balance_tf.setText(Double.toString(acc.getBalance()));
@@ -305,10 +331,14 @@ public class HomeController extends BankAccount implements Initializable {
         }
         }
     }
+    public void a(ActionEvent event) throws IOException{
+     depo_enter(event);
+    }
 
     @FXML
     private void with_enter(ActionEvent event) throws IOException {
-        if (Integer.parseInt(with_value_tf.getText()) > 0 || !with_value_tf.getText().equals("")) {
+        if(!checkEmpty(with_value_tf)){
+        if (Double.parseDouble(with_value_tf.getText()) > 0 && Double.parseDouble(with_value_tf.getText()) <= Double.parseDouble(with_balance_tf.getText())) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirm Withdrawal");
             alert.setHeaderText(null);
@@ -316,7 +346,7 @@ public class HomeController extends BankAccount implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                  Search acc = searchCustomer(Long.parseLong(acc_num_tf.getText()));
-                 if(Integer.parseInt(with_value_tf.getText()) < acc.getBalance()){
+                 if(Integer.parseInt(with_value_tf.getText()) <= acc.getBalance()){
                     withdrawal(Long.parseLong(acc_num_tf.getText()), Integer.parseInt(with_value_tf.getText()));
                     Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
                     alert1.setTitle("Success");
@@ -340,40 +370,49 @@ public class HomeController extends BankAccount implements Initializable {
             alert.setContentText("Please try again");
             alert.showAndWait();
         }
+        }
+    }
+    public void withKeyboard(ActionEvent event) throws IOException {
+        with_enter(event);
     }
 
     @FXML
     private void search_trans_acc(ActionEvent event) {
-        String trans_id = trans_acc_num_tf.getText();// Get id for trans
-        String id = acc_num_tf.getText();//normal id
+        if(!checkEmpty(trans_acc_num_tf)){
+            String trans_id = trans_acc_num_tf.getText();// Get id for trans
+            String id = acc_num_tf.getText();//normal id
 
-        if (trans_id == null || trans_id.equals("")) {
-            trans_id = "0";
-        }
-        if (id == null || id.equals("")) {
-            id = "0";
-        }
+            if (trans_id == null || trans_id.equals("")) {
+                trans_id = "0";
+            }
+            if (id == null || id.equals("")) {
+                id = "0";
+            }
 
-        Search trans_acc = searchCustomer(Long.parseLong(trans_id));
-        Search acc = searchCustomer(Long.parseLong(id));
+            Search trans_acc = searchCustomer(Long.parseLong(trans_id));
+            Search acc = searchCustomer(Long.parseLong(id));
 
-        if (trans_acc != null && acc == null) {
-            trans_acc_name_tf.setText(trans_acc.getAcc_name());
-            trans_name_tf.setText(trans_acc.getAcc_name());
-            trans_value_tf.setDisable(false);
-        } else if (trans_acc != null && acc != null) {
-            trans_acc_name_tf.setText(trans_acc.getAcc_name());
-            trans_acc_name_tf.setText(trans_acc.getAcc_name());
-            trans_value_tf.setDisable(false);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Transfer error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please try again");
-            alert.showAndWait();
+            if (trans_acc != null && acc == null) {
+                trans_acc_name_tf.setText(trans_acc.getAcc_name());
+                trans_name_tf.setText(trans_acc.getAcc_name());
+                trans_value_tf.setDisable(false);
+            } else if (trans_acc != null && acc != null) {
+                trans_acc_name_tf.setText(trans_acc.getAcc_name());
+                trans_acc_name_tf.setText(trans_acc.getAcc_name());
+                trans_value_tf.setDisable(false);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Transfer error");
+                alert.setHeaderText(null);
+                alert.setContentText("Please try again");
+                alert.showAndWait();
+            }
         }
-    
     }
+    public void searchTranKeyboard(ActionEvent event) {
+        search_trans_acc(event);
+    }
+    
 
     @FXML
     private void trans_thrid_acc(ActionEvent event) throws IOException {
@@ -441,6 +480,10 @@ public class HomeController extends BankAccount implements Initializable {
             alert.setContentText("Please try again");
             alert.showAndWait();
         }
+    }
+    
+    public void tranKeyboard(ActionEvent event) throws IOException {
+        trans_thrid_acc(event);
     }
 
     @FXML

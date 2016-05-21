@@ -30,7 +30,7 @@
             <URL value="file:/E:/Coding/java/TermProject/JavaFXProject/src/com/view/styleSheet.css" />
           </stylesheets>
         </Button>
-        <PasswordField id="password_tf" fx:id="login_pass_tf" layoutX="44.0" layoutY="125.0" prefWidth="200.0" promptText="Password" />
+        <PasswordField id="password_tf" fx:id="login_pass_tf" layoutX="44.0" layoutY="125.0" prefWidth="200.0" promptText="Password"  onAction="#enter"   />
       </children>
       <stylesheets>
         <URL value="file:/E:/Coding/java/TermProject/JavaFXProject/src/com/view/styleSheet.css" />

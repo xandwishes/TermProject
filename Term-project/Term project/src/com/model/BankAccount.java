@@ -118,15 +118,16 @@ public class BankAccount extends Search implements BankingSystem{
         // Connect to database
         CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
         System.out.println(db.connect());
-        db.executeQuery(sqlUpdateTransac(acc_id, amount, "dep"));
+       db.executeQuery(sqlUpdateTransac(acc_id, amount, "dep"));
+        db.executeQuery(sqlDeposit(acc_id, amount));
     }
     
 
     public void withdrawal(long acc_id, int amount) {
         CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
         System.out.println(db.connect());
+       db.executeQuery(sqlUpdateTransac(acc_id,amount,"wit"));
         db.executeQuery(sqlWithdraw(acc_id, amount));
-        db.executeQuery(sqlUpdateTransac(acc_id,amount,"wit"));
 
     }
 

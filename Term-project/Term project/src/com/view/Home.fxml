@@ -21,7 +21,7 @@
                     <Font size="12.0" fx:id="x1" />
                   </font>
                 </Label>
-                <TextField id="amount_tf" fx:id="depo_value_tf" disable="true" layoutX="260.0" layoutY="86.0" prefWidth="200.0" />
+                <TextField id="amount_tf" fx:id="depo_value_tf" disable="true" layoutX="260.0" layoutY="86.0" prefWidth="200.0" onAction="#a"  />
                 <Label id="amount_lb" font="$x1" layoutX="474.0" layoutY="86.0" prefHeight="18.999900000002526" prefWidth="61.0" text="Bath" />
                 <Label id="amount_lb" font="$x1" layoutX="101.0" layoutY="117.0" prefHeight="19.0" prefWidth="123.0" text="Balance" />
                 <TextField id="amount_tf" fx:id="depo_balance_tf" disable="true" layoutX="260.0" layoutY="117.0" prefWidth="200.0" />
@@ -41,7 +41,7 @@
             <Pane fx:id="with_pane" layoutX="26.0" layoutY="19.0" prefHeight="200.0" prefWidth="455.0" visible="false">
               <children>
                 <Label id="amount_lb" font="$x1" layoutX="101.0" layoutY="86.0" prefHeight="19.0" prefWidth="123.0" text="Enter value" />
-                <TextField id="amount_tf" fx:id="with_value_tf" disable="true" layoutX="260.0" layoutY="86.0" prefWidth="200.0" />
+                <TextField id="amount_tf" fx:id="with_value_tf" disable="true" layoutX="260.0" layoutY="86.0" prefWidth="200.0" onAction="#withKeyboard"  />
                 <Label id="amount_lb" font="$x1" layoutX="474.0" layoutY="86.0" prefHeight="18.999900000002526" prefWidth="61.0" text="Bath" />
                 <Label id="amount_lb" font="$x1" layoutX="101.0" layoutY="117.0" prefHeight="19.0" prefWidth="123.0" text="Balance" />
                 <TextField id="amount_tf" fx:id="with_balance_tf" disable="true" layoutX="260.0" layoutY="117.0" prefWidth="200.0" />
@@ -60,7 +60,7 @@
                 <Label id="amount_lb" font="$x1" layoutX="477.0" layoutY="179.0" prefHeight="18.999900000002526" prefWidth="61.0" text="Bath" />
                 <TextField id="amount_tf" fx:id="trans_name_tf" disable="true" layoutX="260.0" layoutY="148.0" prefWidth="200.0" />
                 <Label id="amount_lb" font="$x1" layoutX="101.0" layoutY="86.0" prefHeight="19.0" prefWidth="137.0" text="Thrid Party Number" />
-                <TextField id="amount_tf" fx:id="trans_acc_num_tf" layoutX="260.0" layoutY="86.0" prefWidth="200.0" />
+                <TextField id="amount_tf" fx:id="trans_acc_num_tf" layoutX="260.0" layoutY="86.0" prefWidth="200.0" onAction="#searchTranKeyboard"  />
                 <Button id="search_btn" font="$x1" layoutX="469.0" layoutY="84.0" mnemonicParsing="false" onAction="#search_trans_acc" prefHeight="22.0" prefWidth="61.0" styleClass="button_in" text="Search">
                   <stylesheets>
                     <URL value="@styleSheet.css" />
@@ -69,7 +69,7 @@
                 <Label id="acc_name_lb" font="$x1" layoutX="101.0" layoutY="117.0" prefHeight="19.0" prefWidth="147.0" text="Thrid Party Account Name" />
                 <Label id="name_lb" font="$x1" layoutX="101.0" layoutY="148.0" prefHeight="19.0" prefWidth="137.0" text="Thrid Party Name" />
                 <Label id="amount_lb" font="$x1" layoutX="101.0" layoutY="177.0" prefHeight="19.0" prefWidth="123.0" text="Enter value" />
-                <TextField id="amount_tf" fx:id="trans_value_tf" disable="true" layoutX="260.0" layoutY="178.0" prefWidth="200.0" />
+                <TextField id="amount_tf" fx:id="trans_value_tf" disable="true" layoutX="260.0" layoutY="178.0" prefWidth="200.0" onAction="#tranKeyboard" />
                 <Button id="with_enter_btn" fx:id="trans_enter_btn" layoutX="297.0" layoutY="237.0" mnemonicParsing="false" onAction="#trans_thrid_acc" prefHeight="35.0" prefWidth="70.0" styleClass="button_in" text="Enter">
                   <stylesheets>
                     <URL value="@styleSheet.css" />
@@ -142,7 +142,7 @@
                 <Label fx:id="acc_name_lb" font="$x1" layoutX="100.0" layoutY="116.0" prefHeight="19.0" prefWidth="111.0" text="Account Name" />
                 <Label fx:id="name_lb" font="$x1" layoutX="101.0" layoutY="148.0" prefHeight="19.0" prefWidth="78.0" text="Name" />
                 <Label id="identity_lb" fx:id="id_lb" font="$x1" layoutX="100.0" layoutY="178.0" prefHeight="19.0" prefWidth="123.0" text="Identity number" />
-                <TextField fx:id="acc_num_tf" editable="true" layoutX="260.0" layoutY="86.0" prefWidth="200.0" />
+                <TextField fx:id="acc_num_tf" editable="true" layoutX="260.0" layoutY="86.0" prefWidth="200.0" onAction="#searchEnter"  />
                 <TextField fx:id="acc_name_tf" disable="true" editable="true" layoutX="260.0" layoutY="116.0" prefWidth="200.0" />
                 <TextField fx:id="name_tf" disable="true" layoutX="260.0" layoutY="146.0" prefWidth="200.0" />
                 <TextField fx:id="identity_tf" disable="true" layoutX="260.0" layoutY="176.0" prefWidth="200.0" />
