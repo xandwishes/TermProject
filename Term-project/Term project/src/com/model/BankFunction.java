@@ -36,6 +36,15 @@ public class BankFunction{
         }
         return balance;
     }
+    public boolean isCode(String g){
+      for(int i =0;i<g.length();i++){
+          if(g.equals("'")){
+              return true;
+          }
+      }
+      return false;
+       
+    }
     
     public static boolean checkEmpty(TextField j){
      return  j.getText().length()<=0;

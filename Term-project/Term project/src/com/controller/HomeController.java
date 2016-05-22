@@ -276,7 +276,7 @@ public class HomeController extends BankAccount implements Initializable {
     
     @FXML
     private void search_acc(ActionEvent event) {
-        if(!checkEmpty(acc_num_tf)){
+        if(!checkEmpty(acc_num_tf)&& !isCode(acc_num_tf.getText())){
            
             Search acc = searchCustomer(Long.parseLong(acc_num_tf.getText()));
             if (acc != null) {
@@ -310,7 +310,7 @@ public class HomeController extends BankAccount implements Initializable {
     
     @FXML
     private void depo_enter(ActionEvent event) throws IOException {
-        if(!checkEmpty(depo_value_tf)){
+        if(!checkEmpty(depo_value_tf) && !isCode(depo_value_tf.getText())){
         if (Integer.parseInt(depo_value_tf.getText()) > 0) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirm Deposit");
@@ -337,7 +337,7 @@ public class HomeController extends BankAccount implements Initializable {
 
     @FXML
     private void with_enter(ActionEvent event) throws IOException {
-        if(!checkEmpty(with_value_tf)){
+        if(!checkEmpty(with_value_tf) && !isCode(with_value_tf.getText())){
         if (Double.parseDouble(with_value_tf.getText()) > 0 && Double.parseDouble(with_value_tf.getText()) <= Double.parseDouble(with_balance_tf.getText())) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirm Withdrawal");
@@ -368,7 +368,7 @@ public class HomeController extends BankAccount implements Initializable {
 
     @FXML
     private void search_trans_acc(ActionEvent event) {
-        if(!checkEmpty(trans_acc_num_tf)){
+        if(!checkEmpty(trans_acc_num_tf) && !isCode(trans_acc_num_tf.getText())){
             String trans_id = trans_acc_num_tf.getText();// Get id for trans
             String id = acc_num_tf.getText();//normal id
 
@@ -404,7 +404,7 @@ public class HomeController extends BankAccount implements Initializable {
     @FXML
     private void trans_thrid_acc(ActionEvent event) throws IOException {
         //For acc-to-acc
-        if(!checkEmpty(acc_num_tf) && !checkEmpty(trans_acc_num_tf)){
+        if(!checkEmpty(acc_num_tf) && !checkEmpty(trans_acc_num_tf) && !isCode(acc_num_tf.getText()) && !isCode(trans_acc_num_tf.getText())){
         if (Integer.parseInt(trans_value_tf.getText()) >= 0) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Transaction Complete");
@@ -441,7 +441,7 @@ public class HomeController extends BankAccount implements Initializable {
 
         }
         }else 
-            if(checkEmpty(acc_num_tf) && !checkEmpty(trans_acc_num_tf)){
+            if(checkEmpty(acc_num_tf) && !checkEmpty(trans_acc_num_tf)&& !isCode(acc_num_tf.getText()) && !isCode(trans_acc_num_tf.getText())){
 
         //For one acc(deposit to acc)
                 if (Integer.parseInt(trans_value_tf.getText()) >= 0 ){
@@ -480,7 +480,8 @@ public class HomeController extends BankAccount implements Initializable {
 
     @FXML
     private void register(ActionEvent event) throws IOException {
-        
+            if(!isCode(acc_num_tf.getText()) && !checkEmpty(new_acc_name_tf) && !checkEmpty(new_fname_tf) && !isCode(new_lname_tf.getText())
+                && !checkEmpty(new_depo_tf)  && !checkEmpty(new_email_tf) &&!checkEmpty(new_phone_tf) && !checkEmpty(new_identity_num_tf)){
             openAccount(new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
                     new_email_tf.getText(), new_phone_tf.getText(), new_identity_num_tf.getText(), new_address_tf.getText());
 
@@ -491,7 +492,7 @@ public class HomeController extends BankAccount implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        
+            }
     }
 
     @FXML
