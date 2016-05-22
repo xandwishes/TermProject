@@ -107,10 +107,13 @@ public class BankAccount extends Search implements BankingSystem{
 
     public void openAccount(String acc_name,String fname,String lname, double balance, String email, String phone_num,
                                       String id_no, String address) {
-
+//new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
+//                    new_email_tf.getText(), new_phone_tf.getText(), new_identity_num_tf.getText(), new_address_tf.getText());
         CSDbDelegate db = new CSDbDelegate("csprog-in.sit.kmutt.ac.th", "3306", "CSC105_G3", "csc105_2014", "csc105");
         System.out.println(db.connect());
-        db.executeQuery(sqlcreateAccount(acc_name, balance, email, phone_num, id_no, address));
+//           public String sqlcre(String name,double balance,String email,String phone_num, String id_no, String address,String fname,String lname){
+
+        db.executeQuery(sqlcreateAccount(acc_name, balance, email, phone_num, id_no, address,fname,lname));
         db.executeQuery(sqlUpdateTransac(1, (int)balance, "OPA"));
      }
 

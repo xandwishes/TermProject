@@ -480,9 +480,7 @@ public class HomeController extends BankAccount implements Initializable {
 
     @FXML
     private void register(ActionEvent event) throws IOException {
-        if(!checkEmpty(new_acc_name_tf) && !checkEmpty(new_fname_tf) && !checkEmpty(new_lname_tf) && !checkEmpty(new_depo_tf) && !checkEmpty(new_email_tf)
-                        && !checkEmpty(new_phone_tf) && !checkEmpty(new_identity_num_tf)){
-            BankAccount acc = new BankAccount();
+        
             openAccount(new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
                     new_email_tf.getText(), new_phone_tf.getText(), new_identity_num_tf.getText(), new_address_tf.getText());
 
@@ -493,7 +491,7 @@ public class HomeController extends BankAccount implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        }
+        
     }
 
     @FXML

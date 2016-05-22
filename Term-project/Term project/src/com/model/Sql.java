@@ -23,12 +23,15 @@ public class Sql extends BankFunction{
    public String sqlSearchCustomer(long acc_id){
        return "SELECT * FROM BANK_ACCOUNT WHERE acc_id = ('" + acc_id + "')";
    }
-   
-   public String sqlcreateAccount(String name, double balance,String email,String phone_num, String id_no, String address){
+//   new_acc_name_tf.getText(), new_fname_tf.getText(), new_lname_tf.getText(), Double.parseDouble(new_depo_tf.getText()), 
+//                    new_email_tf.getText(), new_phone_tf.getText(), new_identity_num_tf.getText(), new_address_tf.getText());
+       
+     public String sqlcreateAccount(String name,double balance,String email,String phone_num, String id_no, String address,String fname,String lname){
+
        return "INSERT INTO "
-                + "BANK_ACCOUNT(acc_id,acc_name,balance,date,gender,email,phone_num,id_no,revenue_month,career,age,birthdate,address)"
+                + "BANK_ACCOUNT(acc_id,acc_name,balance,date,email,phone_num,id_no,address,fname,lname)"
                 + "VALUES ('" + System.currentTimeMillis() + "','" + name + "','" + balance + "','" + new java.sql.Date(System.currentTimeMillis())
-                + "','" + email + "','" + phone_num + "','" + id_no + "','" + address + "')";
+                + "','" + email + "','" + phone_num + "','" + id_no + "','" + address + "','" + fname + "','" + lname + "')";
    }
    
    public String sqlDeposit(long acc_id, int amount){
