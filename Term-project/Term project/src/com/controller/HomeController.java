@@ -159,6 +159,22 @@ public class HomeController extends BankAccount implements Initializable {
     private ObservableList<Statement> statementData = FXCollections.observableArrayList();
     @FXML
     private TextField search_balance_tf;
+    @FXML
+    private Button interest_btn;
+    @FXML
+    private Pane interest_pane;
+    @FXML
+    private Label interest_last_balance_lb;
+    @FXML
+    private Label interest_last_balance_result_lb;
+    @FXML
+    private Label interest_lb;
+    @FXML
+    private Label interest_result_lb;
+    @FXML
+    private Label balance_lb;
+    @FXML
+    private Label balance_result_lb;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -209,6 +225,19 @@ public class HomeController extends BankAccount implements Initializable {
         hideAll();
         state_pane.setVisible(true);
     }
+    @FXML
+    private void interest(ActionEvent event) {
+        hideAll();
+        interest_pane.setVisible(true);
+        
+        interest_last_balance_lb.setText("Last balance : ");
+        interest_last_balance_result_lb.setText((search_balance_tf.getText()));
+        interest_lb.setText("Interest: ");
+        interest_result_lb.setText(Double.toString(Double.parseDouble(search_balance_tf.getText())*0.1/100));
+        balance_lb.setText("Balance: ");
+        balance_result_lb.setText(Double.toString(Double.parseDouble(search_balance_tf.getText())+ (Double.parseDouble(search_balance_tf.getText())*0.1/100)));
+    
+    }
     public void hideAll(){
         search_pane.setVisible(false);
         new_pane.setVisible(false);
@@ -216,6 +245,7 @@ public class HomeController extends BankAccount implements Initializable {
         trans_pane.setVisible(false);
         state_pane.setVisible(false);
         with_pane.setVisible(false);
+        interest_pane.setVisible(false);
     }
     
     @FXML
@@ -266,6 +296,7 @@ public class HomeController extends BankAccount implements Initializable {
         }
     }
     
+    @FXML
     public void searchEnter(ActionEvent event) {
         search_acc(event);
     }
@@ -299,6 +330,7 @@ public class HomeController extends BankAccount implements Initializable {
                }
         }
     }
+    @FXML
     public void a(ActionEvent event) throws IOException{
      depo_enter(event);
     }
@@ -329,6 +361,7 @@ public class HomeController extends BankAccount implements Initializable {
            }
         }
     }
+    @FXML
     public void withKeyboard(ActionEvent event) throws IOException {
         with_enter(event);
     }
@@ -362,6 +395,7 @@ public class HomeController extends BankAccount implements Initializable {
                 }
         }
     }
+    @FXML
     public void searchTranKeyboard(ActionEvent event) {
         search_trans_acc(event);
     }
@@ -431,6 +465,7 @@ public class HomeController extends BankAccount implements Initializable {
         }
     }
     
+    @FXML
     public void tranKeyboard(ActionEvent event) throws IOException {
         trans_thrid_acc(event);
     }
@@ -470,6 +505,6 @@ public class HomeController extends BankAccount implements Initializable {
         stage.show();
     }
 
-
     
+
 }
